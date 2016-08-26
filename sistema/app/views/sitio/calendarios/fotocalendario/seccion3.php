@@ -73,6 +73,13 @@ $this->load->view( 'sitio/calendarios/fotocalendario/header' ); ?>
 
             <div id="datos">
 
+
+              <div class="row">  
+                <div class="col-xs-12 col-md-12">
+                      <h4 id="registros" class="form-control-static text-left">Registros</h4>
+                </div>  
+              </div> 
+
               <div class="row">  
                 <div class="col-xs-12 col-md-12">
                       <h3 class="form-control-static text-left">INGRESA TUS DATOS</h3>

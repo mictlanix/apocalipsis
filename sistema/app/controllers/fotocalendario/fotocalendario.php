@@ -46,6 +46,15 @@ public function completar_lista() {
 	$data['id_user']      = $this->input->post('id_user');
 	$data['session_id']   = $this->input->post('session_id');
 
+	$data['identificador_pedido']   = $this->input->post('identificador_pedido');
+/*
+identificador_pedido: solo se le pondrán a los historicos que tengan el campo "identificador_pedido"=0
+estos son los q acaban de hacer su pedido y pasaron al historico.
+
+	este identificador_pedido= tabla tinbox_posts.ID (de woocommerce)
+*/
+	
+
 	$data['datos'] = $this->modelo_borrar_datos->completar_lista($data);
 
 	echo json_encode($data);

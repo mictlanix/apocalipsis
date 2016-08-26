@@ -13,6 +13,8 @@
         $this->termmeta = $this->db->dbprefix('woocommerce_termmeta');
            $this->posts = $this->db->dbprefix('posts');
         $this->terminos = $this->db->dbprefix('terms');
+        $this->term_taxonomy = $this->db->dbprefix('term_taxonomy');
+
 
         $this->postmeta = $this->db->dbprefix('postmeta');
 
@@ -26,6 +28,27 @@
         $this->id_user = $current_user->id;
 
     }
+
+
+
+public function taxonomia_tipo_agendas($data){
+
+  $result = $this->db->query(
+          '
+           SELECT ta.term_taxonomy_id,ta.term_id,tmeta.meta_value,p.guid,te.name,te.slug
+            FROM  '.$this->term_taxonomy.'  as ta
+            INNER JOIN '.$this->termmeta.'  as tmeta ON ( (tmeta.woocommerce_term_id=ta.term_id)  AND (tmeta.meta_key="pa_tipo_agenda_swatches_id_photo") )
+            INNER JOIN  '.$this->posts.' as p ON ( (p.id=tmeta.meta_value)  )
+            INNER JOIN '.$this->terminos.'  as te ON ( (ta.term_id=te.term_id) AND (ta.taxonomy =  "pa_tipo_agenda") )
+          ');
+
+              if ( $result->num_rows() > 0 )  {
+                         return $result->result();
+              }   else {
+                      return "false";
+                      $result->free_result();
+              }  
+}
 
 
  public function agregar_disenos( $data ){

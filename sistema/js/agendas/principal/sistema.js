@@ -208,52 +208,82 @@ $(document).ready(function() {
            var la_modal = $(this);
 
             var datos = $(this).find('form.variations_form').attr('data-product_variations')  ;
-
-            
             var arreglo_variacion = [];
-            jQuery.each(jQuery.parseJSON(datos), function (i, valor) {
-                    var variacion = {};
-                    atributos = valor.attributes; //{"attribute_pa_tipo_agenda":"tip_agenda2"}
-                    
-                    //console.log(valor.image_link);
-                    variacion['image_link'] = valor.image_link;
-                    variacion['product_id'] = $(la_modal).find('.modal-content').attr('valor');
-                    variacion['product_nombre'] = $(la_modal).find('.modal-content').attr('nombre');
-                    variacion['id'] = valor.variation_id;
-                    variacion['llave'] = $.miobjeto(atributos,'key');
-                    variacion['valor'] = $.miobjeto(atributos,'value');
-                    arreglo_variacion.push( variacion);
-            });
-            console.log(arreglo_variacion);
 
-           $(this).find(".variations-table .select-option.swatch-wrapper").each(function(i) {
-                  //console.log(i);
-                      var imag_prod = $(this).find('a img').attr('src').replace('-32x32', ''); 
-                      var imag_diseno =$(this).find('a img').attr('src'); 
-                      
-                      var nombre_diseno =arreglo_variacion[i].product_nombre;
-                      var campo_variacion = arreglo_variacion[i].llave; //'escritorio_mini';
-                      var name_variacion = arreglo_variacion[i].valor; //'escritorio_mini';
-                      var id_diseno = arreglo_variacion[i].product_id;
-                      var variation_id = arreglo_variacion[i].id;
-                      var descripcion_variacion=$(this).attr('data-name'); //"Escritorio mini";
+            $.ajax({
+                  url: hash_url+'agendas/taxonomia_tipo_agendas',
+                  method: "POST",
+                    dataType: 'json',
+                success: function(taxonomia_tipo_agenda){
+                        var arreglo_taxonomia_tipo_agenda = {};
+                          $.each(taxonomia_tipo_agenda, function (i, valor) {
+                            $.each( valor, function( key, value ) {
+                              arreglo_taxonomia_tipo_agenda[value.slug] = value;
+                             }); 
 
-                      var producto_variable =''; 
-                         producto_variable = '<div class="col-md-6 col-sm-6 col-xs-6 tam">';
-                         producto_variable += '<label class="sel">';
-                         producto_variable += '<img src="'+imag_prod+'" height="100" width="100" imagen_diseno="'+imag_diseno+'"  image_link="'+arreglo_variacion[i].image_link+'" >'; 
-                         //producto_variable += '<img src="'+arreglo_variacion[i].image_link+'" height="50" width="50" >'; 
-                         producto_variable += '<input type="checkbox" name="coleccion_variation_id[]" value="'+name_variacion+'" campo_variacion="'+campo_variacion+'" nombre_diseno="'+nombre_diseno+'" id_diseno="'+id_diseno+'" variation_id="'+variation_id+'" descripcion_variacion="'+descripcion_variacion+'"/>';
-                         producto_variable += '</label>';
-                         producto_variable += '</div>';   
-                         
-                         //producto_variable += '<img src="'+arreglo_variacion[i].image_link+'" height="50" width="50" >'; 
-                      
+                          });
 
-                      $(la_modal).find('.variacion_producto').append( producto_variable );
-                      $(this).remove();
-            });  
+
+                    jQuery.each(jQuery.parseJSON(datos), function (i, valor) {
+                            var variacion = {};
+                            atributos = valor.attributes; //{"attribute_pa_tipo_agenda":"tip_agenda2"}
+                            
+                            //console.log(valor.image_link);
+                            variacion['image_link'] = valor.image_link;
+                            variacion['product_id'] = $(la_modal).find('.modal-content').attr('valor');
+                            variacion['product_nombre'] = $(la_modal).find('.modal-content').attr('nombre');
+                            variacion['id'] = valor.variation_id;
+                            variacion['llave'] = $.miobjeto(atributos,'key');
+                            variacion['valor'] = $.miobjeto(atributos,'value');
+
+                            variacion['imagen_tipo_agenda'] =arreglo_taxonomia_tipo_agenda[variacion['valor']].guid;
+                            variacion['descripcion_tipo_agenda'] =arreglo_taxonomia_tipo_agenda[variacion['valor']].name;
+
+                            arreglo_variacion.push( variacion);
+                    });
+                    console.log(arreglo_variacion);
+
+                   $(la_modal).find(".variations-table .select-option.swatch-wrapper").each(function(i) {
+                          //console.log(i);
+                             //var imag_prod = $(this).find('a img').attr('src').replace('-32x32', ''); 
+                             //var imag_diseno =$(this).find('a img').attr('src'); 
+
+                             var imag_prod = arreglo_variacion[i].imagen_tipo_agenda;
+                             var imag_diseno =arreglo_variacion[i].imagen_tipo_agenda;                               
+                              
+                              var nombre_diseno =arreglo_variacion[i].product_nombre;
+                              var campo_variacion = arreglo_variacion[i].llave; //'escritorio_mini';
+                              var name_variacion = arreglo_variacion[i].valor; //'escritorio_mini';
+                              var id_diseno = arreglo_variacion[i].product_id;
+                              var variation_id = arreglo_variacion[i].id;
+                              
+                              //var descripcion_variacion=$(this).attr('data-name'); //"Escritorio mini";
+                              var descripcion_variacion = arreglo_variacion[i].descripcion_tipo_agenda;
+
+                              var producto_variable =''; 
+                                 producto_variable = '<div class="col-md-6 col-sm-6 col-xs-6 tam">';
+                                 producto_variable += '<label class="sel">';
+                                 producto_variable += '<img src="'+imag_prod+'" height="100" width="100" imagen_diseno="'+imag_diseno+'"  image_link="'+arreglo_variacion[i].image_link+'" >'; 
+                                 //producto_variable += '<img src="'+arreglo_variacion[i].image_link+'" height="50" width="50" >'; 
+                                 producto_variable += '<input type="checkbox" name="coleccion_variation_id[]" value="'+name_variacion+'" campo_variacion="'+campo_variacion+'" nombre_diseno="'+nombre_diseno+'" id_diseno="'+id_diseno+'" variation_id="'+variation_id+'" descripcion_variacion="'+descripcion_variacion+'"/>';
+                                 producto_variable += '</label>';
+                                 producto_variable += '</div>';   
+                                 
+                                 //producto_variable += '<img src="'+arreglo_variacion[i].image_link+'" height="50" width="50" >'; 
+                              
+
+                              $(la_modal).find('.variacion_producto').append( producto_variable );
+                              $(this).remove();
+                    });  
+                
+
+
+                } //fin del success
+              }); //fin del $.ajax
+
+
         
+
 
 
       });

@@ -335,6 +335,10 @@ $route['calendarios/guardar_tamanos']							= 'calendarios/calendarios/guardar_t
 $route['calendarios/leer_marcados']								= 'calendarios/calendarios/leer_marcados';
 $route['calendarios/actualizar_disenos']						= 'calendarios/calendarios/actualizar_disenos';
 
+$route['calendarios/taxonomia_tamano']						= 'calendarios/calendarios/taxonomia_tamano';
+
+
+
 
 
 ///////////////////////////////////////////////////////////////////////////
@@ -404,7 +408,7 @@ $route['agendas/actualizar_disenos']						= 'agendas/agendas/actualizar_disenos'
 
 $route['agendas/guardar_info']								= 'agendas/agendas/guardar_info';
 
-
+$route['agendas/taxonomia_tipo_agendas']						= 'agendas/agendas/taxonomia_tipo_agendas';
 
 
 

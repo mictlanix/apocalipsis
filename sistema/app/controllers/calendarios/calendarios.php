@@ -26,6 +26,11 @@ class Calendarios extends CI_Controller {
 	}
 
 
+	public function taxonomia_tamano(){  
+		$datos['taxonomia_tamano']  =  $this->modelo_fcalendario->taxonomia_tamano( $data );
+		echo json_encode($datos);
+	}
+
 	
 	//new
 	public function guardar_tamanos(){

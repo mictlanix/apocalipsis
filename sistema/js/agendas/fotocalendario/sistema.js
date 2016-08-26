@@ -497,6 +497,19 @@ $('#titulo').change(function(e){
 							          },
 
 									success: function(datos_completos){
+
+
+											var pos_real = $('.bordeado').attr('posicion');
+											var posicion = $('.bordeado').attr('posicion');
+
+											$('.cuadro_slider:hidden').each(function(idx, el) {
+
+												if ($(el).attr('posicion')<pos_real) {
+													posicion--;
+												}
+											});										  
+										  $('#registros').html("Registros"+'  <b>'+posicion+'</b> de <b>'+datos_completos['total']+'</b>');	
+
 										
 
 										  if (datos_completos['total_disenos'] == datos_completos['total']) {
@@ -881,7 +894,8 @@ $('#titulo').change(function(e){
 
 			success: function(datos_completos){
 				
-
+				  $('#registros').html("Registros"+'  <b>'+$('.bordeado').attr('posicion')+'</b> de <b>'+datos_completos['total']+'</b>');
+				  
 				  if (datos_completos['total_disenos'] == datos_completos['total']) {
 				  		 $('#cont_session3').val('Revisa y compra');	 
 				  		 //$('#cont_session3').val('si');	 

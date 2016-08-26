@@ -550,6 +550,26 @@ $('#titulo').change(function(e){
 
 
 
+		//cantidad de elemento en registro 1 de 10
+		//var cant_elem_quedan = $('.editar_slider[value="'+elimina_id_tamano+'"][diseno="'+elimina_id_diseno+'"][consecutivo="'+elimina_consecutivo+'"]').parent().parent().siblings(":visible" ).length;
+		
+		var pos_real1 = $('.bordeado').attr('posicion');
+		var posicion1 = $('.bordeado').attr('posicion');
+		var $total_registro1 = 0;
+
+		$('.cuadro_slider:hidden').each(function(idx, el) {
+			if ($(el).attr('posicion')<pos_real1) {
+				posicion1--;
+			}
+		});
+		$('.cuadro_slider:visible').each(function(idx, el) {
+			$total_registro1++;
+		});												  
+	    $('#registros').html("Registros"+'  <b>'+posicion1+'</b> de <b>'+$total_registro1+'</b>');	
+
+
+
+
 	    $('body').on('click','#eliminar_diseno', function (e) {
 
 		var target2 = document.getElementById('foopropio');
@@ -572,12 +592,10 @@ $('#titulo').change(function(e){
 
 					success: function(datos_eliminados){
 							  $.each(datos_eliminados, function (i, valor) { 
-								  	console.log(valor);
+								  	//console.log(valor);
 							  });
 
-								
-							var cant_elem_quedan = $('.editar_slider[value="'+elimina_id_tamano+'"][diseno="'+elimina_id_diseno+'"][consecutivo="'+elimina_consecutivo+'"]').parent().parent().siblings(":visible" ).length;
-							  
+							var cant_elem_quedan = $('.editar_slider[value="'+elimina_id_tamano+'"][diseno="'+elimina_id_diseno+'"][consecutivo="'+elimina_consecutivo+'"]').parent().parent().siblings(":visible" ).length;  
 
 							if (cant_elem_quedan ==1) { //si es el ultimo elemento q queda eliminar todo 
 								$('.editar_slider[value="'+elimina_id_tamano+'"][diseno="'+elimina_id_diseno+'"][consecutivo="'+elimina_consecutivo+'"]').parent().parent().parent().css({	
@@ -592,6 +610,26 @@ $('#titulo').change(function(e){
 
 							}
 
+
+							//////////////////////////////////////////
+							var pos_real = $('.bordeado').attr('posicion');
+							var posicion = $('.bordeado').attr('posicion');
+							var $total_registro = 0;
+
+							$('.cuadro_slider:hidden').each(function(idx, el) {
+								if ($(el).attr('posicion')<pos_real) {
+									posicion--;
+								}
+							});		
+
+							$('.cuadro_slider:visible').each(function(idx, el) {
+								$total_registro++;
+							});	
+
+							//alert($total_registro1);															  
+						    $('#registros').html("Registros"+'  <b>'+posicion+'</b> de <b>'+$total_registro+'</b>');	
+
+						    //////////////////////////////////////////
 
 						  spinner.stop();
 						  $('#foopropio').css('display','none');

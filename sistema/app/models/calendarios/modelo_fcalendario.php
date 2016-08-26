@@ -13,8 +13,9 @@
         $this->termmeta = $this->db->dbprefix('woocommerce_termmeta');
            $this->posts = $this->db->dbprefix('posts');
         $this->terminos = $this->db->dbprefix('terms');
-
         $this->postmeta = $this->db->dbprefix('postmeta');
+        $this->term_taxonomy = $this->db->dbprefix('term_taxonomy');
+
 
         $this->logueo_identificador    = $this->db->dbprefix('logueo_identificador');
         $this->logueo_temporal = $this->db->dbprefix('logueo_temporal');
@@ -27,25 +28,46 @@
     }
 
 
-public function icono_especial($data){
+
+public function taxonomia_tamano($data){
 
   $result = $this->db->query(
-          'select p.guid 
-            from '.$this->postmeta.' AS pmeta
-            INNER JOIN '.$this->posts.' AS p ON pmeta.meta_value = p.id
-            where ( ( pmeta.post_id ='.$data["id"].' ) AND ( pmeta.meta_key =  "'.$data['campo'].'" ) )
+          '
+           SELECT ta.term_taxonomy_id,ta.term_id,tmeta.meta_value,p.guid,te.name,te.slug
+            FROM  '.$this->term_taxonomy.'  as ta
+            INNER JOIN '.$this->termmeta.'  as tmeta ON ( (tmeta.woocommerce_term_id=ta.term_id)  AND (tmeta.meta_key="pa_tamanos_swatches_id_photo") )
+            INNER JOIN  '.$this->posts.' as p ON ( (p.id=tmeta.meta_value)  )
+            INNER JOIN '.$this->terminos.'  as te ON ( (ta.term_id=te.term_id) AND (ta.taxonomy =  "pa_tamanos") )
           ');
 
-
               if ( $result->num_rows() > 0 )  {
-                         return $result->row();
+                         return $result->result();
               }   else {
                       return "false";
                       $result->free_result();
               }  
-          
-
 }
+
+
+      public function icono_especial($data){
+
+        $result = $this->db->query(
+                'select p.guid 
+                  from '.$this->postmeta.' AS pmeta
+                  INNER JOIN '.$this->posts.' AS p ON pmeta.meta_value = p.id
+                  where ( ( pmeta.post_id ='.$data["id"].' ) AND ( pmeta.meta_key =  "'.$data['campo'].'" ) )
+                ');
+
+
+                    if ( $result->num_rows() > 0 )  {
+                               return $result->row();
+                    }   else {
+                            return "false";
+                            $result->free_result();
+                    }  
+                
+
+      }
 
        //correo logueo
        public function imagen_atributo($data){

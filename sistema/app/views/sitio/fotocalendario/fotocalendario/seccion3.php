@@ -85,6 +85,12 @@ $actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
       <div class="alert" id="messages"></div>
 
             <div id="datos">
+              
+              <div class="row">  
+                <div class="col-xs-12 col-md-12">
+                      <h4 id="registros" class="form-control-static text-left">Registros</h4>
+                </div>  
+              </div>             
 
               <div class="row">  
                 <div class="col-xs-12 col-md-12">

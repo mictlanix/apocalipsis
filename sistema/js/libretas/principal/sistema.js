@@ -80,27 +80,7 @@ $(document).ready(function() {
   });
 
 
-
-
-
-
-
 ///////////////////////////////////fin de construccion de adicionales/////////////////////////////
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     $(".continuar").click(function(e) {

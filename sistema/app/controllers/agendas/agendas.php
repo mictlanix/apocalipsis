@@ -10,11 +10,17 @@ class agendas extends CI_Controller {
 
     //comienza aqui a mostrar el formulario
 	public function index(){
-
-			//$this->load->view( 'sitio/agendas/principal/principal',$datos ); 
-			$this->load->view( 'sitio/agendas/principal/principal'); 
-
+		//$this->load->view( 'sitio/agendas/principal/principal',$datos ); 
+		$this->load->view( 'sitio/agendas/principal/principal'); 
 	}	
+
+
+
+
+	public function taxonomia_tipo_agendas(){  
+		$datos['taxonomia_tipo_agendas']  =  $this->modelo_fcalendario->taxonomia_tipo_agendas( $data );
+		echo json_encode($datos);
+	}
 
 	//http://www.todoexpertos.com/categorias/tecnologia-e-internet/bases-de-datos/mysql/respuestas/2485299/campo-para-guardar-descripciones-de-texto-largas
 

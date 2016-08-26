@@ -48,8 +48,8 @@
 
 					<?php echo do_shortcode('[ciusan_logout redirect="current"]') ?>
 				</span>
-				<span class="ic"><a href="https://www.facebook.com/TinboxMX" target="_blank"><i class="fa fa-facebook"></i></a></span>
-				<span class="ic"><a href="https://twitter.com/TinboxMX" target="_blank"><i class="fa fa-twitter"></i></a></span>
+				<span class="ic"><a href="#"><i class="fa fa-facebook"></i></a></span>
+				<span class="ic"><a href="#"><i class="fa fa-twitter"></i></a></span>
 			</div>
 		  </div>
 		</div>
@@ -81,7 +81,7 @@
 					  
 					  <div class="buscar-carrito">
 					  	<div style="display:table-cell; vertical-align:middle">
-							<!-- <span class="ic"><a href="#"><i class="fa fa-search"></i></a></span> -->
+							<span class="ic"><a href="#"><i class="fa fa-search"></i></a></span>
 							<span class="ic"><a href="<?php echo site_url(); ?>/carro"><i class="fa fa-shopping-cart"></i><span class="count"><?php echo WC()->cart->get_cart_contents_count(); ?></span></a></span>
 						</div>
 					  </div>

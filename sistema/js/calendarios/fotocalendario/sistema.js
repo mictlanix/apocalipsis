@@ -468,6 +468,13 @@ $('#titulo').change(function(e){
 
 
 	    $('body').on('click','#eliminar_diseno', function (e) {
+			/*
+			var aaa = $(this);
+			console.log($(this));
+			console.log($(this).parent());
+	    	console.log(aaa.parent());
+	    	*/
+
 		    var url = hash_url+'calendarios/eliminar_diseno_completo'; 
 				$.ajax({
 				    url: url,
@@ -481,8 +488,10 @@ $('#titulo').change(function(e){
 			          },
 
 					success: function(datos_eliminados){
+							  //console.log(datos_eliminados);
+							  //console.log(datos_eliminados.parent());
 							  $.each(datos_eliminados, function (i, valor) { 
-								  	console.log(valor);
+								  	//console.log(valor);
 							  });
 
 							var cant_elem_quedan = $('.editar_slider[value="'+elimina_id_tamano+'"][diseno="'+elimina_id_diseno+'"][consecutivo="'+elimina_consecutivo+'"]').parent().parent().siblings(":visible" ).length;
@@ -517,6 +526,18 @@ $('#titulo').change(function(e){
 
 									success: function(datos_completos){
 										
+
+											var pos_real = $('.bordeado').attr('posicion');
+											var posicion = $('.bordeado').attr('posicion');
+
+											$('.cuadro_slider:hidden').each(function(idx, el) {
+
+												if ($(el).attr('posicion')<pos_real) {
+													posicion--;
+												}
+											});										  
+										  $('#registros').html("Registros"+'  <b>'+posicion+'</b> de <b>'+datos_completos['total']+'</b>');	
+
 
 										  if (datos_completos['total_disenos'] == datos_completos['total']) {
 										  		 $('#cont_session3').val('Revisa y compra');	 
@@ -932,7 +953,9 @@ $('#titulo').change(function(e){
 	          },
 
 			success: function(datos_completos){
-				
+
+				$('#registros').html("Registros"+'  <b>'+$('.bordeado').attr('posicion')+'</b> de <b>'+datos_completos['total']+'</b>');
+
 
 				  if (datos_completos['total_disenos'] == datos_completos['total']) {
 				  		 $('#cont_session3').val('Revisa y compra');	 
@@ -952,7 +975,6 @@ $('#titulo').change(function(e){
 				  		(id_diseno==(datos_completos['ultimo_elemento'].id_diseno) ) &&
 				  		(id_tamano==(datos_completos['ultimo_elemento'].id_tamano) ) &&
 				  		(id_session==(datos_completos['ultimo_elemento'].id_session) ) 
-
 				  )	{
 
 						 if (datos_completos['total_disenos'] == datos_completos['total']-1) {

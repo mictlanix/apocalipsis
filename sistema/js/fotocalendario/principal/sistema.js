@@ -127,45 +127,76 @@ $(document).ready(function() {
             
             var arreglo_variacion = [];
             //aqui se toman todos los tamaños y se guardan en un arreglo_variacion
-            jQuery.each(jQuery.parseJSON(datos), function (i, valor) {
-                    var variacion = {};
-                    atributos = valor.attributes; //{"attribute_pa_tipo_agenda":"tip_agenda2"}
-                    variacion['image_link'] = valor.image_link;  //supestamente era la url de la imagen, pero no se va a usar
-                    variacion['product_id'] = $(la_modal).find('.modal-content').attr('valor'); //id del producto
-                    variacion['product_nombre'] = $(la_modal).find('.modal-content').attr('nombre'); // nombre del producto "World travel"
-                    variacion['id'] = valor.variation_id;  //id del tamaño de variacion
-                    variacion['llave'] = $.miobjeto(atributos,'key'); //"attribute_pa_tamanos"
-                    variacion['valor'] = $.miobjeto(atributos,'value'); //valor del tamaño de variacion(creo q es el slug)
-                    arreglo_variacion.push( variacion);
-            });
-            //console.log(arreglo_variacion);
+            
+            $.ajax({
+                  url: hash_url+'calendarios/taxonomia_tamano',
+                  method: "POST",
+                    dataType: 'json',
+                success: function(taxonomia_tamano){
+                        var arreglo_taxonomia_tamano = {};
+                          $.each(taxonomia_tamano, function (i, valor) {
+                            $.each( valor, function( key, value ) {
+                              arreglo_taxonomia_tamano[value.slug] = value;
+                             }); 
 
-            //este es quien se encarga de dibujar los tamaños
-           $(this).find(".variations-table .select-option.swatch-wrapper").each(function(i) {
-                  //console.log(i);
-                      var imag_prod = $(this).find('a img').attr('src').replace('-32x32', ''); 
-                      var imag_diseno =$(this).find('a img').attr('src'); 
-                      
-                      var nombre_diseno =arreglo_variacion[i].product_nombre;
-                      var campo_variacion = arreglo_variacion[i].llave; //'escritorio_mini';
-                      var name_variacion = arreglo_variacion[i].valor; //'escritorio_mini';
-                      var id_diseno = arreglo_variacion[i].product_id;
-                      var variation_id = arreglo_variacion[i].id;
-                      var descripcion_variacion=$(this).attr('data-name'); //"Escritorio mini";
+                          });
 
-                      var producto_variable =''; 
-                       
-                         producto_variable = '<div class="col-md-6 col-sm-6 col-xs-6 tam">';
-                         producto_variable += '<label class="sel">';
-                         producto_variable += '<img src="'+imag_prod+'" height="100" width="100" imagen_diseno="'+imag_diseno+'"  image_link="'+arreglo_variacion[i].image_link+'" >'; 
-                         producto_variable += '<input type="checkbox" name="coleccion_variation_id[]" value="'+name_variacion+'" campo_variacion="'+campo_variacion+'" nombre_diseno="'+nombre_diseno+'" id_diseno="'+id_diseno+'" variation_id="'+variation_id+'" descripcion_variacion="'+descripcion_variacion+'"/>';
-                         producto_variable += '</label>';
-                         producto_variable += '</div>';   
+                      jQuery.each(jQuery.parseJSON(datos), function (i, valor) {
+                              var variacion = {};
+                              atributos = valor.attributes; //{"attribute_pa_tipo_agenda":"tip_agenda2"}
+                              variacion['image_link'] = valor.image_link;  //supestamente era la url de la imagen, pero no se va a usar
+                              variacion['product_id'] = $(la_modal).find('.modal-content').attr('valor'); //id del producto
+                              variacion['product_nombre'] = $(la_modal).find('.modal-content').attr('nombre'); // nombre del producto "World travel"
+                              variacion['id'] = valor.variation_id;  //id del tamaño de variacion
+                              variacion['llave'] = $.miobjeto(atributos,'key'); //"attribute_pa_tamanos"
+                              variacion['valor'] = $.miobjeto(atributos,'value'); //valor del tamaño de variacion(creo q es el slug)
+ 
+                              variacion['imagen_tamano'] =arreglo_taxonomia_tamano[variacion['valor']].guid;
+                              variacion['descripcion_tamano'] =arreglo_taxonomia_tamano[variacion['valor']].name;
 
-                      //le agrega a la modal todos los tamaños, es decir los dibuja                         
-                      $(la_modal).find('.variacion_producto').append( producto_variable );
-                      $(this).remove();
-            });  
+                              arreglo_variacion.push( variacion);
+                      });
+                      //console.log(arreglo_variacion);
+
+                      //este es quien se encarga de dibujar los tamaños
+                     $(la_modal).find(".variations-table .select-option.swatch-wrapper").each(function(i) {
+                            //console.log(i);
+                                //var imag_prod = $(this).find('a img').attr('src').replace('-32x32', ''); 
+                                //var imag_diseno =$(this).find('a img').attr('src'); 
+
+                                 var imag_prod = arreglo_variacion[i].imagen_tamano;
+                                 var imag_diseno =arreglo_variacion[i].imagen_tamano; 
+                                
+                                var nombre_diseno =arreglo_variacion[i].product_nombre;
+                                var campo_variacion = arreglo_variacion[i].llave; //'escritorio_mini';
+                                var name_variacion = arreglo_variacion[i].valor; //'escritorio_mini';
+                                var id_diseno = arreglo_variacion[i].product_id;
+                                var variation_id = arreglo_variacion[i].id;
+                                
+                                //var descripcion_variacion=$(this).attr('data-name'); //"Escritorio mini";
+                                var descripcion_variacion = arreglo_variacion[i].descripcion_tamano;
+
+                                var producto_variable =''; 
+                                 
+                                   producto_variable = '<div class="col-md-6 col-sm-6 col-xs-6 tam">';
+                                   producto_variable += '<label class="sel">';
+                                   producto_variable += '<img src="'+imag_prod+'" height="100" width="100" imagen_diseno="'+imag_diseno+'"  image_link="'+arreglo_variacion[i].image_link+'" >'; 
+                                   producto_variable += '<input type="checkbox" name="coleccion_variation_id[]" value="'+name_variacion+'" campo_variacion="'+campo_variacion+'" nombre_diseno="'+nombre_diseno+'" id_diseno="'+id_diseno+'" variation_id="'+variation_id+'" descripcion_variacion="'+descripcion_variacion+'"/>';
+                                   producto_variable += '</label>';
+                                   producto_variable += '</div>';   
+
+                                //le agrega a la modal todos los tamaños, es decir los dibuja                         
+                                $(la_modal).find('.variacion_producto').append( producto_variable );
+                                $(this).remove();
+                      });  
+
+
+
+
+                } //fin del success
+              }); //fin del $.ajax
+
+
         
 
 

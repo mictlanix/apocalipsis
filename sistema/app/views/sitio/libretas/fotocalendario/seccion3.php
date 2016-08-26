@@ -73,6 +73,12 @@ $this->load->view( 'sitio/libretas/fotocalendario/header' ); ?>
 
               <div class="row">  
                 <div class="col-xs-12 col-md-12">
+                      <h4 id="registros" class="form-control-static text-left">Registros</h4>
+                </div>  
+              </div> 
+
+              <div class="row">  
+                <div class="col-xs-12 col-md-12">
                       <h3 class="form-control-static text-left">Ingresa tus DATOS</h3>
                 </div>  
               </div>  

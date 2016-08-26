@@ -11,7 +11,8 @@
               $ant_diseno = -1;
 
 
-              foreach ($datos as $dato) { 
+              
+              foreach ($datos as $llave => $dato) {   
                   if (($dato->consecutivo != $ant_cons) or ($dato->id_diseno != $ant_diseno)) {
                         
                         if (( $ant_cons!=-1) ) {
@@ -33,7 +34,7 @@
                   }
           ?>
                   
-                  <div class="row cuadro_slider bloque" value="<?php echo $dato->variation_id; ?>" diseno="<?php echo $dato->id_diseno; ?>" consecutivo="<?php echo $dato->consecutivo; ?>">
+                  <div class="row cuadro_slider bloque" posicion="<?php echo $llave+1;?>" value="<?php echo $dato->variation_id; ?>" diseno="<?php echo $dato->id_diseno; ?>" consecutivo="<?php echo $dato->consecutivo; ?>">
             						<div class="col-md-12" style="margin-bottom:15px">
                   						<?php //echo $dato->id_diseno; ?>
                   						<p><b>Modelo:</b></p>
