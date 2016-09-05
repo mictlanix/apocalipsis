@@ -110,7 +110,7 @@ get_header();
 
 
 		<div class="row">
-			<h1>Nuestros Productos</h1>
+			<h1 id="titulo1">Nuestros Productos</h1>
 		</div>
 		<div class="row">
 
@@ -145,8 +145,8 @@ get_header();
 	<!-- PROCESO DE COMPRA -->
 
 	<div class="container">
-		<div class="row">
-			<h1>Proceso de compra</h1>
+		<div class="row" id="proceso">
+			<h1 id="titulo2">Proceso de compra</h1>
 		</div>
 		<div class="row">
 			<div class="col-md-3 col-sm-6 col-xs-12 text-center proceso">
@@ -176,7 +176,7 @@ get_header();
 
 	<div class="container">
 		<div class="row">
-			<h1>Los más vendidos</h1>
+			<h1 id="titulo3">Los más vendidos</h1>
 		</div>
 		<div class="row">
 			<!--Horizontal Tab-->
@@ -346,7 +346,7 @@ get_header();
 			<div class="row ">
 				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce id orci nec felis tempor dictum. Donec ullamcorper, mauris egestas fermentum tempus, nulla purus tincidunt sapien, quis eleifend elit massa sed dui. Praesent vel nisl et eros tristique egestas. Cras a vehicula sapien. Donec porttitor nisl at mi ultrices, aliquam fringilla orci varius. Nulla consectetur tincidunt justo ac vestibulum. Etiam non nisl sed erat rutrum placerat.</p>
 			</div>
-			<div class="row iconos">
+			<div class="row iconos" id="iconos">
 				<div class="col-md-2 col-md-offset-3 col-sm-4 col-xs-12 ico">
 					<img src="<?php echo get_template_directory_uri(); ?>/images/ico-calidad.png" class="img-responsive">
 					<p>CALIDAD</p>
@@ -375,7 +375,7 @@ get_header();
 	<!-- CONTACTO -->
 	<div class="container contacto">
 		<div class="row">
-			<h1>Contacto</h1>
+			<h1 id="titulo4">Contacto</h1>
 		</div>
 		
 			<?php echo do_shortcode('[contact-form-7 id="65" title="Formulario de contacto"]'); ?>	 		  

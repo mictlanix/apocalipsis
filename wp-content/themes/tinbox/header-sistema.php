@@ -7,12 +7,9 @@
 
 <title>Tinbox Sistema</title>
 
-
 <div id="foopropio"></div>
 
-
 <script src="<?php echo get_template_directory_uri(); ?>/js/spin.js"></script>
-
 
 <script>
 var opts = {
@@ -41,11 +38,8 @@ var opts = {
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 
-
-
-   <script src="<?php echo get_template_directory_uri(); ?>/js/jquery.form.min.js"></script>
-   <script src="<?php echo get_template_directory_uri(); ?>/js/spin.min.js"></script>
-
+<script src="<?php echo get_template_directory_uri(); ?>/js/jquery.form.min.js"></script>
+<script src="<?php echo get_template_directory_uri(); ?>/js/spin.min.js"></script>
 
 <script src="<?php echo get_template_directory_uri(); ?>/js/easyResponsiveTabs.js"></script>
 
@@ -61,8 +55,9 @@ var opts = {
 <link rel="stylesheet" type="text/css" href="<?php echo get_template_directory_uri(); ?>/css/easy-responsive-tabs.css " />
 
 <script src="<?php echo get_template_directory_uri(); ?>/js/base64/jquery.base64.js" type="text/javascript"></script>
-  <script src="<?php echo get_template_directory_uri(); ?>/js/base64/jquery.base64.min.js" type="text/javascript"></script>
-
+<script src="<?php echo get_template_directory_uri(); ?>/js/base64/jquery.base64.min.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="<?php echo get_template_directory_uri(); ?>/css/introjs.css " />
+<link rel="stylesheet" type="text/css" href="<?php echo get_template_directory_uri(); ?>/css/animate.min.css" />
 
   
 <?php wp_head(); ?>
@@ -104,11 +99,11 @@ var opts = {
 				        <span class="icon-bar"></span>
 				        <span class="icon-bar"></span>
 				      </button>
-				      <a class="navbar-brand" href="#"><img src="<?php echo get_template_directory_uri(); ?>/images/logo-timbox.png"></a>
+				      <a class="navbar-brand" href="<?php echo get_site_url(); ?>"><img src="<?php echo get_template_directory_uri(); ?>/images/logo-timbox.png"></a>
 				    </div>
 
 				    <!-- Collect the nav links, forms, and other content for toggling -->
-				    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				    <div class="collapse navbar-collapse menu" id="bs-example-navbar-collapse-1">
 				    <?php
 	                	wp_nav_menu( array( 'theme_location' => 'primero', 'container' => '', 'items_wrap' => '<ul class="nav navbar-nav">%3$s</ul>' ) );
 	                ?>
@@ -117,8 +112,7 @@ var opts = {
 					  
 					  <div class="buscar-carrito">
 					  	<div style="display:table-cell; vertical-align:middle">
-							<!-- <span class="ic"><a href="#"><i class="fa fa-search"></i></a></span> -->
-							<span class="ic"><a href="<?php echo site_url(); ?>/carro"><i class="fa fa-shopping-cart"></i><span class="count"><?php echo WC()->cart->get_cart_contents_count(); ?></span></a></span>
+							<span class="ic" id="carrito"><a href="<?php echo site_url(); ?>/carro"><i class="fa fa-shopping-cart"></i><span class="count"><?php echo WC()->cart->get_cart_contents_count(); ?></span></a></span>
 						</div>
 					  </div>
 
