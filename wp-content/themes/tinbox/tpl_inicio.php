@@ -176,7 +176,7 @@ get_header();
 
 	<div class="container">
 		<div class="row">
-			<h1>Los más vendidos</h1>
+			<h1>de temporada</h1>
 		</div>
 		<div class="row">
 			<!--Horizontal Tab-->
