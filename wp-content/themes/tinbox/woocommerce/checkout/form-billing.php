@@ -25,11 +25,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 <div class="woocommerce-billing-fields">
 	<?php if ( wc_ship_to_billing_address_only() && WC()->cart->needs_shipping() ) : ?>
 
-		<h3><?php //_e( 'Billing &amp; Shipping', 'woocommerce' ); ?>Detalles de envío</h3>
+		<h3><?php //_e( 'Billing &amp; Shipping', 'woocommerce' ); ?>Datos personales</h3>
 
 	<?php else : ?>
 
-		<h3><?php //_e( 'Billing Details', 'woocommerce' ); ?>Detalles de envío</h3>
+		<h3><?php //_e( 'Billing Details', 'woocommerce' ); ?>Datos personales</h3>
 
 	<?php endif; ?>
 
@@ -77,3 +77,54 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 	<?php endif; ?>
 </div>
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		$('#billing_entrecalles_field').insertAfter('#billing_address_2_field');
+		$('#shipping_entrecalles_field').insertAfter('#shipping_address_2');
+		$('div.add_info_wccs').append('<div class="facturacion"></div>');
+		$('div.facturacion').append('<p><input type="checkbox" id="copiar" value=""><label>Copiar datos personales</label></p>');
+		$('div.facturacion').append('<p><input type="checkbox" id="extranjero" value=""><label>Soy extranjero</label></p>');		
+		$('div.add_info_wccs h3').append('<input type="checkbox" id="si" value="second_checkbox">');
+
+		$('#myfld1_field, #myfield2_field, #myfield3_field, #myfield11_field, #myfield6_field, #myfield7_field, #myfield10_field, #myfield8_field, #myfield4_field, #myfield9_field, #myfield5_field').appendTo('.facturacion');
+		$( "#myfield2_field" ).after( "<h4 class='text-left' style='clear:both; margin-top:20px; display:inline-block'>Dirección</h4>" );
+
+		$('div.facturacion').hide();
+		
+		$('#si').click(function() {
+		    if( $(this).is(':checked')) {
+		        $(".facturacion").show(300);
+		    } else {
+		        $(".facturacion").hide(300);
+		    }
+		});
+
+		$('#extranjero').click(function() {
+		    if( $(this).is(':checked')) {
+		        $("p#myfield2_field").hide(300);
+		    } else {
+		        $("p#myfield2_field").show(300);
+		        $('#myfield2').val('');
+		    }
+		});
+
+		$('#copiar').click(function() {
+		    if( $(this).is(':checked')) {
+		        $('#myfld1').val($('#billing_first_name').val()+ ' ' + $('#billing_last_name').val());
+		        $('#myfield3').val($('#billing_address_1').val());
+		        $('#myfield4').val($('#billing_city').val());
+		        $('#myfield8').val($('#billing_state').val());
+		        $('#myfield5').val($('#billing_postcode').val());
+		        $('#myfield11').val($('#billing_entrecalles_field').val());
+		    } else {
+		        $('#myfld1').val('');
+		        $('#myfield3').val('');
+		        $('#myfield4').val('');
+		        $('#myfield8').val('');
+		        $('#myfield5').val('');
+		        $('#myfield11').val('');
+		    }
+		});
+	});
+</script>

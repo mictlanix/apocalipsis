@@ -477,7 +477,7 @@ $this->load->view( 'sitio/agendas/fotocalendario/header' ); ?>
 
 
             </div>
-			<hr>
+			<hr class="division">
             <div id="fechas_especiales">
               <div class="row">  
                  <div class="col-md-12">

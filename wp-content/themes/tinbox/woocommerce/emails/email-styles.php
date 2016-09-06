@@ -48,7 +48,7 @@ $text_lighter_20 = wc_hex_lighter( $text, 20 );
 }
 
 #template_header {
-    background-color: <?php echo esc_attr( $base ); ?>;
+    background-color: #71cbd3;
     border-radius: 3px 3px 0 0 !important;
     color: <?php echo esc_attr( $base_text ); ?>;
     border-bottom: 0;
@@ -120,7 +120,7 @@ $text_lighter_20 = wc_hex_lighter( $text, 20 );
 }
 
 #header_wrapper {
-    padding: 36px 48px;
+    padding: 5px 18px;
     display: block;
 }
 

@@ -176,7 +176,7 @@ get_header();
 
 	<div class="container">
 		<div class="row">
-			<h1 id="titulo3">Los más vendidos</h1>
+			<h1 id="titulo3">De temporada</h1>
 		</div>
 		<div class="row">
 			<!--Horizontal Tab-->
@@ -188,45 +188,134 @@ get_header();
 	                <li>Agendas</li>
 	            </ul>
 	            <div class="resp-tabs-container hor_1">
+	                
 	                <div>
 
-	                	<div class="col-md-3 col-sm-6 col-xs-6 producto">
-							<div class="celda">
-								<img src="<?php echo get_template_directory_uri(); ?>/images/masvendidos1.jpg" class="img-responsive">
-								<div class="boton pers"><span class="ver"><a href="#"><i class="fa fa-eye"></i></a></span><a class="personalizar" href="#">PERSONALIZAR</a></div>							
-							</div>
-							<p>CALENDARIO 80’s</p>
+		                <?php
+
+						$meta_query   = WC()->query->get_meta_query();
+						$meta_query[] = array(
+						    'key'   => '_featured',
+						    'value' => 'yes'
+						);
+						$loop = new WP_Query( array(								
+	    							'product_cat' => 'calendarios',    						  							
+	    							'posts_per_page' => 4,
+	    							'meta_query'  =>  $meta_query
+								));
+			          
+				         while ( $loop->have_posts() ) : $loop->the_post();
+				        	echo '<div class="col-md-3 col-sm-6 col-xs-6 producto">';
+							echo 	'<div class="celda">';
+							echo 		the_post_thumbnail();						
+							echo '</div>';
+							echo '<p>'.the_title().'</p>';
+							echo '</div>';
+				          endwhile; // End of the loop.          
+									
+						wp_reset_query();
+						?>
+
+						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
+							<a href="<?php echo site_url(); ?>/calendarios" class="btn btn-default vertodos">Ver calendarios</a>
 						</div>
-						<div class="col-md-3 col-sm-6 col-xs-6 producto">
-							<div class="celda">
-								<img src="<?php echo get_template_directory_uri(); ?>/images/masvendidos2.jpg" class="img-responsive">
-								<div class="boton pers"><span class="ver"><a href="#"><i class="fa fa-eye"></i></a></span><a class="personalizar" href="#">PERSONALIZAR</a></div>								
-							</div>
-							<p>CALENDARIO HEALTHY</p>
-						</div>
-						<div class="col-md-3 col-sm-6 col-xs-6 producto">
-							<div class="celda">
-								<img src="<?php echo get_template_directory_uri(); ?>/images/masvendidos3.jpg" class="img-responsive">
-								<div class="boton pers"><span class="ver"><a href="#"><i class="fa fa-eye"></i></a></span><a class="personalizar" href="#">PERSONALIZAR</a></div>								
-							</div>
-							<p>CALENDARIO SEASONS</p>
-						</div>
-						<div class="col-md-3 col-sm-6 col-xs-6 producto">
-							<div class="celda">
-								<img src="<?php echo get_template_directory_uri(); ?>/images/masvendidos4.jpg" class="img-responsive">
-								<div class="boton pers"><span class="ver"><a href="#"><i class="fa fa-eye"></i></a></span><a class="personalizar" href="#">PERSONALIZAR</a></div>								
-							</div>
-							<p>CALENDARIO CIUDADES DEL MUNDO</p>
+	                    
+	                </div>	                
+
+	                <div>
+
+		                <?php
+
+						$meta_query   = WC()->query->get_meta_query();
+						$meta_query[] = array(
+						    'key'   => '_featured',
+						    'value' => 'yes'
+						);
+						$loop = new WP_Query( array(								
+	    							'product_cat' => 'fcalendario',    						  							
+	    							'posts_per_page' => 4,
+	    							'meta_query'  =>  $meta_query
+								));
+			          
+				         while ( $loop->have_posts() ) : $loop->the_post();
+				        	echo '<div class="col-md-3 col-sm-6 col-xs-6 producto">';
+							echo 	'<div class="celda">';
+							echo 		the_post_thumbnail();						
+							echo '</div>';
+							echo '<p>'.the_title().'</p>';
+							echo '</div>';
+				          endwhile; // End of the loop.          
+									
+						wp_reset_query();
+						?>
+
+						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
+							<a href="<?php echo site_url(); ?>/fotocalendarios" class="btn btn-default vertodos">Ver fotocalendarios</a>
 						</div>
 	                    
 	                </div>
 	                <div>
+
+		                <?php
+
+						$meta_query   = WC()->query->get_meta_query();
+						$meta_query[] = array(
+						    'key'   => '_featured',
+						    'value' => 'yes'
+						);
+						$loop = new WP_Query( array(								
+	    							'product_cat' => 'libretas',    						  							
+	    							'posts_per_page' => 4,
+	    							'meta_query'  =>  $meta_query
+								));
+			          
+				         while ( $loop->have_posts() ) : $loop->the_post();
+				        	echo '<div class="col-md-3 col-sm-6 col-xs-6 producto">';
+							echo 	'<div class="celda">';
+							echo 		the_post_thumbnail();						
+							echo '</div>';
+							echo '<p>'.the_title().'</p>';
+							echo '</div>';
+				          endwhile; // End of the loop.          
+									
+						wp_reset_query();
+						?>
+
+						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
+							<a href="<?php echo site_url(); ?>/libretas" class="btn btn-default vertodos">Ver libretas</a>
+						</div>
 	                    
 	                </div>
 	                <div>
-	                    
-	                </div>
-	                <div>
+
+		                <?php
+
+						$meta_query   = WC()->query->get_meta_query();
+						$meta_query[] = array(
+						    'key'   => '_featured',
+						    'value' => 'yes'
+						);
+						$loop = new WP_Query( array(								
+	    							'product_cat' => 'agendas',    						  							
+	    							'posts_per_page' => 4,
+	    							'meta_query'  =>  $meta_query
+								));
+			          
+				         while ( $loop->have_posts() ) : $loop->the_post();
+				        	echo '<div class="col-md-3 col-sm-6 col-xs-6 producto">';
+							echo 	'<div class="celda">';
+							echo 		the_post_thumbnail();						
+							echo '</div>';
+							echo '<p>'.the_title().'</p>';
+							echo '</div>';
+				          endwhile; // End of the loop.          
+									
+						wp_reset_query();
+						?>
+
+						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
+							<a href="<?php echo site_url(); ?>/agendas" class="btn btn-default vertodos">Ver agendas</a>
+						</div>
 	                    
 	                </div>
 	            </div>

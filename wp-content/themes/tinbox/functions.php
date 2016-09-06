@@ -276,6 +276,25 @@ function woocommerce_variable_add_to_cart(){
    }
 }
 
+// Añadiendo campos en Finalizar compra
+add_filter( 'woocommerce_checkout_fields' , 'custom_override_checkout_fields' );
+
+function custom_override_checkout_fields( $fields ) {
+     $fields['shipping']['shipping_entrecalles'] = array(
+        'label'     => __('Entre que calles', 'woocommerce'),
+	    'required'  => false,
+	    'class'     => array('form-row-wide'),
+	    'clear'     => true
+	     );
+     $fields['billing']['billing_entrecalles'] = array(
+        'label'     => __('Entre que calles', 'woocommerce'),
+	    'required'  => false,
+	    'class'     => array('form-row-wide'),
+	    'clear'     => true
+	     );
+
+	     return $fields;
+	 }
 
 
 ?>

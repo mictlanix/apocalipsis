@@ -294,6 +294,14 @@ div.boton.pers a.personalizar {
   padding: 12px 30px;
   float: right;
 }
+a.vertodos {
+  border:1px dashed #ccc;
+  border-radius: 15px !important;
+  padding: 12px 30px;
+  margin-bottom: 50px;
+  text-transform: uppercase;
+}
+
 span[role="alert"], div[role="alert"] {
   font-size: 10px;
   color: red;
@@ -610,6 +618,43 @@ div.product_meta {
 }
 
 /* ESTILOS CARRITO */
+
+div.facturacion {
+  display: inline-block;
+}
+div.add_info_wccs h3 #si {
+  float: right;
+}
+#myfield6_field, #myfield10_field, #myfield4_field, #myfield5_field {
+  width: 47% !important;
+  margin-right: 3%;
+}
+#myfield7_field, #myfield8_field, #myfield9_field {
+  width: 50% !important;
+  margin-right: 0;
+}
+#copiar, #extranjero {
+  margin-right: 10px;
+}
+img.gracias {
+margin-bottom: 50px;
+}
+.woocommerce .order_details {
+    list-style: none;
+    margin-left: 0;
+    padding-left: 0;
+    border: 1px solid #dddddd;
+    padding: 10px;
+}
+.modopago h4 p {
+  text-align: left;
+}
+div.addresses {
+  margin-bottom: 50px;
+}
+
+
+
 
 .woocommerce {
   font-family: 'Oswald' !important;

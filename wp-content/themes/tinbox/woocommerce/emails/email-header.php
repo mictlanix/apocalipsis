@@ -43,8 +43,13 @@ if ( ! defined( 'ABSPATH' ) ) {
                             	<td align="center" valign="top">
                                     <!-- Header -->
                                 	<table border="0" cellpadding="0" cellspacing="0" width="600" id="template_header">
+                                		<tr>
+                                			<td>
+                                				<img src="http://dummyimage.com/600x130/d1d1d1/fff&text=TINBOX" style="width:100%;">
+                                			</td>
+                                		</tr>
                                         <tr>
-                                            <td id="header_wrapper">
+                                            <td id="header_wrapper">                                            	
                                             	<h1><?php echo $email_heading; ?></h1>
                                             </td>
                                         </tr>
