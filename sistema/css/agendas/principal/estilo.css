@@ -873,3 +873,8 @@ z-index: 99997;
   color: transparent !important;
 
 }
+
+.barranave{
+  border: red 3px solid !important;
+    color: black;
+}
