@@ -34,7 +34,11 @@ if ( $order ) : ?>
 
 	<?php else : ?>
 
-		<p class="woocommerce-thankyou-order-received"><?php echo apply_filters( 'woocommerce_thankyou_order_received_text', __( 'Thank you. Your order has been received.', 'woocommerce' ), $order ); ?></p>
+		<h2 class="woocommerce-thankyou-order-received"><?php echo apply_filters( 'woocommerce_thankyou_order_received_text', __( 'Thank you. Your order has been received.', 'woocommerce' ), $order ); ?></h2>
+		
+		<div>
+			<img src="http://dummyimage.com/1200x250/70cbd2/fff&text=TINBOX" class="img-responsive gracias">
+		</div>
 
 		<ul class="woocommerce-thankyou-order-details order_details">
 			<li class="order">
@@ -60,7 +64,11 @@ if ( $order ) : ?>
 
 	<?php endif; ?>
 
-	<?php do_action( 'woocommerce_thankyou_' . $order->payment_method, $order->id ); ?>
+	<?php 
+	echo '<div class="modopago"><h4>';
+	do_action( 'woocommerce_thankyou_' . $order->payment_method, $order->id ); 
+	echo '</h4></div>';
+	?>
 	<?php do_action( 'woocommerce_thankyou', $order->id ); ?>
 
 <?php else : ?>

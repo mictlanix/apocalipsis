@@ -425,6 +425,11 @@ h3 {
   margin-bottom: 20px !important;
   color: #000;
 }
+hr.division {
+      border-top: 2px solid #71cbd3;
+    margin-top: 50px;
+    margin-bottom: 30px;
+}
 #meses {
   margin-top: 20px;
   margin-left: 0;

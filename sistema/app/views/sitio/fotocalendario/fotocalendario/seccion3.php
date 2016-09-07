@@ -456,7 +456,7 @@ $actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 
             </div>
 
-            <hr>
+            <hr class="division"/>
 
             <div id="fechas_especiales">
               <div class="row">
