@@ -98,94 +98,6 @@
 
     
 
-    $(".navbar-brand img").addClass('flipInY animated');  
-
-
-    $(".navbar-brand img").on("mouseenter",(function() {      
-      $(this).addClass("flipInY animated");
-    }));
-
-    $(".navbar-brand img").live("webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend",(function() {
-      $(this).removeClass("flipInY animated");
-    }));
-
-
-$(window).scroll(function() {
-   if($(window).scrollTop() + $(window).height() == $(document).height()) {
-       $("#imagenfooter").addClass("flipInY animated");
-   }
-});
-
-$(window).scroll(function() {
-   if($(window).scrollTop() == 0) {
-       $(".navbar-brand img").addClass("flipInY animated");
-   }
-});
-
-
-var waypoint = new Waypoint({
-  element: document.getElementById('titulo1'),
-  handler: function(direction) {
-    $("#titulo1").addClass("bounce animated");
-    $("#titulo1").live("webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend",(function() {
-      $(this).removeClass("bounce animated");
-    }));
-  },
-  offset: 300
-})
-
-var waypoint = new Waypoint({
-  element: document.getElementById('titulo2'),
-  handler: function(direction) {
-    $("#titulo2").addClass("bounce animated");
-    $("#titulo2").live("webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend",(function() {
-      $(this).removeClass("bounce animated");
-    }));
-  },
-  offset: 300
-})
-
-var waypoint = new Waypoint({
-  element: document.getElementById('titulo3'),
-  handler: function(direction) {
-    $("#titulo3").addClass("bounce animated");
-    $("#titulo3").live("webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend",(function() {
-      $(this).removeClass("bounce animated");
-    }));
-  },
-  offset: 300
-})
-var waypoint = new Waypoint({
-  element: document.getElementById('titulo4'),
-  handler: function(direction) {
-    $("#titulo4").addClass("bounce animated");
-    $("#titulo4").live("webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend",(function() {
-      $(this).removeClass("bounce animated");
-    }));
-  },
-  offset: 300
-})
-var waypoint = new Waypoint({
-  element: document.getElementById('iconos'),
-  handler: function(direction) {
-    $("#iconos .ico img").each(function(i){
-        var t = $(this);
-        // $(".oculto ul li").css('display','block');
-        setTimeout(function(){ t.addClass('flipInY animated'); }, (i+1) * 800);
-    });
-    $("#iconos .ico img").live("webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend",(function() {
-      $(this).removeClass("flipInY animated");
-    }));
-  },
-  offset: 400
-})
-
-
-
-  
-
-   
-
 
 
     });
@@ -215,9 +127,8 @@ var waypoint = new Waypoint({
 
 
 </script>
-<script src="<?php echo get_template_directory_uri(); ?>/js/intro.js" type="text/javascript"></script>
 <script src="<?php echo get_template_directory_uri(); ?>/js/animaciones.js" type="text/javascript"></script>
-<script src="<?php echo get_template_directory_uri(); ?>/js/anclasanimaciones.js" type="text/javascript"></script>
+
 <?php wp_footer(); ?>
 
 </body>

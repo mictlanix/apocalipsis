@@ -99,10 +99,8 @@
 
     });
 
-</script>
-<script src="<?php echo get_template_directory_uri(); ?>/js/intro.js" type="text/javascript"></script>
+</script>	
 <script src="<?php echo get_template_directory_uri(); ?>/js/animaciones.js" type="text/javascript"></script>
-<script src="<?php echo get_template_directory_uri(); ?>/js/anclasanimaciones.js" type="text/javascript"></script>
 <script>
 startIntro().start();
 startIntro2().start();
