@@ -108,7 +108,8 @@ $(document).ready(function() {
 
 	jQuery('.buscar_dato_reutilizar').on('typeahead:selected', function (e, datum,otro) {
 
-			console.log((datum.key));
+			//console.log((datum.key));
+			var reutilizando =datum.titulo;
 
 
 	
@@ -166,6 +167,7 @@ $(document).ready(function() {
 					                  id_edicion_variacion      : variation_id,
 					                  id_edicion_diseno      : id_diseno,
 					                  id_edicion_consecutivo : consecutivo,
+					                  reutilizando:reutilizando,
 
 					            }, ''); 
 
@@ -251,7 +253,7 @@ $('body').on('change','#logo', function (event) {
 
 //activar casilla otro en titulo
 $('#titulo').change(function(e){   
-	console.log($(this).val());
+	//console.log($(this).val());
 	if( $(this).val() === 'personalizado') {   
 	   $('#otro').show();    
 	}  else   {   
@@ -461,7 +463,7 @@ $('#titulo').change(function(e){
 
 					success: function(datos_eliminados){
 							  $.each(datos_eliminados, function (i, valor) { 
-								  	console.log(valor);
+								  	//console.log(valor);
 							  });
 
 							var cant_elem_quedan = $('.editar_slider[value="'+elimina_variation_id+'"][diseno="'+elimina_id_diseno+'"][consecutivo="'+elimina_consecutivo+'"]').parent().parent().siblings(":visible" ).length;

@@ -68,7 +68,9 @@
      public function buscador_predictivo($data){
      
         $where = '(                     
-                      (( t.id_session =  "'.$data['id_session'].'" )   OR  ( t.id_user =  '.$this->id_user.' ) )              
+                      (( t.id_session =  "'.$data['id_session'].'" )   OR ((t.id_user =  '.$this->id_user.') 
+                      AND (t.id_user <>0))
+                      )              
                       AND
                       ( ( t.nombre LIKE  "%'.$data['key'].'%" ) OR  ( t.apellidos LIKE  "%'.$data['key'].'%" ) )
                       
@@ -139,7 +141,8 @@
  
         $where = '(                     
                       
-                      ( t.id_session =  "'.$data['id_session'].'" )   OR  ( t.id_user =  '.$this->id_user.' )                                
+                      ( t.id_session =  "'.$data['id_session'].'" )    OR ((t.id_user =  '.$this->id_user.') 
+                      AND (t.id_user <>0))                               
         )';   
  
 

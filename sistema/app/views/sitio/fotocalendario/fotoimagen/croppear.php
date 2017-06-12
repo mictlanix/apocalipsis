@@ -9,13 +9,13 @@ get_header('sistema');
 $this->load->view( 'sitio/fotocalendario/fotoimagen/header' ); ?>   
 
 <span style="display:none">
-<input type="text" id="id_session" name="id_session" value="<?php echo $id_session; ?>" >
-<input type="text" id="id_diseno" name="id_diseno" value="<?php echo $id_diseno; ?>" >
-<input type="text" id="id_tamano" name="id_tamano" value="<?php echo $id_tamano; ?>" >
-<input type="text" id="consecutivo" name="consecutivo" value="<?php echo $consecutivo; ?>" >
-<input type="text" id="ano" name="ano" value="<?php echo $ano; ?>" >
-<input type="text" id="mes" name="mes" value="<?php echo $mes; ?>" >
-<input type="text" id="mesclick" name="mesclick" value="" >
+    <input type="text" id="id_session" name="id_session" value="<?php echo $id_session; ?>" >
+    <input type="text" id="id_diseno" name="id_diseno" value="<?php echo $id_diseno; ?>" >
+    <input type="text" id="id_tamano" name="id_tamano" value="<?php echo $id_tamano; ?>" >
+    <input type="text" id="consecutivo" name="consecutivo" value="<?php echo $consecutivo; ?>" >
+    <input type="text" id="ano" name="ano" value="<?php echo $ano; ?>" >
+    <input type="text" id="mes" name="mes" value="<?php echo $mes; ?>" >
+    <input type="text" id="mesclick" name="mesclick" value="" >
 </span>
 
   <!-- Content -->
@@ -40,47 +40,39 @@ $this->load->view( 'sitio/fotocalendario/fotoimagen/header' ); ?>
 
 <!--  componente de libreria de imagenes -->
 
-
 <div id="console"></div>
-
-<div id="drop-target">
-  
-</div>
-
+<p class="form-control-static">Agrega la imagen de la portada y los 12 meses del fotocalendario.</p> 
+<div id="drop-target"></div>
 <form id="form" method="post" action="../dump.php">
-
-  
-  <div id="uploader" >
-
-    <p>Your browser doesn't have Flash, Silverlight or HTML5 support.</p>
-  </div>
-  <br />
-  <input type="submit" value="Submit" />
-
+      <div id="uploader" >
+        <p></p>
+      </div>
+      <br />
+      <input type="submit" value="Submit" />
 </form>
-
 <div id="listaimagenes"></div>
-
 <div id="imagenes"></div>
+<!-- Fin del componente de libreria de imagenes -->
 
 <br />
 
-<!-- Fin del componente de libreria de imagenes -->
-
       	<div id="meses" class="btn-group mb-20" style="width:100%">                  
               
-            <button id="mes0" nmes="0" type="button" class="btn btn-success mes">Ene</button>
-            <button id="mes1" nmes="1" type="button" class="btn btn-success mes">Feb</button>
-            <button id="mes2" nmes="2" type="button" class="btn btn-success mes">Mar</button>
-            <button id="mes3" nmes="3" type="button" class="btn btn-success mes">Abr</button>
-            <button id="mes4" nmes="4" type="button" class="btn btn-success mes">May</button>
-            <button id="mes5" nmes="5" type="button" class="btn btn-success mes">Jun</button>
-            <button id="mes6" nmes="6" type="button" class="btn btn-success mes">Jul</button>
-            <button id="mes7" nmes="7" type="button" class="btn btn-success mes">Ago</button>
-            <button id="mes8" nmes="8" type="button" class="btn btn-success mes">Sep</button>
-            <button id="mes9" nmes="9" type="button" class="btn btn-success mes">Oct</button>
-            <button id="mes10" nmes="10" type="button" class="btn btn-success mes">Nov</button>
-            <button id="mes11" nmes="11" type="button" class="btn btn-success mes">Dic</button>			
+            
+            <button id="mes0" nmes="0" type="button" class="btn btn-success mes">Portada</button> 
+            <button id="mes1" nmes="1" type="button" class="btn btn-success mes">Ene</button>
+            <button id="mes2" nmes="2" type="button" class="btn btn-success mes">Feb</button>
+            <button id="mes3" nmes="3" type="button" class="btn btn-success mes">Mar</button>
+            <button id="mes4" nmes="4" type="button" class="btn btn-success mes">Abr</button>
+            <button id="mes5" nmes="5" type="button" class="btn btn-success mes">May</button>
+            <button id="mes6" nmes="6" type="button" class="btn btn-success mes">Jun</button>
+            <button id="mes7" nmes="7" type="button" class="btn btn-success mes">Jul</button>
+            <button id="mes8" nmes="8" type="button" class="btn btn-success mes">Ago</button>
+            <button id="mes9" nmes="9" type="button" class="btn btn-success mes">Sep</button>
+            <button id="mes10" nmes="10" type="button" class="btn btn-success mes">Oct</button>
+            <button id="mes11" nmes="11" type="button" class="btn btn-success mes">Nov</button>			
+            <button id="mes12" nmes="12" type="button" class="btn btn-success mes">Dic</button>     
+            
 			<button id="mes_anterior" type="button" class="btn btn-success"><span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span></button>
 			<button id="mes_siguiente" type="button" class="btn btn-success"><span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span></button>
         </div>
@@ -95,9 +87,10 @@ $this->load->view( 'sitio/fotocalendario/fotoimagen/header' ); ?>
 
 
        <!-- <p class="form-control-static">Arrastra una imagen en el siguiente cuadro para añadirla o reemplazar la actual.</p> -->
-        <p class="form-control-static">Es necesario agregar una imagen para cada mes. Al finalizar da click en CONTINUAR</p> 
+        
       
-
+        <p class="form-control-static">Utiliza los botones inferiores para personalizar una a una las imágenes.</p> 
+      
 
         <div id="drop-area">         
          

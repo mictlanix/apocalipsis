@@ -34,11 +34,14 @@ var opts = {
     $(this).css( 'visibility', 'visible');
   });
 
+  var cantidad_meses= 13;
+  
 $(document).ready(function() {  
 
 
 
 
+  
 
 
 
@@ -92,7 +95,8 @@ $(document).ready(function() {
 ///////////////////////////////////////////////cargador de Imagenes/////////////////////////////////////////
 ///////////////////////////////////////////////cargador de Imagenes/////////////////////////////////////////
 ///////////////////////////////////////////////cargador de Imagenes/////////////////////////////////////////
-
+//http://www.plupload.com/docs/Options#headers
+//http://www.plupload.com/examples/core
 function previewImage(file, callback) {//file为plupload事件监听函数参数中的file对象,callback为预览图片准备完成的回调函数
             if (!file || !/image\//.test(file.type)) return; 
             
@@ -120,82 +124,54 @@ function previewImage(file, callback) {//file为plupload事件监听函数参数
  }
 
   //  Seleccione las imagenes para el fotocalendario
- //   Agregue hasta 12 imagenes, puede eliminar y reordenar según el mes.
+ //   Agregue hasta (cantidad_meses) imagenes, puede eliminar y reordenar según el mes.
 
 //var uploader = new plupload.Uploader({
 	$("#uploader").plupload({
-		// General settings
+		// Configuración General 
 		runtimes : 'html5,flash,silverlight,html4',
 		url : '../upload.php',
-
-		container: 'uploader',
-		drop_element: 'uploader',		
-
-		// User can upload no more then 20 files in one go (sets multiple_queues to false)
-		max_file_count: 12,
-		
-		chunk_size: '1mb',
-
-		// Resize images on clientside if we can
-		resize : {
+		container: 'uploader',  //contenedor que contendrá las imagenes
+		drop_element: 'uploader', //contenedor de donde se eliminará todas las imagenes
+		max_file_count: (cantidad_meses), //El usuario puede subir no más de 13 archivos de una sola vez (se establece multiple_queues a false)
+		chunk_size: '1mb',  //de cuanto en cuanto subira las imagenes
+		resize : { // Cambiar el tamaño de las imágenes en el lado del cliente si podemos
 			width : 620, 
 			height : 640, 
 			quality : 90,
-			crop: true // crop to exact dimensions
+			crop: true, // crop to exact dimensions
 		},
-		
-		filters : {
-			// Maximum file size
-			max_file_size : '1000mb',
-			// Specify what files to browse for
-			mime_types: [
+		filters : {  //filtro para el tipo y tamaño de las imagenes
+			max_file_size : '1000mb',// Tamaño maximo del fichero
+			mime_types: [ // Especificando que tipos ficheros subirán
 				{title : "Image files", extensions : "jpg,jpeg,gif,png"},
 			]
 		},
-
-		// Rename files by clicking on their titles
-		//rename: true,
-		
-		// Sort files
-		sortable: true,
-		scroll: false,
-
-		// Enable ability to drag'n'drop files onto the widget (currently only HTML5 supports that)
-		dragdrop: true,
-
-		// Views to activate
-		views: {
+		//rename: true, //renombrar los ficheros, dando un click en el titulo
+		sortable: true, //ordenar los ficheros 
+		scroll: false, //
+		dragdrop: true, // Habilita la capacidad de arrastrar los archivos drag'n'drop al widget (actualmente sólo HTML5 lo soporta)
+		views: { // vistas para activar
 			list: false,
-			thumbs: true, // Show imagenes
+			thumbs: true, // mostrar imagenes
 			active: 'thumbs'
 		},
-
 		// Flash settings
 		flash_swf_url : '../../js/Moxie.swf',
-
 		// Silverlight settings
 		silverlight_xap_url : '../../js/Moxie.xap',
 
 
 	    init: {
 	        PostInit: function() {
-	            //document.getElementById('listaimagenes').innerHTML = '';
-		           /* 				
-		        document.getElementById('uploadfiles').onclick = function() {
-		                uploader.start();
-		                return false;
-		         };*/
+	                var meses = ['Portada','Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'];
 
-		     //    var self = this;
+				    var self = this
+						, queue = []
+						, filesAdded = []
+						, ruid;
 
-		     var meses = ['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'];
-
-var self = this
-			, queue = []
-			, filesAdded = []
-			, ruid
-			;
-						$.ajax({
+					$.ajax({
                               url: hash_url+'fotocalendario/leer_todasimagenes',
                               method: "POST",
                               dataType: 'json',
@@ -206,111 +182,95 @@ var self = this
                                   consecutivo : consecutivo,
                                   ano:ano
                               },
-                              success: function(listado) { 
-                                if (listado==false) {
-                                  
-                                  $('#messages').css('display','block');
-                                  $('#messages').addClass('alert-danger');
-                                  $('#messages').html('Es necesario subir una imagen para cada mes');
-                                  $('html,body').animate({
-                                    'scrollTop': $('#messages').offset().top
-                                  }, 1000);
-                                }else{
-									  var y=[];
-									  
-									  $.each(listado, function (i, valor) { 
+			                  success: function(listado) { 
+			                            if (listado==false) {                                  
+			                                  $('#messages').css('display','block');
+			                                  $('#messages').addClass('alert-danger');
+			                                  $('#messages').html('Es necesario subir una imagen para cada mes');
+			                                  $('html,body').animate({
+			                                    'scrollTop': $('#messages').offset().top
+			                                  }, 1000);
+			                                }else{
+												  var y=[];
+												  
+												  $.each(listado, function (i, valor) { 
 
-												var d = new Date();
-												var fechaSegundos = d.getTime();
-												var strNoCache = '?nocache='+fechaSegundos.toString(); 
+															var d = new Date();
+															var fechaSegundos = d.getTime();
+															var strNoCache = '?nocache='+fechaSegundos.toString(); 
 
-												var url = hash_url+'uploads/'+id_session+'/'+valor.recorte+strNoCache;
-												//http://bitexperts.com/Question/Detail/3316/determine-file-size-in-javascript-without-downloading-a-file
-										        var req = new XMLHttpRequest();
-										        req.open('HEAD', url, false);
-										        req.send(null);
-												 if (req.status === 200) {
-												        var fileSize = parseInt(req.getResponseHeader('content-length'));
-												        var type = req.getResponseHeader('Content-Type');
-												        var nombre =valor.recorte;
-												 }
+															var url = hash_url+'uploads/'+id_session+'/'+valor.recorte+strNoCache;
+															//http://bitexperts.com/Question/Detail/3316/determine-file-size-in-javascript-without-downloading-a-file
+													        var req = new XMLHttpRequest();
+													        req.open('HEAD', url, false);
+													        req.send(null);
+															 if (req.status === 200) {
+															        var fileSize = parseInt(req.getResponseHeader('content-length'));
+															        var type = req.getResponseHeader('Content-Type');
+															        var nombre =valor.recorte;
+															 }
 
-												 	$('#mes'+valor.mes).html('<span class="mes_imagen">*</span>'+meses[valor.mes]);
+															 	$('#mes'+valor.mes).html('<span class="mes_imagen">*</span>'+meses[valor.mes]);
 
-													var x = new plupload.File(url, nombre, fileSize);
-
-
-													x.name= nombre;
-													x.type = type;
-													
-													x.size= fileSize;
-													x.origSize= fileSize;
-
-													x.lastModifiedDate= d;
-													//x.id = x.id.substr(0, x.id.length - 2)+"1" ;
-													//x.id = x.id; //.substr(0, x.id.length - 1)+"1" ;
-
-													x.status= plupload.DONE; //1;
-													x.percent= 0;
-													x.loaded = 0;
-													
-													
-													x.target_name = nombre; 
-													x.mes = valor.mes;
-													x.identificador = valor.id;
-													x.uid_imagen = valor.uid_imagen;
-													
-													x.destroy = $.noop;  //http://www.plupload.com/punbb/viewtopic.php?id=14346
-
-													
-													//console.log(valor)
-													y.push(x);
+																var x = new plupload.File(url, nombre, fileSize);
 
 
+																x.name= nombre;
+																x.type = type;
+																
+																x.size= fileSize;
+																x.origSize= fileSize;
 
+																x.lastModifiedDate= d;
+																//x.id = x.id.substr(0, x.id.length - 2)+"1" ;
+																//x.id = x.id; //.substr(0, x.id.length - 1)+"1" ;
 
-									  });
+																x.status= plupload.DONE; //1;
+																x.percent= 0;
+																x.loaded = 0;
+																
+																
+																x.target_name = nombre; 
+																x.mes = valor.mes;
+																x.identificador = valor.id;
+																x.uid_imagen = valor.uid_imagen;
+																
+																x.destroy = $.noop;  //http://www.plupload.com/punbb/viewtopic.php?id=14346
 
-										self.addFile(y);
-
-                                }
-
-
-                              },
-                          error: function () {
-                              console.log('Upload error');
-                            }
-                        }); 
+																
+																//console.log(valor)
+																y.push(x);
 
 
 
 
-},
+												  });
 
-	
-	 		//se llama cuando se agregan archivos a la cola
-	 		//https://github.com/moxiecode/plupload/blob/master/src/plupload.js#L1827
+													self.addFile(y);
+
+			                    			}
+
+			                  }, //fin del success
+                          		error: function () {
+                              			console.log('Error en el ajax');
+                            	}
+                    }); //fin del ajax 
+			}, //fin del PostInit
+
 	        FilesAdded: function(up, files) {
-	        	
-	        	//mostrar ficheros	
-        		var afectado1 =-1;
-        		var afectado2 =-1;
-        		var self =this;	
-        	    var meses = ['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'];
-
-                var cantidad = files.length;
-                var total = $('#uploader').plupload('getFiles').length;
-
-                var inicio = (total-cantidad);
-
-               
-
-	            plupload.each(files, function( file,i) {
-	            	 
-
+		        	//se llama cuando se agregan archivos a la cola
+		 			//https://github.com/moxiecode/plupload/blob/master/src/plupload.js#L1827
+		        	//mostrar ficheros	
+	        		var afectado1 =-1;
+	        		var afectado2 =-1;
+	        		var self =this;	
+	        	    var meses = ['Portada','Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'];
+	                var cantidad = files.length;
+	                var total = $('#uploader').plupload('getFiles').length;
+	                var inicio = (total-cantidad);
+	                plupload.each(files, function( file,i) {
 		                //Para las imagen que se suben
 		                if  (!file.identificador) {
-		                  	
 		                  	file.ext = file.name.split('.').pop();
 		                  	file.name = 'rec_'+id_diseno+'_'+id_tamano+'_'+consecutivo+'_'+ano+'_'+(inicio+i).toString()+'.'+file.ext;
 		                  	file.recorte = 'rec_'+id_diseno+'_'+id_tamano+'_'+consecutivo+'_'+ano+'_'+(inicio+i).toString()+'.'+file.ext;
@@ -319,212 +279,103 @@ var self = this
 		                  	
 							var file_name = file.name; 
 				                
-				                var html = '<li id="file-' + file.id + '"><p class="file-name">' + file_name + '</p><p class="progress"></p></li>';
+				            var html = '<li id="file-' + file.id + '"><p class="file-name">' + file_name + '</p><p class="progress"></p></li>';
 				                $(html).appendTo('#file-list');
-				                    previewImage(file, function (preloader) {
+				            
+				            previewImage(file, function (preloader) {
 				        				var imgsrc = preloader.type == 'image/jpeg' ? preloader.getAsDataURL('image/jpeg', 80) : preloader.getAsDataURL(); 
 				                        $('#file-' + file.id).append('<img src="' + imgsrc + '" />');
-										
-										
+										var objeto = {  
+							 					  alto : preloader.width,
+							 					 ancho : preloader.height,
+							 			   tipo_archivo : preloader.type,
+							 			         tamano : preloader.size,
+							 			         //tipo : tipo,
 
-										
-												var objeto = {  
-									 					  alto : preloader.width,
-									 					 ancho : preloader.height,
-									 			   tipo_archivo : preloader.type,
-									 			         tamano : preloader.size,
-									 			         //tipo : tipo,
+							                     nombre : file.name,
+							                     recorte : file.recorte,
+							                     original : file.original,
 
-									                     nombre : file.name,
-									                     recorte : file.recorte,
-									                     original : file.original,
-
-									                     	ext : file.ext,
-	 									              id_tamano:id_tamano,
-	 									              id_diseno:id_diseno,
-										              consecutivo:consecutivo,
-										              id_session:id_session,
-												             ano:ano,
-												             croppedImage:imgsrc,
-													  //identificador : file.identificador,
-									 				  //	uid_imagen  : file.uid_imagen,
-									                     mes_ultimo : file.mes_ultimo,
-									                     		mes : file.mes_ultimo,
-									                };			                 		
+							                     	ext : file.ext,
+									              id_tamano:id_tamano,
+									              id_diseno:id_diseno,
+								              consecutivo:consecutivo,
+								              id_session:id_session,
+										             ano:ano,
+										             croppedImage:imgsrc,
+											  //identificador : file.identificador,
+							 				  //	uid_imagen  : file.uid_imagen,
+							                     mes_ultimo : file.mes_ultimo,
+							                     		mes : file.mes_ultimo,
+							                };			                 		
 									             	
-									             	//console.log(objeto);
-									             	
-									             	
-												    var url = hash_url+'fotocalendario/guardar_imagenes';  //EN ESTE CASO APROVECHO EL CONTROLLER DE FOTOCALENDARIO
-													$.ajax({
-													    url: url,
-													    method: "POST",
-												        dataType: 'json',
-												          data: {
-												          	datos: objeto,
-												          },
+										    var url = hash_url+'fotocalendario/guardar_imagenes';  //EN ESTE CASO APROVECHO EL CONTROLLER DE FOTOCALENDARIO
+											$.ajax({
+											    url: url,
+											    method: "POST",
+										        dataType: 'json',
+										        data: {
+										          	datos: objeto,
+										        },
+												success: function(datos_llenos){
+													  $.each(datos_llenos, function (i, valor) { 
+														  	  	//$('.editar_slider[value="'+valor.id_tamano+'"][consecutivo="'+valor.consecutivo+'"][diseno="'+valor.id_diseno+'"]').prop('disabled', false);	
+													  });
+													  var catalogo = hash_url+'fotocalendario/fotoimagen/'+$.base64.encode(id_session);
+						  								
+									                  hrefPost('POST', catalogo, {
+									                          id_session  :id_session,
+									                          id_diseno  : id_diseno,
+									                          id_tamano  : id_tamano,
+									                          consecutivo  : consecutivo,
+									                          ano : ano,
+									                          mes : file.mes_ultimo,
+									                          imagen:'si',
+									                  }, ''); 
+												} 
+											}); //fin del  $.ajax({
+				            }); //fin del previewImage(file, function (preloader) {
 
-														success: function(datos_llenos){
-															//console.log(datos_llenos);
-															  $.each(datos_llenos, function (i, valor) { 
-
-																  	  	//$('.editar_slider[value="'+valor.id_tamano+'"][consecutivo="'+valor.consecutivo+'"][diseno="'+valor.id_diseno+'"]').prop('disabled', false);	
-															  });
-
-
-																var catalogo = hash_url+'fotocalendario/fotoimagen/'+$.base64.encode(id_session);
-								  								
-											                    hrefPost('POST', catalogo, {
-											                          id_session  :id_session,
-											                          id_diseno  : id_diseno,
-											                          id_tamano  : id_tamano,
-											                          consecutivo  : consecutivo,
-											                          ano : ano,
-											                          mes : file.mes_ultimo,
-											                          imagen:'si',
-											                    }, ''); 
-
-
-														} 
-													});
-
-
-				                    }); //fin del callback
-				                    
-        
-							   
-
-		                } //fin de las imagenes que se suben
+		                } // fin de if  (!file.identificador) {   // de las imagenes que se suben
 		                  
- 						  //document.getElementById('listaimagenes').innerHTML += '<div id="i_' + file.id + '">' + file.name + ' (' + plupload.formatSize(file.size) + ') <b></b></div>';
-		                  var mes = meses[(inicio+i).toString()];
-		                  document.getElementById(file.id).innerHTML += '<div id="ia_' + file.id + '"> <b>'+mes+'</b> </div>';
-
- 	
-
-/*
-consecutivo, id_diseno, id_tamano,  ano, 
-modulo, uid_imagen , id_session,
-
- //aspectRatio`, `height`, `left`, `naturalHeight`, `naturalWidth`, `rotate`, `scaleX`, `scaleY`, `top`, 
-aspectRatio =1;  
-left =0;
-naturalHeight =ancho; //300 alto
-naturalWidth =alto;  //300 ancho
-rotate =0;
-scaleX =0;
-scaleY =0;
-top =0;
-
-//`width`, `cleft`, `ctop`, `cheight`, `cwidth`, `cnaturalWidth`, `cnaturalHeight`,
-//300, 300, 0, 300, 300, 300, 300,
-width= ancho;
-cleft =ancho;
-ctop =0;
-cheight =alto;
-cwidth =ancho;
-cnaturalWidth =ancho;
-cnaturalHeight =alto;
-
-//dx`, `dy`, `dwidth`, `dheight`, `drotate`, `dscaleX`, `dscaleY`, `bleft`, `btop`, `bwidth`, `bheight`, 
-//0, 0, 300, 300, 0, 1, 1, 0.5, 0, 300, 300, 
-dx =0; 
-dy=0; 
-dwidth =ancho; 
-dheight=alto;
-drotate = 0;
-dscaleX=1;
-dscaleY=1;
-bleft = 0.5 
-btop =0;
-bwidth=ancho; 
-bheight=alto;
-
-
-//`id_usuario`, `fecha_mac`, `variation_id`, `id_user`
-//'', '2016-05-06 13:36:39', 314, 0);
-variation_id =  id_tamano
-id_user =  modelo;
-
-*/
-
-/*
-INSERT INTO `tinbox_fotocalendario_imagenes_recorte` (`id`, `id_session`, `modulo`, `consecutivo`, 
-`id_diseno`, `id_tamano`, `uid_imagen`, `nombre`,
-(86, 'b9a2e49717b5adb9157a274cfc093aeb', 'f', 1,
-260, 314, 'uid_06052016_Pfbj759', 'rec_260_314_1_2016_4.jpg',
-
- `aspectRatio`, `height`, `left`, `naturalHeight`, `naturalWidth`, `rotate`, `scaleX`, `scaleY`, `top`, 
-`width`, `cleft`, `ctop`, `cheight`, `cwidth`, `cnaturalWidth`, `cnaturalHeight`,
- `dx`, `dy`, `dwidth`, `dheight`, `drotate`, `dscaleX`, `dscaleY`, `bleft`, `btop`, `bwidth`, `bheight`, 
- `id_usuario`, `fecha_mac`, `variation_id`, `id_user`) VALUES
-
-1, 300, 0, 300, 300, 0, 0, 0, 0,
-300, 300, 0, 300, 300, 300, 300,
-0, 0, 300, 300, 0, 1, 1, 0.5, 0, 300, 300, 
-'', '2016-05-06 13:36:39', 314, 0);
-
-
-INSERT INTO `tinbox_fotocalendario_imagenes_original` (`id`, `id_session`, `modulo`, `consecutivo`, `id_diseno`, `id_tamano`, `uid_imagen`, `nombre`, `tipo_archivo`, `tipo`, `ext`, `tamano`, `ancho`, `alto`, `id_usuario`, `fecha_mac`, `variation_id`, `id_user`) VALUES
-(86, 'b9a2e49717b5adb9157a274cfc093aeb', 'f', 1, 260, 314, 'uid_06052016_Pfbj759', 'orig_260_314_1_2016_4.jpg', 'image/jpeg', 'jpeg', '.jpg', '18.32', '300', '300', '', '2016-05-06 13:27:08', 314, 0);
-
-
-INSERT INTO `tinbox_fotocalendario_imagenes` (`id`, `id_session`, `modulo`, `consecutivo`, `uid_imagen`, `id_diseno`, `id_tamano`, `ano`, `mes`, `dia`, `original`, `recorte`, `original_old`, `recorte_old`, `id_usuario`, `fecha_mac`, `variation_id`, `id_user`) VALUES
-(86, 'b9a2e49717b5adb9157a274cfc093aeb', 'f', 1, 'uid_06052016_Pfbj759', 260, 314, '2016', '4', NULL, 'orig_260_314_1_2016_4.jpg', 'rec_260_314_1_2016_4.jpg', '', '', '', '2016-05-06 13:27:08', 314, 0);
-*/
-
-
+						  
+		                var mes = meses[(inicio+i).toString()];
+		                document.getElementById(file.id).innerHTML += '<div id="ia_' + file.id + '"> <b>'+mes+'</b> </div>';
 			            $('#'+file.id).on('mouseup', function(e) {
-							
 				                 var incremento = 0;
 				                 var absolute = '';
 				                 var visible = -1;
 				                 var mov = '';
 				                 var invisible = false;
 
-
 				                 $('#uploader_filelist li').each(function( index, element ) {
 				                 	 if ($(element).css('visibility') =='hidden')  {
 				                 	 	invisible=true;
 				                 	 } 
-
 				                 });	
-					               
+					             var mifich = {};
+				                 var listCheck = []; 
 
-					               var mifich = {};
-					               var listCheck = []; 
-
-							        if (invisible) {        
-						                 $('#uploader_filelist li').each(function( index, element ) {
-						                 	 mifich = self.getFile($(element).attr('id'));
-						                 
-						                 	
-						                 	//console.log(element);
-						                 	//console.log(index);
+							     if (invisible) {        
+						             $('#uploader_filelist li').each(function( index, element ) {
+						                	mifich = self.getFile($(element).attr('id'));
 						                 	
 						                 	if ($(element).css('visibility') =='hidden') { //oculto
 						                 		visible= index;
 						                 		afectado2 =visible-1;
-						                 		//alert(visible-1);
 						                 		incremento = -1;
 						                 		if (mov=='') {
 						                 				mov='absoluto';
 						                 				incremento = 0;
 						                 		};
-
-						                 		//console.log('index_visible',index);
-						                 		//console.log($(element).css('visibility'));
 						                 	} else if  ( (file.id) == $(element).attr('id') ) { 
 						                 		absolute = $(element).attr('id');
-						                 		//alert(index);
 						                 		afectado1 =index;
 						                 		incremento = -1;
 						                 		if (mov=='') {
 						                 			mov='relativo';
 						                 			incremento = -1;
 						                 		};
-						                 		
-						                 		
 						                 	} else {
 						                 		document.getElementById('ia_'+$(element).attr('id')).innerHTML = meses[(index+incremento).toString()];
 						                 		    mifich.mes_ultimo = (index+incremento);
@@ -538,208 +389,178 @@ INSERT INTO `tinbox_fotocalendario_imagenes` (`id`, `id_session`, `modulo`, `con
 									                  };			                 		
 									                 mifich.mes = mifich.mes_ultimo;
 							                 		 listCheck.push(objeto);	
-
-						                 	}
-
+						                 	} //fin del else
 						                 	
-						                 });
+						             }); //fin $('#uploader_filelist li').each(function( index, element ) {
 						                    
-			                    
-					                    if (mov=='relativo') {
+					                 if (mov=='relativo') {
 											document.getElementById('ia_'+file.id).innerHTML = meses[(visible-1).toString()]; //+'relativo';			                 
 											mifich = self.getFile(file.id);
 											mifich.mes_ultimo = (visible-1);
-
-
-					                    } else {
+					                 } else {
 					                    	document.getElementById('ia_'+file.id).innerHTML = meses[(visible).toString()]; //+'absoluto';			                 	
 					                    	mifich = self.getFile(file.id);
 					                    	mifich.mes_ultimo = (visible);
-					                    }
+					                 }
 
-						 				var objeto = {  
+						 			 var objeto = {  
 							 				  identificador : mifich.identificador,
 												uid_imagen  : mifich.uid_imagen,
 							                     mes_ultimo : mifich.mes_ultimo,
 							                     		mes : mifich.mes_ultimo,
 							                     		fichero     : mifich.name,
-							                  };			                 		
-							                 mifich.mes = mifich.mes_ultimo;
+							         };			                 		
+							         mifich.mes = mifich.mes_ultimo;
+					                 listCheck.push(objeto);	
 
 
-					                 		 listCheck.push(objeto);	
-
-
-											$.ajax({
-					                              url: hash_url+'fotocalendario/actualizar_todasimagenes',
-					                              method: "POST",
-					                              dataType: 'json',
-					                              data: {
-					                                  datos:listCheck,
-					                              },
-					                              success: function(actualizados) { 
-					                              	//console.log(actualizados);
-
-
-
-					  								var catalogo = hash_url+'fotocalendario/fotoimagen/'+$.base64.encode(id_session);
-					  								
-								                    hrefPost('POST', catalogo, {
-								                          id_session  :id_session,
-								                          id_diseno  : id_diseno,
-								                          id_tamano  : id_tamano,
-								                          consecutivo  : consecutivo,
-								                          ano : ano,
-								                          mes : $('#mes').val(),
-								                          imagen:'si',
-								                    }, ''); 
-								                    
+									 $.ajax({
+			                              url: hash_url+'fotocalendario/actualizar_todasimagenes',
+			                              method: "POST",
+			                              dataType: 'json',
+			                              data: {
+			                                  datos:listCheck,
+			                              },
+			                              success: function(actualizados) { 
+			                              	//console.log(actualizados);
 
 
 
-					                              }
+			  								var catalogo = hash_url+'fotocalendario/fotoimagen/'+$.base64.encode(id_session);
+			  								
+						                    hrefPost('POST', catalogo, {
+						                          id_session  :id_session,
+						                          id_diseno  : id_diseno,
+						                          id_tamano  : id_tamano,
+						                          consecutivo  : consecutivo,
+						                          ano : ano,
+						                          mes : $('#mes').val(),
+						                          imagen:'si',
+						                    }, ''); 
+						                    
 
-					                            });   
+
+
+			                              }
+		                             });   
 			                    
-									    } //fin de if invisible		
-							        });  //fin del mouseup
+								 } //fin de if invisible		
+						});  //fin del mouseup
 
-	            }); //fin de    plupload.each(files, function( file,i) {
+	                }); //fin de    plupload.each(files, function( file,i) { 
 
 	            	
 			 //this.refresh();
 			 //this.start();
 			 		
 
-	        },
+	        }, //fin FilesAdded: function(up, files) {
 	        
      
    			FilesRemoved: function(up, files) {
                // Se llama cuando se eliminan archivos de la cola
                 //console.log('[FilesRemoved]');
-
-       	        var meses = ['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'];
-
+       	        var meses = ['Portada','Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'];
        	        var self = this;
        	        var identificador = -1;	
        	        var uid_imagen = '';	
-
 				var mifich = {};
 				var listCheck = []; 
-
-
 				plupload.each(files, function(file) {
-				               
-									
 					var incremento = 0;
 					$('#uploader_filelist li').each(function( index, element ) {
-						//console.log(element);
-						//$(element).css('backgroundimage');
-						//console.log(file.mes);
-
-							if ($(element).css('background-image') =='none')  {
-								//console.log($(element).css('background-image'));
+ 						 if ($(element).css('background-image') =='none')  {
 								incremento = -1;
-							}		
-									//console.log($(element).attr('id'));
-									//console.log(self.getFile($(element).attr('id')));
+						 }		
 										
-									var mifich = self.getFile($(element).attr('id'));
-									if ( mifich != undefined) {	
-										//console.log(mifich);
-										//console.log(mifich.identificador);
-
-										mifich.mes_ultimo = (index+incremento);
-
-						 				var objeto = {  
-						 				  identificador : mifich.identificador,
-    	        							uid_imagen  : mifich.uid_imagen,
-						                     mes_ultimo : mifich.mes_ultimo,
-						                     		mes : mifich.mes_ultimo,
-						                     	 fichero: mifich.name,		
-						                  };			                 		
-						                 mifich.mes = mifich.mes_ultimo;
-				                 		 listCheck.push(objeto);	
-
-									}
-									
-
-							document.getElementById('ia_'+$(element).attr('id')).innerHTML = meses[(index+incremento).toString()];
-
+						 var mifich = self.getFile($(element).attr('id'));
+						 if ( mifich != undefined) {	
+						     mifich.mes_ultimo = (index+incremento);
+							 var objeto = {  
+							     identificador : mifich.identificador,
+								   uid_imagen  : mifich.uid_imagen,
+						            mes_ultimo : mifich.mes_ultimo,
+						         		   mes : mifich.mes_ultimo,
+						         	    fichero: mifich.name,		
+						     };			                 		
+						     mifich.mes = mifich.mes_ultimo;
+							 listCheck.push(objeto);	
+						}
+						document.getElementById('ia_'+$(element).attr('id')).innerHTML = meses[(index+incremento).toString()];
 					});	
 
-				  	
 					identificador = file.identificador;
 					uid_imagen = file.uid_imagen;						 				  
 
-
-							$.ajax({
-                              url: hash_url+'fotocalendario/eliminar_unaimagen',
-                              method: "POST",
-                              dataType: 'json',
-                              data: {
-                                  datos:listCheck,
-                                  identificador : identificador,
-                                  uid_imagen  : uid_imagen,
-                              },
-                              success: function(elim_imagen) { 
-                              	//console.log(elim_imagen);
-
-								var catalogo = hash_url+'fotocalendario/fotoimagen/'+$.base64.encode(id_session);
-  								
-			                    hrefPost('POST', catalogo, {
-			                          id_session  :id_session,
-			                          id_diseno  : id_diseno,
-			                          id_tamano  : id_tamano,
-			                          consecutivo  : consecutivo,
-			                          ano : ano,
-			                          mes : $('#mes').val(),
-			                          imagen:'si',
-			                    }, ''); 
+					$.ajax({
+                       url: hash_url+'fotocalendario/eliminar_unaimagen',
+                       method: "POST",
+                       dataType: 'json',
+                       data: {
+                           datos:listCheck,
+                           identificador : identificador,
+                           uid_imagen  : uid_imagen,
+                       },
+                       success: function(elim_imagen) { 
+							var catalogo = hash_url+'fotocalendario/fotoimagen/'+$.base64.encode(id_session);
+		                    hrefPost('POST', catalogo, {
+		                          id_session  :id_session,
+		                          id_diseno  : id_diseno,
+		                          id_tamano  : id_tamano,
+		                          consecutivo  : consecutivo,
+		                          ano : ano,
+		                          mes : $('#mes').val(),
+		                          imagen:'si',
+		                    }, ''); 
+                      }
+                    });  //fin de $.ajax({
 
 
+				}); //fin de plupload.each(files, function(file) {
+            }, // fin de  FilesRemoved
 
 
-                              }
-
-                            });  
-
-
-				});			
-
-
-
-						 
-
-  								
-
-
+			StateChanged: function(up) {
+                // Called when the state of the queue is changed
+                // Se llama cuando se cambia el estado de la cola. 
+                   //Iniciar carga "STARTED" , finalizar carga "STOPPED"
+                
+                   if (up.state == plupload.STOPPED) {
+                		//console.log(up.files);   	
+                		plupload.each(up.files, function( file,i) {
+	                  //document.getElementById('imagenes').innerHTML += '<div id="i_' + file.id + '">' + file.name + ' (' + plupload.formatSize(file.size) + ') <b></b></div>';
+	                  			//borrar las imagenes	
+	                  			/*
+	            				$('#' + file.id).toggle("highlight", function() {
+									$(this).remove();
+								});
+								*/
+                		});	
+                   }
+                //console.log('[StateChanged]', up.state == plupload.STARTED ? "STARTED" : "STOPPED");
             },
+            //se llama cuando devuelve un error
+	        Error: function(up, err) {
+	           // document.getElementById('console').innerHTML += "\nError #" + err.code + ": " + err.message;
+	        },
 
-	 
+
 	        UploadProgress: function(up, file) {
 	        		//porciento de completamiento de cada fichero
 	            //document.getElementById('i_'+file.id).getElementsByTagName('b')[0].innerHTML = '<span>' + file.percent + "%</span>";
 	        },
-	 
-
 
             QueueChanged: function(up) {
                 // Called when queue is changed by adding or removing files
                 // Se llama cuando la cola se cambia mediante la adición o eliminación de archivos
                 //console.log('cambio','[QueueChanged]');
-                
             },
-
-
 
             Refresh: function(up) {
                 // Called when the position or dimensions of the picker change
                 // Se llama cuando la posición o las dimensiones del cambio de selector
                 //console.log('[Refresh]');
             },
-
-
  
             OptionChanged: function(up, name, value, oldValue) {
                 // Called when one of the configuration options is changed
@@ -762,51 +583,10 @@ INSERT INTO `tinbox_fotocalendario_imagenes` (`id`, `id_session`, `modulo`, `con
                 //  Se llama cuando todos los archivos se cargan o bien fracasaron
                 //console.log('[UploadComplete]');
             },            
- 
-			StateChanged: function(up) {
-                // Called when the state of the queue is changed
-                // Se llama cuando se cambia el estado de la cola. 
-                   //Iniciar carga "STARTED" , finalizar carga "STOPPED"
-                
-					//console.log(up);	
-                   if (up.state == plupload.STOPPED) {
-                		//console.log(up.files);   	
 
-                		plupload.each(up.files, function( file,i) {
+	    } //fin de  init: {
+	}); //fin de $("#uploader").plupload({
 
-
-	                  //document.getElementById('imagenes').innerHTML += '<div id="i_' + file.id + '">' + file.name + ' (' + plupload.formatSize(file.size) + ') <b></b></div>';
-
-	                  			//borrar las imagenes	
-	                  			/*
-	            				$('#' + file.id).toggle("highlight", function() {
-									$(this).remove();
-								});
-								*/
-	            	 
-	            	 
-	            	 
-	                  
-
-                		});	
-                   }
-                
-
-
-                //console.log('[StateChanged]', up.state == plupload.STARTED ? "STARTED" : "STOPPED");
-            },
-
-	        Error: function(up, err) {
-	            document.getElementById('console').innerHTML += "\nError #" + err.code + ": " + err.message;
-	        }
-
-
-
-
-	    }
-
-
-	});
 
 
 	// Handle the case when form was submitted before uploading has finished
@@ -1004,7 +784,7 @@ INSERT INTO `tinbox_fotocalendario_imagenes` (`id`, `id_session`, `modulo`, `con
 											  $.each(datos_completos['cale_activo'], function (i, valor) { 
 
 											  		//alert((parseInt(valor.cantidad)+resultad));
-												  	if ( (parseInt(valor.cantidad)+resultad) >=12) {
+												  	if ( (parseInt(valor.cantidad)+resultad) >=(cantidad_meses)) {
 													  	$('.previo_slider[value="'+valor.id_tamano+'"][consecutivo="'+valor.consecutivo+'"][diseno="'+valor.id_diseno+'"]').prop('disabled', false);	
 													}  
 
@@ -1014,7 +794,7 @@ INSERT INTO `tinbox_fotocalendario_imagenes` (`id`, `id_session`, `modulo`, `con
 																	&& (valor.id_diseno==$('#id_diseno').val())
 																	&& (valor.id_tamano==$('#id_tamano').val())
 															 ) {									  
-																	if ( (parseInt(valor.cantidad)+resultad) >=12) {
+																	if ( (parseInt(valor.cantidad)+resultad) >=(cantidad_meses)) {
 																		//$('#guardar').prop('disabled', false);
 																		$('#guardar').css('display', '');		
 																	} else {
@@ -1051,7 +831,7 @@ INSERT INTO `tinbox_fotocalendario_imagenes` (`id`, `id_session`, `modulo`, `con
 
 
 
-	  //OK Activar las visualizaciones que ya se han llenado (es decir q ya tienen las 12imagenes por diseños)
+	  //OK Activar las visualizaciones que ya se han llenado (es decir q ya tienen las (cantidad_meses)imagenes por diseños)
 		
 
 	    var url = hash_url+'fotocalendario/disenos_completos'; 
@@ -1078,7 +858,7 @@ INSERT INTO `tinbox_fotocalendario_imagenes` (`id`, `id_session`, `modulo`, `con
 
 				  $.each(datos_completos['cale_activo'], function (i, valor) { 
 
-					  	if ( (parseInt(valor.cantidad)+resultad) >=12) {
+					  	if ( (parseInt(valor.cantidad)+resultad) >=(cantidad_meses)) {
 						  	$('.previo_slider[value="'+valor.id_tamano+'"][consecutivo="'+valor.consecutivo+'"][diseno="'+valor.id_diseno+'"]').prop('disabled', false);	
 						}  
 
@@ -1088,7 +868,7 @@ INSERT INTO `tinbox_fotocalendario_imagenes` (`id`, `id_session`, `modulo`, `con
 										&& (valor.id_diseno==$('#id_diseno').val())
 										&& (valor.id_tamano==$('#id_tamano').val())
 								 ) {									  
-										if ( (parseInt(valor.cantidad)+resultad) >=12) {
+										if ( (parseInt(valor.cantidad)+resultad) >=(cantidad_meses)) {
 											//$('#guardar').prop('disabled', false);
 											$('#guardar').css('display', '');		
 										} else {
@@ -1245,7 +1025,7 @@ $('.mes[nmes="'+mes+'"]').addClass('mes-activo');
 
 
 $('body').on('click','#mes_siguiente', function (e) {
-    		if ( parseFloat($('#mes').val()) ==11) {
+    		if ( parseFloat($('#mes').val()) ==(cantidad_meses-1)) {
     			var mes = 0;
     		} else {
     			var mes = parseFloat($('#mes').val())+1;	
@@ -1258,7 +1038,7 @@ $('body').on('click','#mes_siguiente', function (e) {
 
 $('body').on('click','#mes_anterior', function (e) {
     		if ( parseFloat($('#mes').val()) ==0) {
-    			var mes = 11;
+    			var mes = (cantidad_meses-1);
     		} else {
     			var mes = parseFloat($('#mes').val())-1;	
     		}

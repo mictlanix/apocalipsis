@@ -102,8 +102,8 @@
 </script>	
 <script src="<?php echo get_template_directory_uri(); ?>/js/animaciones.js" type="text/javascript"></script>
 <script>
-startIntro().start();
-startIntro2().start();
+//startIntro().start();
+//startIntro2().start();
 </script>
 <?php wp_footer(); ?>
 

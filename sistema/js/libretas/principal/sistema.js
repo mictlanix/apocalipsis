@@ -50,6 +50,15 @@ $(document).ready(function() {
       var session_id = dats.session_id;
 
 
+
+ $('body').on('change','#id_cat_seleccion', function (e) {   
+          var cat_sel = $('#id_cat_seleccion').val();
+          var catalogo= hash_url+'libretas/'+cat_sel;
+          window.location.href = catalogo; 
+ }); 
+
+
+
   $('.diseno button').hover(function() {
       $(this).find('.ojo').css({'opacity':'1'});
     }, function() {

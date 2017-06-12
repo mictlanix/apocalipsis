@@ -93,6 +93,11 @@ public function eliminar_logo_agendas() {
 						  		 	  $data['id_diseno']   = $_POST['id_edicion_diseno'];
 						  		    $data['consecutivo']   = $_POST['id_edicion_consecutivo'];
 						  }
+						  $data['reutilizando'] = '';
+						  if (isset($_POST['reutilizando'])) {  
+						  		$data['reutilizando'] = $_POST['reutilizando'];
+						  }	
+						  
 
 
 			      

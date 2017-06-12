@@ -8,9 +8,10 @@ class Fcalendario extends CI_Controller {
 	}
 
 
-	public function index(){
-			$this->load->view( 'sitio/fotocalendario/principal/principal'); 
 
+	public function index($pag='page', $cant=1){
+			$data['pagina'] =$cant;
+			$this->load->view( 'sitio/fotocalendario/principal/principal',$data); 
 	}	
 
 

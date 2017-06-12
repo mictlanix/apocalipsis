@@ -9,10 +9,17 @@ class libretas extends CI_Controller {
 
 
     //comienza aqui a mostrar el formulario
-	public function index(){
+	public function index($id_categ='libretas',$pag='page', $cant=1){
+			if ($id_categ=='page') {
+				$cant=(int)$pag;
+				$pag='page';
+				$id_categ='libretas';
+			}
 
 			//$this->load->view( 'sitio/libretas/principal/principal',$datos ); 
-			$this->load->view( 'sitio/libretas/principal/principal'); 
+			$data['pagina'] =$cant;
+			$data['id_categ'] =$id_categ;
+			$this->load->view( 'sitio/libretas/principal/principal',$data); 
 
 	}	
 

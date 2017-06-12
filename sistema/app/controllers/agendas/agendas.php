@@ -9,9 +9,18 @@ class agendas extends CI_Controller {
 
 
     //comienza aqui a mostrar el formulario
-	public function index(){
-		//$this->load->view( 'sitio/agendas/principal/principal',$datos ); 
-		$this->load->view( 'sitio/agendas/principal/principal'); 
+
+	public function index($id_categ='agendas',$pag='page', $cant=1){
+
+			if ($id_categ=='page') {
+				$cant=(int)$pag;
+				$pag='page';
+				$id_categ='agendas';
+			}
+
+			$data['pagina'] =$cant;
+			$data['id_categ'] =$id_categ;
+			$this->load->view( 'sitio/agendas/principal/principal',$data); 
 	}	
 
 

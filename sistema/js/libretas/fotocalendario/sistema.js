@@ -118,7 +118,7 @@ $(document).ready(function() {
 
 	jQuery('.buscar_dato_reutilizar').on('typeahead:selected', function (e, datum,otro) {
 
-			
+			var reutilizando =datum.titulo;
 
 	
 		 	 var target2 = document.getElementById('foopropio');
@@ -175,6 +175,7 @@ $(document).ready(function() {
 					                  id_edicion_variacion   : variation_id,
 					                  id_edicion_diseno      : id_diseno,
 					                  id_edicion_consecutivo : consecutivo,
+					                  reutilizando:reutilizando,
 
 					            }, ''); 
 
@@ -477,7 +478,7 @@ $('#titulo_interior').change(function(e){
 
 					success: function(datos_eliminados){
 							  $.each(datos_eliminados, function (i, valor) { 
-								  	console.log(valor);
+								  	//console.log(valor);
 							  });
 
 							var cant_elem_quedan = $('.editar_slider[value="'+elimina_variation_id+'"][diseno="'+elimina_id_diseno+'"][consecutivo="'+elimina_consecutivo+'"]').parent().parent().siblings(":visible" ).length;

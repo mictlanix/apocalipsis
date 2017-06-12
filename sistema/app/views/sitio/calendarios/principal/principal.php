@@ -12,17 +12,21 @@
 
 
  <?php
-        $args = array(
-        'post_type' => 'product',
-        'posts_per_page' => -1, //cuanto muestra por pagina -1 para mostrar todos
-        'product_cat' => 'calendarios',
-        'post_status'=> 'publish',  //cuando esta publicado
-        //'p' => 441,  //id del post
-        //'name'=> 'mi-libreta-2',  //nombre del post
 
+       $paged = ($pagina) ? $pagina : 1;
+        $args = array(
+          'post_type' => 'product',
+          'posts_per_page' => 12, // -1 cuanto muestra por pagina -1 para mostrar todos
+          'product_cat' => 'calendarios',
+          'post_status'=> 'publish',  //cuando esta publicado
+          //'offset'=> $pagina+(get_query_var('paged')),  //cuando esta publicado
+            //'p' => 441,  //id del post
+            //'name'=> 'nuevas',  //nombre del post
+           'paged' =>$paged, // (get_query_var('paged')) ? get_query_var('paged') : 1,
         );
 
         $loop = new WP_Query( $args );
+
 
         if ( $loop->have_posts() ) {
             while ( $loop->have_posts() ) : $loop->the_post();
@@ -51,6 +55,16 @@
         } else {
         echo __( 'No hay productos' );
         }
+         
+        ?>
+            <div class="col-md-12 text-center" style="margin-bottom:50px; clear:both">
+                      <?php
+                      wp_pagenavi(array( 'query' => $loop ));
+                      //wp_reset_query();
+                      ?>
+            </div>         
+        <?php
+
         wp_reset_postdata();
         ?>
 </div>

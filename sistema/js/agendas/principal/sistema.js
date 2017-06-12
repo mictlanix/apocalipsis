@@ -22,6 +22,8 @@ var opts = {
     });
 
 
+
+
     //var target = document.getElementById('foo');
 
     var target2 = document.getElementById('foopropio');
@@ -44,6 +46,13 @@ $(document).ready(function() {
     var session = readCookie('tinbox_session'); //session activa
     var dats = unserialize(decodeURIComponent(session));
     var session_id = dats.session_id;
+
+
+     $('body').on('change','#id_cat_seleccion', function (e) {   
+              var cat_sel = $('#id_cat_seleccion').val();
+              var catalogo= hash_url+'agendas/'+cat_sel;
+              window.location.href = catalogo; 
+     }); 
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////

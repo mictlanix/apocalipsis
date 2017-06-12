@@ -7,12 +7,12 @@ class Calendarios extends CI_Controller {
         $this->load->library('Jquery_pagination');//-->la estrella del equipo		
 	}
 
-	public function index(){
-
-			//$this->load->view( 'sitio/agendas/principal/principal',$datos ); 
-			$this->load->view( 'sitio/calendarios/principal/principal'); 
-
+    //comienza aqui a mostrar el formulario
+	public function index($pag='page', $cant=1){
+			$data['pagina'] =$cant;
+			$this->load->view( 'sitio/calendarios/principal/principal',$data); 
 	}	
+
 
 	//new: solo se agrego id_variation a  leer_marcados
 	public function leer_marcados(){  

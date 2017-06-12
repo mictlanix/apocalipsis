@@ -879,6 +879,35 @@ z-index: 99997;
 
 }
 
+
+
+
+/* PAGENAVI */
+
+.wp-pagenavi {
+ display: inline-flex;
+}
+.wp-pagenavi span.pages {
+ background-color: #00599b;
+ color: #fff;
+ border: none;
+ padding: 6px 8px;
+}
+.wp-pagenavi a {
+ background-color: #414042;
+ color: #fff;
+ border: none;
+ padding: 6px 8px;
+}
+.wp-pagenavi a:hover {
+ background-color: rgba(0,89,154,1);
+}
+.wp-pagenavi span.current {
+ background-color: #83d4da ;
+ color: #FFFFFF;
+ border: none;
+ padding: 6px 8px;
+
 .barranave{
   border: red 3px solid !important;
     color: black;

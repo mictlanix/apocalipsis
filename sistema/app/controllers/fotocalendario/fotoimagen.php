@@ -11,6 +11,41 @@ class Fotoimagen extends CI_Controller {
 
 
 
+
+///////////////////////////////////////////////cargador de Imagenes/////////////////////////////////////////
+
+	//1- ok
+	public function index($session) {
+
+		$data['id_session'] = base64_decode($session);
+ 	    $data['datos'] = $this->modelo_fotoimagen->correo_logueo($data);
+		 //1- cuando es llamado 
+		if (isset($_POST['id_diseno'])) {
+				$data['id_diseno']     = $_POST['id_diseno']; // el diseño que se va activar
+				$data['id_tamano']     = $_POST['id_tamano']; // el diseño que se va activar
+				$data['consecutivo']   = $_POST['consecutivo']; // el consecutivo que se va activar
+				$data['ano']  		 = $_POST['ano'];  //en que año
+				$data['mes']  		 = $_POST['mes'];  //y en q mes
+		  //2- para recoger el 1er diseño si refresca	
+		} else { 
+			$data['datos'] = $this->modelo_fotoimagen->correo_logueo($data);
+				 if ($data['datos']){
+			      	  $data['id_diseno']    = $data['datos'][0]->id_diseno; 
+			      	  $data['id_tamano']    = $data['datos'][0]->id_tamano;
+			      	  $data['consecutivo']    = $data['datos'][0]->consecutivo;
+    	        	  $data['ano'] = date("Y");
+			  		  $data['mes'] = 0; //date("m")-1; mes actual
+			     } 	  
+		}
+		if  ($data['datos'] ) {
+			$this->load->view( 'sitio/fotocalendario/fotoimagen/croppear',$data );	
+		} else {
+			redirect('');
+
+		}
+		
+	}
+
 ///////////////////////////////////////////////cargador de Imagenes/////////////////////////////////////////
 ///////////////////////////////////////////////cargador de Imagenes/////////////////////////////////////////
 ///////////////////////////////////////////////cargador de Imagenes/////////////////////////////////////////
@@ -98,57 +133,6 @@ public function guardar_imagenes(){
 
 
 
-///////////////////////////////////////////////cargador de Imagenes/////////////////////////////////////////
-///////////////////////////////////////////////cargador de Imagenes/////////////////////////////////////////
-///////////////////////////////////////////////cargador de Imagenes/////////////////////////////////////////
-
-
-	//ok
-	public function index($session) {
-
-		$data['id_session'] = base64_decode($session);
-		
-		  $data['datos'] = $this->modelo_fotoimagen->correo_logueo($data);
-
-		 //1- cuando es llamado 
-		if (isset($_POST['id_diseno'])) {
-				//$data['id_diseno']   = $_POST['id_tamano']; // el diseño que se va activar
-				$data['id_diseno']     = $_POST['id_diseno']; // el diseño que se va activar
-				$data['id_tamano']     = $_POST['id_tamano']; // el diseño que se va activar
-				$data['consecutivo']   = $_POST['consecutivo']; // el diseño que se va activar
-
-				$data['ano']  		 = $_POST['ano'];  //en que año
-				$data['mes']  		 = $_POST['mes'];  //y en q mes
-		  //2- para recoger el 1er diseño si refresca	
-		} else { 
-			$data['datos'] = $this->modelo_fotoimagen->correo_logueo($data);
-
-		
-				 if ($data['datos']){
-			      	  $data['id_diseno']    = $data['datos'][0]->id_diseno; //1; //leer el 1er tamaño
-			      	  $data['id_tamano']    = $data['datos'][0]->id_tamano;
-			      	  $data['consecutivo']    = $data['datos'][0]->consecutivo;
-
-    	        	  $data['ano'] = date("Y");
-			  		  $data['mes'] = 0; //date("m")-1; mes actual
-
-			     } 	  
-
-
-		}
-
-		if  ($data['datos'] ) {
-			$this->load->view( 'sitio/fotocalendario/fotoimagen/croppear',$data );	
-			
-			//$this->load->view( 'sitio/fotocalendario/fotoimagen/ancla',$data );	
-			//anchor('foo', 'sadsa', $data)
-
-		} else {
-			redirect('');
-
-		}
-		
-	}
 
 
 	//ok

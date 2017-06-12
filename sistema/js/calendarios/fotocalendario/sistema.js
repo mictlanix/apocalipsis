@@ -116,9 +116,9 @@ var hash_url =  window.location.protocol+'//'+window.location.hostname+'/sistema
 
 	jQuery('.buscar_dato_reutilizar').on('typeahead:selected', function (e, datum,otro) {
 
-			console.log((datum.key));
+			//console.log((datum.key));
 
-
+			var reutilizando =datum.titulo;
 	
 		 	 var target2 = document.getElementById('foopropio');
     		var spinner = new Spinner(opts).spin(target2);
@@ -174,6 +174,7 @@ var hash_url =  window.location.protocol+'//'+window.location.hostname+'/sistema
 					                  id_edicion_tamano      : id_tamano,
 					                  id_edicion_diseno      : id_diseno,
 					                  id_edicion_consecutivo : consecutivo,
+					                  reutilizando:reutilizando,
 
 					            }, ''); 
 
@@ -278,7 +279,7 @@ $('body').on('change','#logo', function (event) {
 
 //activar casilla otro en titulo
 $('#titulo').change(function(e){   
-	console.log($(this).val());
+	//console.log($(this).val());
 	if( $(this).val() === 'personalizado') {   
 	   $('#otro').show();    
 	}  else   {   

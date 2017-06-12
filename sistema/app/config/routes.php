@@ -46,8 +46,7 @@
 ///////////////////////////////////////////////////////////////////////////
 
 
-$route['default_controller']	 		= 'fotocalendario/fcalendario';
-$route['404_override'] 					= 'fotocalendario/fcalendario';
+
 
 $route['fotocalendario/guardar_tamanos']							= 'fotocalendario/fcalendario/guardar_tamanos';
 $route['fotocalendario/leer_marcados']								= 'fotocalendario/fcalendario/leer_marcados';
@@ -164,6 +163,11 @@ $route['fotocalendario/anadir_carrito']							= 'fotocalendario/fotorevise/anadi
 $route['fotocalendario/guardar_historico_informacion']				= 'fotocalendario/fotorevise/guardar_historico_informacion';
 
 
+//$route['default_controller']	 		= 'fotocalendario/fcalendario';
+//$route['404_override'] 					= 'fotocalendario/fcalendario';
+
+$route['default_controller']		 		= 'fotocalendario/fcalendario/index/$1/$2';
+$route['fotocalendario/(:any)/(:any)']	 		= 'fotocalendario/fcalendario/index/$1/$2';
 
 
 
@@ -328,7 +332,7 @@ $route['imprimir_detalle']    		     = 'informes/imprimir_detalle';
 ///////////////////////////////////////////////////////////////////////////
 
 
-$route['calendarios']	 		= 'calendarios/calendarios/index';
+
 
 
 $route['calendarios/guardar_tamanos']							= 'calendarios/calendarios/guardar_tamanos';
@@ -389,6 +393,10 @@ $route['calendarios/anadir_carrito']							= 'calendarios/fotorevise/anadir_carr
 
 $route['calendarios/guardar_historico_informacion']				= 'calendarios/fotorevise/guardar_historico_informacion';
 
+//$route['calendarios']	 		= 'calendarios/calendarios/index';
+//$route['calendarios/(:any)']	 		= 'calendarios/calendarios/index/$1';
+$route['calendarios']	 		= 'calendarios/calendarios/index/$1/$2';
+$route['calendarios/(:any)/(:any)']	 		= 'calendarios/calendarios/index/$1/$2';
 
 
 ///////////////////////////////////////////////////////////////////////////
@@ -398,7 +406,10 @@ $route['calendarios/guardar_historico_informacion']				= 'calendarios/fotorevise
 ///////////////////////////////////////////////////////////////////////////
 
 
-$route['agendas']	 		= 'agendas/agendas/index';
+//$route['agendas']	 		= 'agendas/agendas/index';
+
+
+
 
 
 $route['agendas/guardar_tamanos']							= 'agendas/agendas/guardar_tamanos';
@@ -462,6 +473,12 @@ $route['agendas/guardar_historico_informacion']			= 'agendas/fotorevise/guardar_
 $route['agendas/guardar_info_revise']						= 'agendas/fotorevise/guardar_info_revise';
 
 
+
+$route['agendas']	 		= 'agendas/agendas/index/agendas';
+$route['agendas/(:any)']	 		= 'agendas/agendas/index/$1';
+$route['agendas/(:any)/(:any)/(:any)']	 		= 'agendas/agendas/index/$1/$2';
+
+
 ///////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////
 ///////////////////////////////libretas//////////////////////////////
@@ -469,7 +486,6 @@ $route['agendas/guardar_info_revise']						= 'agendas/fotorevise/guardar_info_re
 ///////////////////////////////////////////////////////////////////////////
 
 
-$route['libretas']	 		= 'libretas/libretas/index';
 
 
 $route['libretas/guardar_tamanos']							= 'libretas/libretas/guardar_tamanos';
@@ -496,6 +512,7 @@ $route['libretas/diseno_lista']							= 'libretas/fotocalendario/diseno_lista';
 $route['libretas/validacion_comprimir']							= 'libretas/fotocalendario/validacion_comprimir';
 
 $route['libretas/fotocalendario/(:any)']							= 'libretas/fotocalendario/index/$1';
+
 $route['libretas/validar_nuevo_fotocalendario']				= 'libretas/fotocalendario/validar_nuevo_fotocalendario';
 
 $route['libretas/guardar_lista']							= 'libretas/fotocalendario/guardar_lista';
@@ -531,6 +548,9 @@ $route['libretas/guardar_historico_informacion']			= 'libretas/fotorevise/guarda
 $route['libretas/guardar_info_revise']						= 'libretas/fotorevise/guardar_info_revise';
 
 
+$route['libretas']	 		= 'libretas/libretas/index/libretas';
+$route['libretas/(:any)']	 		= 'libretas/libretas/index/$1';
+$route['libretas/(:any)/(:any)/(:any)']	 		= 'libretas/libretas/index/$1/$2';
 
 
 

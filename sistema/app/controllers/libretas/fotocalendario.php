@@ -93,6 +93,12 @@ public function eliminar_logo_libretas() {
 						  		    $data['consecutivo']   = $_POST['id_edicion_consecutivo'];
 						  }
 
+						  $data['reutilizando'] = '';
+						  if (isset($_POST['reutilizando'])) {  
+						  		$data['reutilizando'] = $_POST['reutilizando'];
+						  }	
+						  
+
 
 			      
 			      $data['array_eliminar'] = '';

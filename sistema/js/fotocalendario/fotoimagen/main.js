@@ -15,6 +15,7 @@ $(function () {
   var $dataScaleY = $('#dataScaleY');
 
   var hash_url =  window.location.protocol+'//'+window.location.hostname+'/sistema/';  
+  var cantidad_meses= 13;
 
   var options = {
  
@@ -42,7 +43,9 @@ $(function () {
 
         preview: '.img-preview',
         dragCrop: false,
-        mouseWheelZoom: true,
+        //mouseWheelZoom: true,
+        zoomOnWheel:false,
+        
         resizable: true,
 
         //comenzar con el estado de mover (manito)
@@ -157,7 +160,7 @@ $(function () {
 
 
 
-              if ( parseFloat($('#image').attr('total_elementos')) >=12 ) {
+              if ( parseFloat($('#image').attr('total_elementos')) >=cantidad_meses ) {
                   $('#guardar').css('display', '');   
                   $('.previo_slider[value="'+$('#id_tamano').val()+'"][consecutivo="'+$('#consecutivo').val()+'"][diseno="'+$('#id_diseno').val()+'"]').prop('disabled', false);  
               }  
