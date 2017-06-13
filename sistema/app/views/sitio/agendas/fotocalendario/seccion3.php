@@ -72,16 +72,14 @@ $this->load->view( 'sitio/agendas/fotocalendario/header' ); ?>
 
             <div id="datos">
               
-
               <div class="row">  
                 <div class="col-xs-12 col-md-12">
                       <h4 id="registros" class="form-control-static text-left">Registros</h4>
                       <h4 id="reutilizando" class="form-control-static text-left"><?php echo $reutilizando; ?></h4>
-
                 </div>  
               </div> 
 
-              <div class="row" >  
+              <div class="row">  
                 <div class="col-xs-12 col-md-12">
                       <h3 class="form-control-static text-left">Ingresa tus DATOS</h3>
                 </div>  
@@ -111,7 +109,7 @@ $this->load->view( 'sitio/agendas/fotocalendario/header' ); ?>
 
                  
 
-                  <div class="col-md-6 col-sm-6 col-xs-8" id="animar">
+                  <div class="col-md-6 col-sm-6 col-xs-8">
                   	
 
 
@@ -704,12 +702,9 @@ a.remover.lleno {
 </style>
 
 <script type="text/javascript">
-  $( document ).ready(function() {
-    $('.navbar-nav li:nth-child(5)').addClass('current-menu-item');
-        
+  $(document).ready(function() {
+    $('.navbar-nav li:nth-child(5)').addClass('current-menu-item')
   });
-
-  
 </script>
 
 

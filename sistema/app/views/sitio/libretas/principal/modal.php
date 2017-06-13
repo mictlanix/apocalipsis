@@ -37,18 +37,21 @@ $nombre_meses = array("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","
                                       </div>
                                   </div>
                                   <div class="row">
-                                     	<div class="col-md-12">
-                                     		<p>Incluye:</p>
-                                     		<p>Tu nombre en cada página interior o el de quien quieras.</p>
-  								  	               </div>
-                  								  	<div class="col-md-12 colores">
-                  								  		<h4 class="text-left">ELIGE EL COLOR</h4>
-                                                     		<?php do_action("woocommerce_tm_epo_fields"); ?>
-                                                        <?php do_action("woocommerce_tm_epo_totals"); ?>
-                                                        
-                  								  	</div>
-                								  </div>
-                              </div>  <!--  fin de Izquierda -->       
+                                   	<div class="col-md-12">
+                                   		<p>Incluye:</p>
+                                   		<p>Tu nombre en cada página interior o el de quien quieras.</p>
+								  	</div>
+								  	<div class="col-md-12 colores">
+								  		<h4 class="text-left">ELIGE EL COLOR</h4>
+                                   		<?php do_action("woocommerce_tm_epo_fields"); ?>
+                                      <?php do_action("woocommerce_tm_epo_totals"); ?>
+                                      
+								  	</div>
+								  </div>
+
+                                 
+
+                          </div>  <!--  fin de Izquierda -->       
 
 
 
@@ -104,3 +107,4 @@ $nombre_meses = array("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","
       /* border-width: 1px; */
   }
 </style>
+

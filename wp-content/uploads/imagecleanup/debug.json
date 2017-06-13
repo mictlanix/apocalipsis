@@ -1,0 +1,46 @@
+[0.3066] Info: WP_Query results written to log
+[0.0004] Registered sizes: ["thumbnail","medium","medium_large","large","shop_thumbnail","shop_catalog","shop_single","swatches_image_size","full"]
+[0.0005] Meta indexed so far: 1 / 2945
+[0.0015] Sample meta:
+{"width":140,"height":140,"file":"2016\/11\/juan.jpg","sizes":{"swatches_image_size":{"file":"juan-32x32.jpg","width":32,"height":32,"mime-type":"image\/jpeg"}},"image_meta":{"aperture":0,"credit":"","camera":"","caption":"","created_timestamp":0,"copyright":"","focal_length":0,"iso":0,"shutter_speed":0,"title":"","orientation":0,"keywords":[]}}
+[0.0004] Meta indexed so far: 101 / 2945
+[0.0004] Meta indexed so far: 201 / 2945
+[0.0004] Meta indexed so far: 301 / 2945
+[0.0005] Meta indexed so far: 401 / 2945
+[0.0005] Meta indexed so far: 501 / 2945
+[0.0005] Meta indexed so far: 601 / 2945
+[0.0005] Meta indexed so far: 701 / 2945
+[0.0004] Meta indexed so far: 801 / 2945
+[0.0004] Meta indexed so far: 901 / 2945
+[0.0004] Meta indexed so far: 1001 / 2945
+[0.0004] Meta indexed so far: 1101 / 2945
+[0.0004] Meta indexed so far: 1201 / 2945
+[0.0005] Meta indexed so far: 1301 / 2945
+[0.0005] Meta indexed so far: 1401 / 2945
+[0.0005] Meta indexed so far: 1501 / 2945
+[0.0005] Meta indexed so far: 1601 / 2945
+[0.0004] Meta indexed so far: 1701 / 2945
+[0.0005] Meta indexed so far: 1801 / 2945
+[0.0004] Meta indexed so far: 1901 / 2945
+[0.0004] Meta indexed so far: 2001 / 2945
+[0.0005] Meta indexed so far: 2101 / 2945
+[0.0004] Meta indexed so far: 2201 / 2945
+[0.0004] Meta indexed so far: 2301 / 2945
+[0.0004] Meta indexed so far: 2401 / 2945
+[0.0004] Meta indexed so far: 2501 / 2945
+[0.0004] Meta indexed so far: 2601 / 2945
+[0.0004] Meta indexed so far: 2701 / 2945
+[0.0004] Meta indexed so far: 2801 / 2945
+[0.0004] Meta indexed so far: 2901 / 2945
+[0.1307] Meta indexed so far: 2945 / 2945
+[0.1623] Info: Valid and Invalid meta results written to log
+[0.1348] Info: Loaded attachments to memory [47.25 mb]
+[0.6583] Info: 11804 Images found [57.75 mb]
+[1.4060] Info: 159 Invalid images found [59 mb]
+[1.6301] Info: Retrieved attachment images from DB [36 mb]
+[2.7720] Info: Backup meta results written to log [36 mb]
+[0.0011] Posts checked for used images 1/7
+[0.3632] Info: Invalid post image meta results written to log
+[0.3468] Info: Invalid script image meta results written to log
+[7.8690] Info: Invalid referenced image meta results written to log
+[7.8897] Info: Unreferenced image file results written to log

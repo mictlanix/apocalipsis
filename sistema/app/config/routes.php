@@ -166,7 +166,7 @@ $route['fotocalendario/guardar_historico_informacion']				= 'fotocalendario/foto
 //$route['default_controller']	 		= 'fotocalendario/fcalendario';
 //$route['404_override'] 					= 'fotocalendario/fcalendario';
 
-$route['default_controller']		 		= 'fotocalendario/fcalendario/index/$1/$2';
+$route['default_controller']	 		= 'fotocalendario/fcalendario/index/$1/$2';
 $route['fotocalendario/(:any)/(:any)']	 		= 'fotocalendario/fcalendario/index/$1/$2';
 
 

@@ -881,7 +881,6 @@ z-index: 99997;
 
 
 
-
 /* PAGENAVI */
 
 .wp-pagenavi {
@@ -907,8 +906,4 @@ z-index: 99997;
  color: #FFFFFF;
  border: none;
  padding: 6px 8px;
-
-.barranave{
-  border: red 3px solid !important;
-    color: black;
 }

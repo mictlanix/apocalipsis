@@ -193,15 +193,20 @@ get_header();
 
 		                <?php
 
+						/*
 						$meta_query   = WC()->query->get_meta_query();
 						$meta_query[] = array(
 						    'key'   => '_featured',
 						    'value' => 'yes'
-						);
+						);*/
 						$loop = new WP_Query( array(								
 	    							'product_cat' => 'calendarios',    						  							
 	    							'posts_per_page' => 4,
-	    							'meta_query'  =>  $meta_query
+	    							//'meta_query'  =>  $meta_query,
+	    							'post_type' => 'product',
+	    							'post_status'=> 'publish',  	
+
+
 								));
 			          
 				         while ( $loop->have_posts() ) : $loop->the_post();
@@ -226,15 +231,19 @@ get_header();
 
 		                <?php
 
-						$meta_query   = WC()->query->get_meta_query();
+						/*$meta_query   = WC()->query->get_meta_query();
 						$meta_query[] = array(
 						    'key'   => '_featured',
 						    'value' => 'yes'
-						);
+						);*/
 						$loop = new WP_Query( array(								
 	    							'product_cat' => 'fcalendario',    						  							
 	    							'posts_per_page' => 4,
-	    							'meta_query'  =>  $meta_query
+	    							//'meta_query'  =>  $meta_query
+
+	    							'post_type' => 'product',
+	    							'post_status'=> 'publish',  	
+
 								));
 			          
 				         while ( $loop->have_posts() ) : $loop->the_post();
@@ -258,15 +267,19 @@ get_header();
 
 		                <?php
 
-						$meta_query   = WC()->query->get_meta_query();
+						/*$meta_query   = WC()->query->get_meta_query();
 						$meta_query[] = array(
 						    'key'   => '_featured',
 						    'value' => 'yes'
-						);
+						);*/
 						$loop = new WP_Query( array(								
 	    							'product_cat' => 'libretas',    						  							
 	    							'posts_per_page' => 4,
-	    							'meta_query'  =>  $meta_query
+	    							//'meta_query'  =>  $meta_query,
+	    							'post_type' => 'product',
+	    							'post_status'=> 'publish',  	
+
+
 								));
 			          
 				         while ( $loop->have_posts() ) : $loop->the_post();
@@ -290,15 +303,18 @@ get_header();
 
 		                <?php
 
-						$meta_query   = WC()->query->get_meta_query();
+						/*$meta_query   = WC()->query->get_meta_query();
 						$meta_query[] = array(
 						    'key'   => '_featured',
 						    'value' => 'yes'
-						);
+						);*/
 						$loop = new WP_Query( array(								
 	    							'product_cat' => 'agendas',    						  							
 	    							'posts_per_page' => 4,
-	    							'meta_query'  =>  $meta_query
+									//'meta_query'  =>  $meta_query,
+	    							'post_type' => 'product',
+	    							'post_status'=> 'publish',  	
+
 								));
 			          
 				         while ( $loop->have_posts() ) : $loop->the_post();

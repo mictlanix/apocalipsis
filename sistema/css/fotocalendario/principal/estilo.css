@@ -627,11 +627,10 @@ section {
   font-weight: lighter;
   font-size: 22px;
   border-radius: 0;
-  /*width: 6.66%; 7.142%*/
-  padding-left: 10px;
+   /*  width: 6.66%;*/
+  padding-left: 9px;
   padding-right: 10px;
 }
-
 #meses button:last-child {
   border-right: solid 2px #c2c2c2;
 }

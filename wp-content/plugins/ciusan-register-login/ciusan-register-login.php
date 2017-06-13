@@ -281,13 +281,19 @@ function ciusan_login_form() {global $options; $options = get_option('ciusan_reg
 	<?php wp_nonce_field('ajax-login-nonce', 'security'); ?>  
 	<div for="username"><span class="label">Username</span>
 	<div style="float:right;"><a id="pop_signup" style="cursor:pointer;color:#B4B2B2;">Crea una cuenta</a></div>
-	<input id="username" type="text" class="required" name="username" placeholder="Nombre de usuario"></div>
+	<input id="username" type="text" class="campos required" name="username" placeholder="Nombre de usuario"></div>
 	<div for="password"><span class="label">Password</span>
-	<input id="password" type="password" class="required" name="password" placeholder="Contraseña"></div>
+	<input id="password" type="password" class="campos required" name="password" placeholder="Contraseña"></div>
 	<input class="<?php if($options['button_class']){echo $options['button_class'];}else{echo 'button';};?>" type="submit" value="<?php if ($options['button_login']){echo $options['button_login'];}else{echo 'Entrar';};?>" name="login">
 	<a id="pop_forgot" class="text-link"  href="<?php echo wp_lostpassword_url(); ?>">Recuperar contraseña</a>
-	<a class="close" href="">(cerrar)</a>    
+	<a class="close" href=""><i class="negro fa fa-times" aria-hidden="true"></i></a>   <br><br> 
+	<hr />
+	<h1>Ó ENTRAR CON:</h1>
+	<a class="botonloginface" href="http://beta.tinbox.mx/wp-login.php?loginFacebook=1&redirect=http://beta.tinbox.mx" onclick="window.location = 'http://beta.tinbox.mx/wp-login.php?loginFacebook=1&redirect='+window.location.href; return false;">Facebook</a>
+	<a class="botonlogingmail">Gmail</a>
+	
 </form>
+
 
 <form id="register" class="crl-ajax-auth"  action="register" method="post">
 	<h1><?php if($options['register_title']){echo $options['register_title'];}else{echo'Crea una cuenta';}?></h1>
@@ -295,17 +301,17 @@ function ciusan_login_form() {global $options; $options = get_option('ciusan_reg
     <p class="status"></p>
     <?php wp_nonce_field('ajax-register-nonce', 'signonsecurity'); ?>         
     <div for="signonname"><span class="label">Username</span>
-    <input id="signonname" type="text" name="signonname" class="required" placeholder="Usuario"></div>
+    <input id="signonname" type="text" name="signonname" class="campos required" placeholder="Usuario"></div>
     <div for="email"><span class="label">Email</span>
-    <input id="email" type="text" class="required email" name="email" placeholder="Email"></div>
+    <input id="email" type="text" class="campos required email" name="email" placeholder="Email"></div>
     <div for="signonpassword"><span class="label">Password</span>
     <input id="signonpassword" type="password" class="required" name="signonpassword" placeholder="Ingresa contraseña"></div>
     <div for="password2"><span class="label">Confirm Password</span>
-    <input type="password" id="password2" class="required" name="password2" placeholder="Repite contraseña"></div>
+    <input type="password" id="password2" class="campos required" name="password2" placeholder="Repite contraseña"></div>
 	<div class="g-recaptcha" data-sitekey="<?php echo $options['Google_Site_Key']; ?>" style="display:block;"></div>
     <input class="<?php if($options['button_class']){echo $options['button_class'];}else{echo 'button';};?>" type="submit" value="<?php if ($options['button_register']){echo $options['button_register'];}else{echo 'Registrarse';};?>" name="register">
 	<a id="pop_login" class="text-link" style="cursor:pointer">Entrar</a>
-    <a class="close" href="">(cerrar)</a>
+    <a class="close" href=""><i class="fa fa-times negro" aria-hidden="true"></i></a>
 </form>
 
 <form id="forgot_password" class="crl-ajax-auth" action="forgot_password" method="post">
@@ -314,9 +320,9 @@ function ciusan_login_form() {global $options; $options = get_option('ciusan_reg
     <p class="status"></p>
     <?php wp_nonce_field('ajax-forgot-nonce', 'forgotsecurity'); ?>  
     <div for="user_login"><span class="label">Username or Email</span>
-    <input id="user_login" type="text" class="required" name="user_login" placeholder="Nombre de usuario o email"></div>
-	<input class="<?php if($options['button_class']){echo $options['button_class'];}else{echo 'button';};?>" type="submit" value="<?php if ($options['button_forgot_password']){echo $options['button_forgot_password'];}else{echo 'Obtener contraseña';};?>" name="forgot_password">
-	<a class="close" style="cursor:pointer">(cerrar)</a>    
+    <input id="user_login" type="text" class="required campos" name="user_login" placeholder="Nombre de usuario o email"></div>
+	<input class="campos <?php if($options['button_class']){echo $options['button_class'];}else{echo 'button';};?>" type="submit" value="<?php if ($options['button_forgot_password']){echo $options['button_forgot_password'];}else{echo 'Obtener contraseña';};?>" name="forgot_password">
+	<a class="close" style="cursor:pointer"><i class="fa fa-times negro" aria-hidden="true"></i></a>    
 </form>
 <?php } 
 add_action("wp_footer", "ciusan_login_form");

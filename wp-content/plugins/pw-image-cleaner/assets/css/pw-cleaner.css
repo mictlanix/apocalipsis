@@ -1,0 +1,62 @@
+#pw-scan-button {
+	color: #ffffff;
+	background-color: #5cb85c;
+	border-color: #4cae4c;
+	border: 1px solid #4cae4c;
+}
+
+#pw-cleaner-loading {
+	display: none;
+}
+
+#pw-logo {
+	float: left;
+	height: 100px;
+	width: 100px;
+}
+
+#pw-cleaner-main {
+	margin-left: 120px;
+	width: 100%;
+}
+
+.pw-cleaner-panel {
+	margin: 2%;
+	display: block;
+	float: left;
+}
+
+.pw-cleaner-heading {
+	font-size: x-large;
+	font-weight: bold;
+}
+
+.pw-cleaner-files {
+	background: #FFFFFF;
+	height: 600px;
+	overflow-y: auto;
+}
+
+.pw-cleaner-files ul {
+	margin: 10px;
+}
+
+#pw-pro-panel {
+	display: inline-block;
+	margin: 20px;
+	padding: 10px;
+	background: #FFFFFF;
+	border-style: solid;
+	border-width: 1px;
+	border-radius: 10px;
+	border-color: #000000;
+}
+
+#pw-pro-features {
+	display: none;
+}
+
+#pw-pro-features ul {
+	list-style-type: circle;
+	margin-left: 5em;
+}

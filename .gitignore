@@ -1,0 +1,4 @@
+.htaccess
+sistema/.htaccess
+sistema/app/config/database.php
+sistema/app/config/config.php

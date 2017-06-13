@@ -40,7 +40,7 @@
 		<div class="container">
 		  <div class="row">
 			<div class="col-md-4 col-sm-4 col-xs-6 recibe"><span>Recibe noticias y promociones de Tinbox</span></div>
-			<div class="col-md-3 col-md-offset-5 col-sm-6 col-sm-offset-2 col-xs-6 redes text-right">
+			<div class="col-md-5 col-md-offset-3 col-sm-6 col-sm-offset-2 col-xs-6 redes text-right">
 				<span class="cta">
 
 
@@ -48,6 +48,36 @@
 
 					<?php echo do_shortcode('[ciusan_logout redirect="current"]') ?>
 				</span>
+				<?php
+				if ( is_user_logged_in() ) { ?>
+				<span class="cta">
+ 	<a href="<?php echo get_permalink( get_option('woocommerce_myaccount_page_id') ); ?>" title="<?php _e('Mi cuenta','woothemes'); ?>"><?php _e('Mi cuenta','woothemes'); ?></a>
+ 
+
+ 
+</span>
+<span class="cta">
+<?php  
+
+$current_user = wp_get_current_user();
+
+if ( ($current_user instanceof WP_User) ) {
+    echo get_avatar( $current_user->user_email, 32 );
+}
+?>
+<?php global $current_user;
+      get_currentuserinfo();
+
+      echo ' ' . $current_user->user_firstname . " " . $current_user->user_lastname . " "; 
+
+      
+?>
+</span>
+<?php
+
+} 
+ 
+ ?>
 				<span class="ic"><a href="https://www.facebook.com/TinboxMX"><i class="fa fa-facebook"></i></a></span>
 				<span class="ic"><a href="https://twitter.com/TinboxMX"><i class="fa fa-twitter"></i></a></span>
 			</div>

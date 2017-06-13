@@ -956,3 +956,31 @@ z-index: 99997;
  border: none;
  padding: 6px 8px;
 }
+
+
+.swatch-wrapper{
+border: solid 5px #eeeeee;
+padding: 0px;
+background: #fff;
+float: left;
+margin: 0 10px 16px 10px;
+width: 45%;
+}
+
+
+.blanco-der .tm-extra-product-options ul.tmcp-elements.use_images_containter li.tmcp-field-wrap
+
+ {
+
+	padding: 0px;
+	background: #fff;
+	float: left;
+	margin: 0 10px 16px 10px;
+	width: 45%;
+}
+
+.blanco-der .tm-extra-product-options ul.tmcp-elements.use_images_containter li.tmcp-field-wrap img
+ {
+
+	width: 100%;
+}

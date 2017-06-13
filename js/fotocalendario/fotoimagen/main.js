@@ -42,7 +42,10 @@ $(function () {
 
         preview: '.img-preview',
         dragCrop: false,
-        mouseWheelZoom: true,
+        
+	//mouseWheelZoom: true,
+        zoomOnWheel:false, //deshabilitar el mouse
+
         resizable: true,
 
         //comenzar con el estado de mover (manito)
