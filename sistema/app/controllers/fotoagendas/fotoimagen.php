@@ -240,6 +240,7 @@ class Fotoimagen extends CI_Controller {
 
 					$targetPath=   base_url().'uploads/'.$data['id_session'].'/'.$data['logo']['file_name'].$strNoCache;      
 					
+					
 					//$targetPath=   base_url().'uploads/'.$data['id_session'].'/'.$data['logo']['file_name'];      
 					echo '<div id="cont_img">';
 							echo '<img total_elementos="'.$total_elementos.'" alto="'.$alto.'" ancho="'.$ancho.'" tamano="'.$tamano.'" ext="'.$ext.'" tipo="'.$tipo.'" tipo_archivo="'.$tipo_archivo.'" nombre="'.$nombre.'" id="image" src="'.$targetPath.'" style="max-width: 100%;max-height:490px; " alt="Picture"/>';

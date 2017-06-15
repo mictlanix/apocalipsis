@@ -33,6 +33,7 @@ class Fcalendario extends CI_Controller {
 	public function guardar_tamanos(){
 
 		$data['id_session'] = $this->session->userdata('session_id');
+		
 		//variacions de cada producto
 		$data['producto'] =    json_encode( $this->input->post('prod')   );
 		$producto =  json_decode(json_encode( $this->input->post('prod') ),true  );
@@ -41,15 +42,17 @@ class Fcalendario extends CI_Controller {
 		$data['id_diseno'] = $producto['product_id'];
 		$data['nombre_diseno'] = $producto['modelo'];
 		$data['imagen_diseno'] = $producto['imagen_diseno'];
+		$data['logos'] = $producto['logos'];
         
+		//cada variacion
 	    foreach ($producto['variaciones_producto'] as $key => $value) {
 	      	$data['variation_id'] = $value['variation_id'];
 	      	$data['nombre_variacion'] = $value['nombre_variacion'];
 	      	$data['campo_variacion'] = $value['campo_variacion'];
-	      	 
 	      	
 	      	$data['descripcion_variacion'] = $value['descripcion_variacion'];
 	      	$data['imagen_variacion'] = $value['imagen_variacion'];
+	      		  $data['image_link'] = $value['image_link'];
 	      	$resultado  =  $this->modelo_fcalendario->agregar_disenos( $data );
 	  
 	    }     

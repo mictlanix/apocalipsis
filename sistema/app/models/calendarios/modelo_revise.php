@@ -144,7 +144,7 @@ class modelo_revise extends CI_Model{
           $this->db->distinct("t.id_session");         
           $this->db->select("t.id_session,t.id_diseno,t.id_tamano,l.nombre_tamano,l.descripcion_tamano,l.imagen_diseno,l.imagen_tamano,l.nombre_diseno, t.consecutivo");         
           
-          $this->db->select('id_copia cantidad',false);
+          $this->db->select('id_copia cantidad, l.image_link');
 
           $this->db->select("t.titulo, t.nombre, t.apellidos");         
           $this->db->select("t.id_mes, t.id_dia, t.id_festividad, t.id_ano, t.id_lista, t.logo, t.coleccion_id_logo, t.fecha");         

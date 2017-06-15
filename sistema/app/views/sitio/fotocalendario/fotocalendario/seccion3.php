@@ -219,9 +219,9 @@ $actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 
 
 
-            <hr>
+            <hr style="display:<?php echo ($datos[0]->logos=='' ? 'none': 'block' ) ?>" />
 
-              <div id="interior" class="row">  
+              <div id="interior" class="row" style="display:<?php echo ($datos[0]->logos=='' ? 'none': 'block' ) ?>">  
                   
                     <div class="col-xs-12 col-md-12">
                         <h3 class="form-control-static text-left">Agrega un logo (opcional)</h3>
@@ -233,18 +233,12 @@ $actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 
                   
                   <?php
+                   //print_r(expression);
 
                     if  (isset($calendario->logo)) { ?>
                           <input type="hidden" id="ca_logo" name="ca_logo" value="<?php echo $calendario->logo; ?>" >  
                   <?php          
                       if  ($calendario->logo=='') {
-                        /*
-                        print "<div class='col-md-12 mb-20'>";
-                        print "<p>Usted no tiene imagen adjunta. Desea agregarla?</p>";
-                        print "<p>Selecciona una imagen en formato jpg ó png con un tamaño de 300 x 200 pixeles.</p>";
-                        print "</div>";
-                        */
-
                        ?>
                              <div class="col-md-12 mb-20">
                                            <div class="img_logo" style="display:none;">
@@ -302,7 +296,8 @@ $actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
                       }   
                       print '<br/>';
                       
-                    }  else {
+                      
+                    }  else {  //este es el caso que todavia no existe un registro
                         ?>
                              <div class="col-md-12 mb-20">
                                            <div class="img_logo" style="display:none;">
@@ -345,7 +340,7 @@ $actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
                      ?>                
 
                       <?php foreach ($logos as $logo) { ?>
-                            <div class="checkbox portada-interior">
+                            <div class="checkbox portada-interior" style="display:<?php echo (strpos($datos[0]->logos, (string)$logo->id) === false) ? 'none': 'block'  ?>"  >
                                 <label for="coleccion_id_logo" class="ttip" title="<?php echo $logo->tooltip; ?>">
 
                                     <?php   

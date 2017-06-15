@@ -63,7 +63,16 @@ $nombre_meses = array("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","
                                   <!-- <p>¡Selecciona varios tamaños al mismo tiempo!</p> -->
 
 
-                                  <?php //wc_get_template_part( 'content', 'product' ); ?>
+                                  <?php 
+
+                                            if (!empty( get_post_meta( get_the_ID(),'logo_formulario' ,true) )) {
+                                                  $logos= get_post_meta(get_the_ID(), 'logo_formulario', true );
+                                                  $cadena = implode("-", $logos);
+                                                  echo '<span style="display:none;" class="logos"  >'.$cadena.'</span>';
+                                                                       
+                                            }  
+
+                                   ?>
 
                                    
                                    <div class="variacion_producto"> </div>

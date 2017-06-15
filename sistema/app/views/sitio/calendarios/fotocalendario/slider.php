@@ -29,14 +29,21 @@
                     ?>    
                         <div class="row cuadromio" value="<?php echo $dato->id_tamano; ?>" diseno="<?php echo $dato->id_diseno; ?>" consecutivo="<?php echo $dato->consecutivo; ?>">
                     <?php      
-                      // echo '<p style="font-size:24px; font-weight:bold; color:green;">'.$dato->id_diseno.'<p>';
-                       echo '<img src="'.$dato->imagen_diseno.'" style="border:1px solid #c1c1c1; width:100%">';
+                        echo '<img src="'.$dato->imagen_diseno.'" style="border:1px solid #c1c1c1; width:100%">'; 
+                       
                   }
           ?>
                   
                   <div class="row cuadro_slider bloque" posicion="<?php echo $llave+1;?>" value="<?php echo $dato->id_tamano; ?>" diseno="<?php echo $dato->id_diseno; ?>" consecutivo="<?php echo $dato->consecutivo; ?>">
             						<div class="col-md-12" style="margin-bottom:15px">
-                  						<?php //echo $dato->id_diseno; ?>
+                  						<?php 
+                                     if ($dato->image_link) {
+                                        echo '<img src="'.$dato->image_link.'" style="border:1px solid #c1c1c1; width:100%">';
+                                     } else {
+                                        echo '<img src="'.$dato->imagen_diseno.'" style="border:1px solid #c1c1c1; width:100%">'; 
+                                     }
+
+                               ?>
                   						<p><b>Modelo:</b></p>
                   						<p>                   
                               <?php echo $dato->nombre_diseno; ?>

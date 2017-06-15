@@ -133,6 +133,10 @@ public function taxonomia_tamano($data){
           $this->db->set('imagen_tamano', $data['imagen_variacion']);     
           $this->db->set('campo_variacion', $data['campo_variacion']); 
 
+          $this->db->set('logos', $data['logos']); 
+          $this->db->set('image_link', $data['image_link']); 
+
+
           $this->db->insert($this->logueo_temporal); 
 
           return true;
@@ -147,7 +151,7 @@ public function taxonomia_tamano($data){
           $this->db->select("objeto_diseno, id_session");         
           $this->db->select($this->id_user.' id_user', false);  
           $this->db->select("modulo, consecutivo, correo");         
-          $this->db->select("id_diseno, variation_id, id_tamano, nombre_diseno, nombre_tamano,  descripcion_tamano, imagen_diseno,imagen_tamano,campo_variacion");         
+          $this->db->select("id_diseno, variation_id, id_tamano, nombre_diseno, nombre_tamano,  descripcion_tamano, imagen_diseno,imagen_tamano,campo_variacion,image_link,logos");
           $this->db->select("fecha_mac");         
 
           $this->db->from($this->logueo_temporal);

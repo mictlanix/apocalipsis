@@ -310,29 +310,17 @@ $this->load->view( 'sitio/libretas/fotocalendario/header' ); ?>
             </div>                        
 
 
-      <hr>
+      <hr style="display:<?php echo ($datos[0]->logos=='' ? 'none': 'block' ) ?>" />
 <!--fin de la 2da parte campo predictivo de titulo -->            
 
 
-              <div id="interior" class="row">  
+              <div id="interior" class="row" style="display:<?php echo ($datos[0]->logos=='' ? 'none': 'block' ) ?>">  
                   
                     <div class="col-xs-12 col-md-12">
                         <h3 class="form-control-static text-left">Agrega un logo (Opcional)</h3>
                     </div>  
 
                
-          
-
-
-
-
-
-
-
-
-
-
-
 
          <!-- Imagen-->  
                 
@@ -453,7 +441,7 @@ $this->load->view( 'sitio/libretas/fotocalendario/header' ); ?>
                      ?>                
 
                       <?php foreach ($logos as $logo) { ?>
-                            <div class="checkbox">
+                            <div class="checkbox" style="display:<?php echo (strpos($datos[0]->logos, (string)$logo->id) === false) ? 'none': 'block'  ?>"  >
                                 <label for="coleccion_id_logo" class="ttip" title="<?php echo $logo->tooltip; ?>">
 
                                     <?php   

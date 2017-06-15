@@ -26,10 +26,10 @@
 
                            <div class="col-md-4 col-sm-3 col-xs-4 mb-10 detalle">
                            		<div>                          
-                                <?php 
-                                  echo '<img src="'.$dato->imagen_diseno.'" style="border:1px solid #c1c1c1; width:100%">';
-                                 ?>
+                                 <img src="<?php echo $dato->imagen_diseno; ?>" style="border:1px solid #c1c1c1; width:100%">
+                                 <img src="<?php echo $dato->image_link; ?>" style="border:1px solid #c1c1c1; width:100%">
                              	</div>
+
                              	<div>
                                  <?php //echo '<b>Modelo:</b><br>'.$dato->id_diseno.'<br>'.'<b>Tamaño:</b><br>'.$dato->descripcion_variacion; ?>
                                   <p><b>Modelo:</b></p>
@@ -164,6 +164,15 @@
                                     <p><b>Nombre:</b> <?php echo $dato->nombre_interior; ?></p>                                    
                                     <p><b>Apellido:</b> <?php echo $dato->apellidos_interior; ?></p>
 
+                               </div>  
+                               <div class="col-md-6"  style="display:<?php echo ($dato->logo == "")  ? 'none': 'block'  ?>" >
+                                    <h4 class="text-left">Logo</h4>
+                                    <?php if ($dato->logo != "") { ?>
+                                        <img src="<?php echo base_url().'uploads/libretas/fotocalendario/'.$dato->logo; ?>" style="border:1px solid #c1c1c1; width:30%">
+                                    <?php } ?>
+                                    
+                                    <p style="display:<?php echo (strpos($dato->coleccion_id_logo, "1") === false) ? 'none': 'block'  ?>"> Portada</p>
+                                    <p style="display:<?php echo (strpos($dato->coleccion_id_logo, "2") === false) ? 'none': 'block'  ?>"> Interior</p>
                                </div>  
                               
                           </div> 
