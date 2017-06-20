@@ -57,12 +57,13 @@ class modelo_revise extends CI_Model{
     public function leer_info_carrito($data){
 
            
-          $this->db->select('l.id id_old', false);                
+          $this->db->select('l.id id_old');                
           $this->db->select('l.variation_id, l.id_session, l.modulo, l.consecutivo, l.correo');                
           $this->db->select('l.id_diseno, l.id_tamano, l.nombre_diseno, l.nombre_tamano, l.campo_variacion, l.descripcion_tamano, l.imagen_diseno, l.imagen_tamano');                
           $this->db->select('l.fecha_mac, l.objeto_diseno, l.objeto_adicionales, l.descripcion_color');                
           
-          $this->db->select('id_copia cantidad',false);              
+          $this->db->select('id_copia cantidad');              
+          $this->db->select('t.coleccion_id_logo');              
 
           $this->db->from($this->logueo_identificador.' As l');
           $this->db->join($this->fotocalendario_temporal.' As t', 't.id_session = l.id_session and t.id_diseno = l.id_diseno and t.variation_id = l.variation_id and t.consecutivo =l.consecutivo');

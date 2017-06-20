@@ -50,18 +50,21 @@ class modelo_revise extends CI_Model{
 
 
    public function leer_info_carrito($data){
-             $this->db->select('id id_old', false);            
+             $this->db->select('l.id id_old');            
+             $this->db->select('t.coleccion_id_logo');            
             
-              $this->db->from($this->logueo_identificador);  
-            
+              $this->db->from($this->logueo_identificador.' as l');  
+              $this->db->join($this->fotocalendario_temporal.' As t', 't.id_session = l.id_session and t.id_diseno = l.id_diseno and t.id_tamano = l.id_tamano and t.consecutivo =l.consecutivo');
+
+
 
             $where = '(
                         (
-                          ( id_session =  "'.$data['id_session'].'" ) AND
-                          ( id_tamano =  '.$data['id_tamano'].' ) AND
-                          ( id_diseno =  '.$data['id_diseno'].' ) AND
-                           (modulo =  "'.$this->modulo.'" ) AND
-                          ( consecutivo =  '.$data['consecutivo'].' ) 
+                          ( l.id_session =  "'.$data['id_session'].'" ) AND
+                          ( l.id_tamano =  '.$data['id_tamano'].' ) AND
+                          ( l.id_diseno =  '.$data['id_diseno'].' ) AND
+                           (l.modulo =  "'.$this->modulo.'" ) AND
+                          ( l.consecutivo =  '.$data['consecutivo'].' ) 
                           
                          )
               )';   

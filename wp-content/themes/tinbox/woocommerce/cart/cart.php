@@ -66,24 +66,40 @@ do_action( 'woocommerce_before_cart' ); ?>
 						<?php
 							$thumbnail = apply_filters( 'woocommerce_cart_item_thumbnail', $_product->get_image(), $cart_item, $cart_item_key );
 
+							if ($thumbnail) {
+									echo $thumbnail;
+							} else {
+
+								if (isset($cart_item['tmcartepo'][0]['images'])) {
+										?>
+											<img width="180" height="180" 
+											src="<?php echo array_pop($cart_item['tmcartepo'])['images'] ?>"
+			  							    class="attachment-shop_thumbnail size-shop_thumbnail wp-post-image" alt="thumb" sizes="(max-width: 180px) 100vw, 180px">
+		  							    <?php
+
+	  							} else {
+	  								echo 'Sin Imagen';
+	  							}
+
+							}
+							/*
 							if ( ! $_product->is_visible() ) {
 								echo $thumbnail;
 							} else {
 								
 								if (isset($cart_item['tmcartepo'][0]['images'])) {
+										?>
+											<img width="180" height="180" 
+											src="<?php echo array_pop($cart_item['tmcartepo'])['images'] ?>"
+			  							    class="attachment-shop_thumbnail size-shop_thumbnail wp-post-image" alt="thumb" sizes="(max-width: 180px) 100vw, 180px">
+		  							    <?php
 
+	  							} else 
 
-								?>
-									<img width="180" height="180" 
-									src="<?php echo array_pop($cart_item['tmcartepo'])['images'] ?>"
-	  							    class="attachment-shop_thumbnail size-shop_thumbnail wp-post-image" alt="thumb" sizes="(max-width: 180px) 100vw, 180px">
-  							    <?php
-
-  							} else 
-
-  								echo $thumbnail;
-								//printf( '<a href="%s">%s</a>', esc_url( $_product->get_permalink( $cart_item ) ), $thumbnail );
+	  								echo $thumbnail;
+									//printf( '<a href="%s">%s</a>', esc_url( $_product->get_permalink( $cart_item ) ), $thumbnail );
 							}
+							*/
 						?>
 					</td>
 

@@ -95,6 +95,17 @@ class Fotorevise extends CI_Controller {
 
 		$data['cantidad']  = $data['datos'][0]->cantidad;	
 
+		$logos ="";
+        if (strpos($data['datos'][0]->coleccion_id_logo, "1") !== false) {
+        		$logos .= '<span class="cpf-data-on-cart">portada</span>';
+        }
+        if (strpos($data['datos'][0]->coleccion_id_logo, "2") !== false) {  //$producto['logos']
+        		$logos .= '<span class="cpf-data-on-cart">interior</span>';
+	    }
+        if ($logos=="") {
+        		$logos='<span>no hay logos</span>';
+        }			
+
 
 		$_REQUEST = $data; 
 
@@ -115,6 +126,7 @@ class Fotorevise extends CI_Controller {
 		$variation_id =  $data['datos'][0]->variation_id;
 		
 		$variations = Array ( 
+			"attribute_pa_carro_sistema_logo" => $logos,
             $campo_variacion => $nombre_variacion,
             "identificador" => $data['datos'][0]->id_old,
 
