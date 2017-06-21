@@ -770,6 +770,11 @@ label[for="cb6"] {
   button.navbar-toggle {
     margin-top: 22px;
   }
+  .calendario-container-img{
+    width: 100%;
+    margin: 0 auto;
+    margin-top: 25px;
+  }
 }
 /* FIN ESTILOS PARA MENÚ PRINCIPAL EN RESPONSIVO */
 
@@ -866,7 +871,10 @@ label[for="cb6"] {
   }
 
   /* Ventana Modal Principal */
-  
+  .calendario-container-img{
+    width: 60%;
+    margin: 0 auto;  
+  }
 
   .modal_prod .esp, .modal_prod .ref {
     width: 100%;

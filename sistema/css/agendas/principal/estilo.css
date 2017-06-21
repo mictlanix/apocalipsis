@@ -843,6 +843,11 @@ button.continuar:hover, button.continuar:active, button.continuar:focus {
   .fc {
     display: none;
   }
+  .container-image > img{
+    width: 60%;
+    height: 72%;
+    margin-top: 10px;
+  }
 
   /* Ventana Modal Principal */
 }
