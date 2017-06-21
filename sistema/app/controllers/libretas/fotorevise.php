@@ -86,7 +86,8 @@ class Fotorevise extends CI_Controller {
 
 	   
 
-		$data['datos']       = $this->modelo_revise->leer_info_carrito( $data );			      	   		   
+		$data['datos']       = $this->modelo_revise->leer_info_carrito( $data );	
+		//print_r($data['datos'][0]->coleccion_id_logo);die;
 		
 		$data['tmcartepo']  = htmlspecialchars( ($data['datos'][0]->objeto_adicionales) );	
 		//$data['tmcartepo']  = ( (string)   json_encode( json_decode(strval(html_entity_decode($data['tmcartepo'])),true)  ,true   )    );
@@ -99,7 +100,17 @@ class Fotorevise extends CI_Controller {
 
 		$objeto_diseno = htmlspecialchars( ($data['datos'][0]->objeto_diseno) );
 		$producto = json_decode(strval(html_entity_decode($objeto_diseno)),true);
-		//print($arreglo['modelo']);
+
+        $logos ="";
+        if (strpos($data['datos'][0]->coleccion_id_logo, "1") !== false) {
+        		$logos .= '<span class="cpf-data-on-cart">portada</span>';
+        }
+        if (strpos($data['datos'][0]->coleccion_id_logo, "2") !== false) {  //$producto['logos']
+        		$logos .= '<span class="cpf-data-on-cart">interior</span>';
+	    }
+        if ($logos=="") {
+        		$logos='<span>no hay logos</span>';
+        }
 		
 		$product_id          = $producto['product_id']; 
 	    $was_added_to_cart   = false;
@@ -118,7 +129,10 @@ class Fotorevise extends CI_Controller {
           );
 */
 
+          //<span class="cpf-data-on-cart">Osmel <small> + Precio total:  $2.00</small></span>	
+
   		  $variations = Array ( 
+  		  	"attribute_pa_carro_sistema_logo" => $logos,
             "attribute_pa_carro_sistema_tam_libreta" => $producto['pa_tamano_libretas'],
             "attribute_pa_carro_sistema_interior" => $producto['pa_interior'],
             "attribute_pa_carro_sistema_num_hojas" => $producto['pa_num_hojas'],

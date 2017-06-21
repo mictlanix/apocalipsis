@@ -124,15 +124,27 @@ $(document).ready(function() {
       $('.modal').on('shown.bs.modal', function(e) {
            var la_modal = $(this);
             var datos = $(this).find('form.variations_form').attr('data-product_variations')  ;
+            //console.log(datos); este toma todos los datos de cada variacion desde el DOM
             
             var arreglo_variacion = [];
             //aqui se toman todos los tamaños y se guardan en un arreglo_variacion
             
             $.ajax({
-                  url: hash_url+'calendarios/taxonomia_tamano',
+                  url: hash_url+'calendarios/taxonomia_tamano',  //consulta
                   method: "POST",
                     dataType: 'json',
                 success: function(taxonomia_tamano){
+                        /*
+                        //console.log(taxonomia_tamano);
+                        taxonomia_tamano: Array[6]
+                        Object
+                        guid: "http://tinbox.dev.com/wp-content/uploads/2016/10/1_cd-1.jpg" 
+                        meta_value:"5786"
+                        name:"CD"
+                        slug:"1_cd"
+                        term_id:"38"
+                        term_taxonomy_id:"38"
+                        */
                         var arreglo_taxonomia_tamano = {};
                           $.each(taxonomia_tamano, function (i, valor) {
                             $.each( valor, function( key, value ) {
@@ -140,6 +152,10 @@ $(document).ready(function() {
                              }); 
 
                           });
+                          /*
+                          console.log(arreglo_taxonomia_tamano);
+                          Object {1_cd: Object, 3_escritorio: Object, 4_organizador: Object, 6_poster: Object, escritorio_mini: Object…}
+                          */
 
                       jQuery.each(jQuery.parseJSON(datos), function (i, valor) {
                               var variacion = {};
@@ -157,6 +173,9 @@ $(document).ready(function() {
                               arreglo_variacion.push( variacion);
                       });
                       //console.log(arreglo_variacion);
+                      /*
+                        [Object, Object, Object, Object, Object, Object]
+                      */  
 
                       //este es quien se encarga de dibujar los tamaños
                      $(la_modal).find(".variations-table .select-option.swatch-wrapper").each(function(i) {
@@ -321,6 +340,10 @@ $('body').on( "mouseleave",'.variacion_producto > div > label > img',  function 
            arreglo_producto['imagen_diseno'] = $(".modal-content[valor='"+id+"'] img.img-diseno").attr('src');
            arreglo_producto['product_id'] = $(".modal-content[valor='"+id+"'] input[name='tc-add-to-cart']").val();
            arreglo_producto['id_session'] = session_id;
+           arreglo_producto['logos'] = $(".modal-content[valor='"+id+"'] span.logos").text();
+           
+
+           //console.log(arreglo_producto);
 
             //todos los tamaños seleccionados
             var listCheck = []; 
@@ -335,7 +358,9 @@ $('body').on( "mouseleave",'.variacion_producto > div > label > img',  function 
                   descripcion_variacion: $(this).attr('descripcion_variacion'),                   
                            variation_id: $(this).attr('variation_id'),
                        imagen_variacion: $(this).siblings(".act" ).attr('src'), 
+
                        //imagen_diseno: $(this).siblings(".act" ).attr('imagen_diseno'),                        
+                       image_link: $(this).siblings(".act" ).attr('image_link'),                        
 
                       };
                listCheck.push(objeto);
@@ -343,7 +368,10 @@ $('body').on( "mouseleave",'.variacion_producto > div > label > img',  function 
 
             arreglo_producto['variaciones_producto'] =listCheck;
 
-  
+           /*console.log(arreglo_producto);
+           Object {modelo: "Fotocalendario", imagen_diseno: "http://tinbox.dev.com/wp-content/uploads/2016/08/plantilla_calendario-1.jpg", product_id: "1781", id_session: "632e8485d07391a0ca867b081350056f", 
+           variaciones_producto: Array[3]}id_session: "632e8485d07391a0ca867b081350056f"imagen_diseno: "http://tinbox.dev.com/wp-content/uploads/2016/08/plantilla_calendario-1.jpg"modelo: "Fotocalendario"product_id: "1781"variaciones_producto: Array[3]0: Objectcampo_variacion: "attribute_pa_tamanos"descripcion_variacion: "Escritorio"image_link: ""imagen_variacion: "http://tinbox.dev.com/wp-content/uploads/2016/10/3_escritorio-1-1.jpg"nombre_diseno: "Fotocalendario"nombre_variacion: "3_escritorio"variation_id: "1782"__proto__: Object1: Objectcampo_variacion: "attribute_pa_tamanos"descripcion_variacion: "Postal"image_link: "http://tinbox.dev.com/wp-content/uploads/2016/11/osmel.jpg"imagen_variacion: "http://tinbox.dev.com/wp-content/uploads/2016/10/5_postal-1.jpg"nombre_diseno: "Fotocalendario"nombre_variacion: "5_postal"variation_id: "1786"__proto__: Object2: Objectcampo_variacion: "attribute_pa_tamanos"descripcion_variacion: "Organizador"image_link: "http://tinbox.dev.com/wp-content/uploads/2016/11/juan.jpg"imagen_variacion: "http://tinbox.dev.com/wp-content/uploads/2016/10/4_organizador-1.jpg"nombre_diseno: "Fotocalendario"nombre_variacion: "4_organizador"variation_id: "1787"
+           */
 
           //este es para guardar todos los parametros
           var url = hash_url+'fotocalendario/guardar_tamanos'; //guardar_info'; 
@@ -413,23 +441,6 @@ $('body').on( "mouseleave",'.variacion_producto > div > label > img',  function 
     }); 
 
 
-
-
-
-
-      
-
-
-
-
-
-
-
-
-
-
-
-
     // fin de Ulises
 
    
@@ -465,6 +476,7 @@ $('body').on( "mouseleave",'.variacion_producto > div > label > img',  function 
            arreglo_producto['imagen_diseno'] = $(".modal-content[valor='"+id+"'] img.img-diseno").attr('src');
            arreglo_producto['product_id'] = $(".modal-content[valor='"+id+"'] input[name='tc-add-to-cart']").val();
            arreglo_producto['id_session'] = session_id;
+           arreglo_producto['logos'] = $(".modal-content[valor='"+id+"'] span.logos").text();
 
             //todos los tamaños seleccionados
             var listCheck = []; 
@@ -478,7 +490,8 @@ $('body').on( "mouseleave",'.variacion_producto > div > label > img',  function 
                   descripcion_variacion: $(this).attr('descripcion_variacion'),                   
                            variation_id: $(this).attr('variation_id'),
                        imagen_variacion: $(this).siblings(".act" ).attr('src'), 
-                       //imagen_diseno: $(this).siblings(".act" ).attr('imagen_diseno'),                        
+                       //imagen_diseno: $(this).siblings(".act" ).attr('imagen_diseno'),  
+                       image_link: $(this).siblings(".act" ).attr('image_link'),                                              
 
                       };
                listCheck.push(objeto);

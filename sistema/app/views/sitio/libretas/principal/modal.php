@@ -21,6 +21,7 @@ $nombre_meses = array("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","
                   <div class="row">
 
 
+
                             <!-- Izquierda -->
                             <div class="col-md-6 col-sm-6 col-xs-6 azul-izq">
                                    <!-- Imagen con su titulo --> 
@@ -64,7 +65,16 @@ $nombre_meses = array("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","
                                   
 
 
-                                  <?php //wc_get_template_part( 'content', 'product' ); ?>
+                                  <?php 
+
+                                        if (!empty( get_post_meta( get_the_ID(),'logo_formulario' ,true) )) {
+                                                  $logos= get_post_meta(get_the_ID(), 'logo_formulario', true );
+                                                  $cadena = implode("-", $logos);
+                                                  echo '<span style="display:none;" class="logos"  >'.$cadena.'</span>';
+                                                                       
+                                            }  
+
+                                  ?>
 
                                   <?php
                                           //do_action( 'woocommerce_after_single_product_summary' ); 

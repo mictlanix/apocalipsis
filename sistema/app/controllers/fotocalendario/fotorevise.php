@@ -102,7 +102,17 @@ class Fotorevise extends CI_Controller {
 
 
 	    $data['datos']       = $this->modelo_revise->leer_info_carrito( $data );			      	   		        	
-
+		
+		$logos ="";
+        if (strpos($data['datos'][0]->coleccion_id_logo, "1") !== false) {
+        		$logos .= '<span class="cpf-data-on-cart">portada</span>';
+        }
+        if (strpos($data['datos'][0]->coleccion_id_logo, "2") !== false) {  //$producto['logos']
+        		$logos .= '<span class="cpf-data-on-cart">interior</span>';
+	    }
+        if ($logos=="") {
+        		$logos='<span>no hay logos</span>';
+        }	
 	
 
 		$data['cantidad']  = $data['id_copia'];	
@@ -121,6 +131,7 @@ class Fotorevise extends CI_Controller {
 		
 
 		$variations = Array ( 
+			"attribute_pa_carro_sistema_logo" => $logos,
             $campo_variacion => $nombre_variacion,
             "identificador" => $data['datos'][0]->id_old,
 
@@ -130,12 +141,6 @@ class Fotorevise extends CI_Controller {
 
 
      	/************Finaliza carrito****/
-
-
-
-
-
-
 		   
 		  $checar         = $this->modelo_revise->check_existente_fotocalendario( $data );
   

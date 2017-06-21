@@ -348,6 +348,7 @@ $('body').on( "mouseleave",'.variacion_producto > div > label > img',  function 
            arreglo_producto['imagen_diseno'] = $(".modal-content[valor='"+id+"'] img.img-diseno").attr('src');
            arreglo_producto['product_id'] = $(".modal-content[valor='"+id+"'] input[name='tc-add-to-cart']").val();
            arreglo_producto['id_session'] = session_id;
+           arreglo_producto['logos'] = $(".modal-content[valor='"+id+"'] span.logos").text();
 
             //todos los tamaños seleccionados
             var listCheck = []; 
@@ -362,7 +363,8 @@ $('body').on( "mouseleave",'.variacion_producto > div > label > img',  function 
                   descripcion_variacion: $(this).attr('descripcion_variacion'),                   
                            variation_id: $(this).attr('variation_id'),
                        imagen_variacion: $(this).siblings(".act" ).attr('src'), 
-                       //imagen_diseno: $(this).siblings(".act" ).attr('imagen_diseno'),                        
+                       //imagen_diseno: $(this).siblings(".act" ).attr('imagen_diseno'),  
+                       image_link: $(this).siblings(".act" ).attr('image_link'),                      
 
                       };
                listCheck.push(objeto);
@@ -487,6 +489,7 @@ $('body').on( "mouseleave",'.variacion_producto > div > label > img',  function 
            arreglo_producto['imagen_diseno'] = $(".modal-content[valor='"+id+"'] img.img-diseno").attr('src');
            arreglo_producto['product_id'] = $(".modal-content[valor='"+id+"'] input[name='tc-add-to-cart']").val();
            arreglo_producto['id_session'] = session_id;
+           arreglo_producto['logos'] = $(".modal-content[valor='"+id+"'] span.logos").text();
 
             //todos los tamaños seleccionados
             var listCheck = []; 
@@ -500,7 +503,8 @@ $('body').on( "mouseleave",'.variacion_producto > div > label > img',  function 
                   descripcion_variacion: $(this).attr('descripcion_variacion'),                   
                            variation_id: $(this).attr('variation_id'),
                        imagen_variacion: $(this).siblings(".act" ).attr('src'), 
-                       //imagen_diseno: $(this).siblings(".act" ).attr('imagen_diseno'),                        
+                       //imagen_diseno: $(this).siblings(".act" ).attr('imagen_diseno'),   
+                       image_link: $(this).siblings(".act" ).attr('image_link'),                     
 
                       };
                listCheck.push(objeto);

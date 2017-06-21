@@ -84,6 +84,10 @@ public function taxonomia_tipo_agendas($data){
           $this->db->set('imagen_diseno', $data['imagen_diseno']);  
           $this->db->set('imagen_tamano', $data['imagen_variacion']);  
           $this->db->set('id_user', $this->id_user);  
+
+          $this->db->set('logos', $data['logos']); 
+          $this->db->set('image_link', $data['image_link']); 
+
     
           $this->db->insert($this->logueo_temporal); 
 
@@ -96,7 +100,7 @@ public function taxonomia_tipo_agendas($data){
 
           $this->db->select("descripcion_interior,descripcion_adicionales, descripcion_color, descripcion_num_hojas, id_session, modulo, consecutivo, correo");         
           $this->db->select("id_diseno, variation_id, id_tamano, nombre_diseno, nombre_tamano, campo_variacion, descripcion_tamano, imagen_diseno");         
-          $this->db->select("imagen_tamano, fecha_mac, objeto_diseno, objeto_adicionales, imagen_interior, imagen_num_hojas");         
+          $this->db->select("imagen_tamano, fecha_mac, objeto_diseno, objeto_adicionales, imagen_interior, imagen_num_hojas,image_link,logos");
           $this->db->select($this->id_user.' id_user', false);    
           
           $this->db->from($this->logueo_temporal);

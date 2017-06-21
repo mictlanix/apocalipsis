@@ -26,13 +26,11 @@
                         <div class="row">
 
                            <div class="col-md-4 col-sm-3 col-xs-4 mb-10 detalle">
-                           		<div>                          
-                                <?php 
-                                  //echo $dato->id_diseno.'_'.$dato->id_tamano.$dato->nombre_tamano.$dato->consecutivo.$dato->descripcion_tamano; 
-                                  echo '<img src="'.$dato->imagen_diseno.'" style="border:1px solid #c1c1c1; width:100%">';
-                                  // echo '<img src="'.$dato->imagen_tamano.'" style="border:1px solid #c1c1c1; width:50%; clear:both">';
-                                 ?>
-                             	</div>
+                              <div>                          
+                                 <img src="<?php echo $dato->imagen_diseno; ?>" style="border:1px solid #c1c1c1; width:100%">
+                                 <img src="<?php echo $dato->image_link; ?>" style="border:1px solid #c1c1c1; width:100%">
+                              </div>
+
                              	<div>
                                  <?php echo '<b>Nombre:</b><br>'.$dato->nombre_diseno.'<br>'.'<b>Tamaño:</b><br>'.$dato->descripcion_tamano; ?>
                                  <!-- $dato->id_tamano. $dato->consecutivo-->
@@ -124,31 +122,31 @@
 
                           <div class="panel-body">
                             <div class="row">
-                            	<div class="col-md-3">
-                            		<h4 class="text-left">Generales</h4>     
-                                    <p><b>Número de Copias:</b> <?php echo $dato->cantidad; ?></p>
-                                    <p><b>Título:</b> <?php echo $dato->titulo; ?></p>
-                                    <p><b>Nombre:</b> <?php echo $dato->nombre; ?></p>
-                                    <p><b>Apellido:</b> <?php echo $dato->apellidos; ?></p>
-                                    <p><b>Cumpleaños:</b> <?php echo str_pad($dato->id_dia, 2, "0", STR_PAD_LEFT).'/'.str_pad($dato->id_mes, 2, "0", STR_PAD_LEFT).'/'.date("Y"); ?></p>
-								
-								</div>
-								
-								<div class="col-md-3">
-                                    <!-- estas son las "FECHAS ESPECIALES" -->
-                                     <?php if ($fechas_especiales) {
-                                         echo '<h4 class="text-left">FECHAS ESPECIALES</h4>';
-                                          foreach ($fechas_especiales as $fechas) { 
-                                            if   (($dato->id_diseno==$fechas->id_diseno) and ($dato->id_tamano==$fechas->id_tamano)  and  ($dato->consecutivo==$fechas->consecutivo)  )   
-                                            { 
-                                                echo str_pad('<p><b>'.$fechas->dia, 2, "0", STR_PAD_LEFT).'/'.str_pad($fechas->mes, 2, "0", STR_PAD_LEFT).'/'.str_pad($fechas->ano, 4, "20", STR_PAD_LEFT).'</b>  '.$fechas->valor.'</p>';
-                                              }
-                                          }}
-                                     ?>       
+                                 <div class="col-md-3">
+                                            		<h4 class="text-left">Generales</h4>     
+                                                    <p><b>Número de Copias:</b> <?php echo $dato->cantidad; ?></p>
+                                                    <p><b>Título:</b> <?php echo $dato->titulo; ?></p>
+                                                    <p><b>Nombre:</b> <?php echo $dato->nombre; ?></p>
+                                                    <p><b>Apellido:</b> <?php echo $dato->apellidos; ?></p>
+                                                    <p><b>Cumpleaños:</b> <?php echo str_pad($dato->id_dia, 2, "0", STR_PAD_LEFT).'/'.str_pad($dato->id_mes, 2, "0", STR_PAD_LEFT).'/'.date("Y"); ?></p>
+                								
+                								</div>
+                								
+                								<div class="col-md-3">
+                                                    <!-- estas son las "FECHAS ESPECIALES" -->
+                                                     <?php if ($fechas_especiales) {
+                                                         echo '<h4 class="text-left">FECHAS ESPECIALES</h4>';
+                                                          foreach ($fechas_especiales as $fechas) { 
+                                                            if   (($dato->id_diseno==$fechas->id_diseno) and ($dato->id_tamano==$fechas->id_tamano)  and  ($dato->consecutivo==$fechas->consecutivo)  )   
+                                                            { 
+                                                                echo str_pad('<p><b>'.$fechas->dia, 2, "0", STR_PAD_LEFT).'/'.str_pad($fechas->mes, 2, "0", STR_PAD_LEFT).'/'.str_pad($fechas->ano, 4, "20", STR_PAD_LEFT).'</b>  '.$fechas->valor.'</p>';
+                                                              }
+                                                          }}
+                                                     ?>       
 
-								</div>
+                								</div>
 
-								<div class="col-md-3"> 
+								                <div class="col-md-3"> 
 
                                      <!-- estos son los "MENSAJE DEL MES" -->
                                      <?php if ($nombre_meses) {
@@ -163,7 +161,17 @@
                                           }}
                                      ?>       
 
-                              	</div>                              	
+                              	</div>    
+
+                               <div class="col-md-3"  style="display:<?php echo ($dato->logo == "")  ? 'none': 'block'  ?>" >
+                                    <h4 class="text-left">Logo</h4>
+                                    <?php if ($dato->logo != "") { ?>
+                                        <img src="<?php echo base_url().'uploads/calendarios/fotocalendario/'.$dato->logo; ?>" style="border:1px solid #c1c1c1; width:30%">
+                                    <?php } ?>
+                                    
+                                    <p style="display:<?php echo (strpos($dato->coleccion_id_logo, "1") === false) ? 'none': 'block'  ?>"> Portada</p>
+                                    <p style="display:<?php echo (strpos($dato->coleccion_id_logo, "2") === false) ? 'none': 'block'  ?>"> Interior</p>
+                               </div>                                                            	
 
 								
 

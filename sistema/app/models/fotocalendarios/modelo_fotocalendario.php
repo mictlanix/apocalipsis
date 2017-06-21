@@ -583,7 +583,7 @@
 
     //1- correo logueo
    public function correo_logueo($data){
-              $this->db->select("id, id_session, consecutivo, correo, id_diseno, id_tamano, nombre_diseno,descripcion_tamano, nombre_tamano,imagen_diseno, imagen_tamano, fecha_mac");                
+              $this->db->select("id, id_session, consecutivo, correo, id_diseno, id_tamano, nombre_diseno,descripcion_tamano, nombre_tamano,imagen_diseno, imagen_tamano, image_link,logos, fecha_mac");                
               $this->db->from($this->logueo_identificador);
               $where = '(
                           (
@@ -618,7 +618,6 @@
                           ( id_tamano =  '.$data['id_tamano'].' ) AND
                           ( id_diseno =  '.$data['id_diseno'].' ) AND
                           ( modulo =  "'.$this->modulo.'" ) AND
-
                           ( consecutivo =  '.$data['consecutivo'].' ) 
                          )
               )';   

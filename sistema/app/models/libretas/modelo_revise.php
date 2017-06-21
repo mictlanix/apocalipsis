@@ -56,7 +56,9 @@ class modelo_revise extends CI_Model{
           $this->db->select('l.id_diseno, l.id_tamano, l.nombre_diseno, l.nombre_tamano, l.descripcion_tamano, l.imagen_diseno, l.imagen_tamano');                
           $this->db->select('l.fecha_mac, l.objeto_diseno, l.objeto_adicionales, l.imagen_interior, l.imagen_num_hojas, l.descripcion_color');                
           $this->db->select('l.descripcion_adicionales');  
-          $this->db->select('id_copia cantidad',false);              
+          $this->db->select('id_copia cantidad');              
+          $this->db->select('t.coleccion_id_logo');              
+          
 
           $this->db->from($this->logueo_identificador.' As l');
           $this->db->join($this->fotocalendario_temporal.' As t', 't.id_session = l.id_session and t.id_diseno = l.id_diseno and t.variation_id = l.variation_id and t.consecutivo =l.consecutivo');
@@ -95,7 +97,7 @@ class modelo_revise extends CI_Model{
           $this->db->select("t.id_session,t.id_diseno,t.variation_id,l.nombre_tamano,l.descripcion_tamano,l.imagen_diseno,l.imagen_tamano,t.consecutivo");         
           $this->db->select("l.nombre_diseno,l.descripcion_interior,l.descripcion_adicionales,l.descripcion_color,l.descripcion_num_hojas");         
 
-          $this->db->select('id_copia cantidad',false);
+          $this->db->select('id_copia cantidad, l.image_link');
 
           $this->db->select("t.titulo, t.nombre, t.apellidos");         
           $this->db->select("t.titulo_interior, t.nombre_interior, t.apellidos_interior");         

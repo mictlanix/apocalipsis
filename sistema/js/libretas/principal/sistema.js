@@ -92,7 +92,8 @@ $(document).ready(function() {
 ///////////////////////////////////fin de construccion de adicionales/////////////////////////////
 
 
-    $(".continuar").click(function(e) {
+    //$(".continuar").click(function(e) {
+    $('body').on('click','.continuar', function (e) {          
 
            //Nombre del producto o Modelo, id y cantidad
            
@@ -106,6 +107,22 @@ $(document).ready(function() {
 
            //numero de la variacion
            arreglo_producto['variation_id'] = $(".modal-content[valor='"+id+"'] input[name='variation_id']").val();
+           arreglo_producto['logos'] = $(".modal-content[valor='"+id+"'] span.logos").text();
+           //arreglo_producto['image_link'] = $(this).siblings(".act" ).attr('image_link');
+       
+            //para tomar la image_link
+            ciclo = JSON.parse( $("form.variations_form.cart.swatches[data-product_id='"+arreglo_producto['product_id']+"']").attr('data-product_variations') );
+            $.each(ciclo, function (i, valor) { 
+              if (valor.variation_id==arreglo_producto['variation_id']) {
+                        
+                        if (valor.image_link) {
+                              arreglo_producto['image_link'] =valor.image_link;
+                        } else {
+                              arreglo_producto['image_link'] ='';
+                        }
+              }
+            });
+           
           
            //variaciones
            $(".variations-table .select-option.swatch-wrapper.selected").each(function() {
@@ -257,7 +274,27 @@ $(document).ready(function() {
 
            //numero de la variacion
            arreglo_producto['variation_id'] = $(".modal-content[valor='"+id+"'] input[name='variation_id']").val();
+
+           arreglo_producto['logos'] = $(".modal-content[valor='"+id+"'] span.logos").text();
+           //arreglo_producto['image_link'] = $(this).siblings(".act" ).attr('image_link');
        
+            //para tomar la image_link
+            ciclo = JSON.parse( $("form.variations_form.cart.swatches[data-product_id='"+arreglo_producto['product_id']+"']").attr('data-product_variations') );
+            $.each(ciclo, function (i, valor) { 
+              if (valor.variation_id==arreglo_producto['variation_id']) {
+                        
+                        if (valor.image_link) {
+                              arreglo_producto['image_link'] =valor.image_link;
+                        } else {
+                              arreglo_producto['image_link'] ='';
+                        }
+              }
+            });
+
+
+          //console.log(arreglo_producto);
+
+
 
            //variaciones
            $(".variations-table .select-option.swatch-wrapper.selected").each(function() {
@@ -265,6 +302,7 @@ $(document).ready(function() {
                arreglo_producto['img_'+$(this).parent().attr('id')] = $(this).find('a img').attr('src');
            });    
 
+           //console.log(arreglo_producto);
            arreglo_producto['descripcion_adicionales'] = '';
           //ADICIONALES(separadores)
           $(".tm-extra-product-options input.adicionales_image:checked").each(function(e) {

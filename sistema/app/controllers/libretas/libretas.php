@@ -52,7 +52,9 @@ class libretas extends CI_Controller {
         $data['descripcion_num_hojas'] = $producto['pa_num_hojas'];
         $data['imagen_num_hojas'] = $producto['img_pa_num_hojas'];
         $data['imagen_diseno'] = $producto['imagen_diseno'];
-        
+
+        $data['logos'] = $producto['logos'];
+        $data['image_link'] = $producto['image_link'];
 		$resultado  =  $this->modelo_fcalendario->agregar_disenos( $data );
 
 		$datos['resultado']  =  $this->modelo_fcalendario->actualizar_disenos_real( $data );

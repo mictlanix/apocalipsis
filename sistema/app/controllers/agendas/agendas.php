@@ -65,6 +65,8 @@ class agendas extends CI_Controller {
 		$data['nombre_diseno'] = $producto['modelo'];
 		$data['imagen_diseno'] = $producto['imagen_diseno'];
 		$data['descripcion_color'] = $producto['descripcion_color'];
+
+		$data['logos'] = $producto['logos'];
         
 	    foreach ($producto['variaciones_producto'] as $key => $value) {
 	      	$data['variation_id'] = $value['variation_id'];
@@ -74,6 +76,7 @@ class agendas extends CI_Controller {
 	      	
 	      	$data['descripcion_variacion'] = $value['descripcion_variacion'];
 	      	$data['imagen_variacion'] = $value['imagen_variacion'];
+	      		  $data['image_link'] = $value['image_link'];
 	      	$resultado  =  $this->modelo_fcalendario->agregar_disenos( $data );
 
 	      	

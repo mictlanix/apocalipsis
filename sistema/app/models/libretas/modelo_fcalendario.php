@@ -63,6 +63,10 @@
           $this->db->set('imagen_interior', $data['imagen_interior']);  
           $this->db->set('imagen_num_hojas', $data['imagen_num_hojas']);  
           $this->db->set('id_user', $this->id_user);  
+
+          $this->db->set('logos', $data['logos']); 
+          $this->db->set('image_link', $data['image_link']); 
+
     
           $this->db->insert($this->logueo_temporal); 
 
@@ -75,7 +79,7 @@
 
           $this->db->select("variation_id, descripcion_interior,descripcion_adicionales, descripcion_color, descripcion_num_hojas, id_session, modulo, consecutivo, correo");         
           $this->db->select("id_diseno, variation_id, id_tamano, nombre_diseno, nombre_tamano, descripcion_tamano, imagen_diseno");         
-          $this->db->select("imagen_tamano, fecha_mac, objeto_diseno, objeto_adicionales, imagen_interior, imagen_num_hojas");         
+          $this->db->select("imagen_tamano, fecha_mac, objeto_diseno, objeto_adicionales, imagen_interior, imagen_num_hojas,image_link,logos");   
           $this->db->select($this->id_user.' id_user', false);    
           
           $this->db->from($this->logueo_temporal);
