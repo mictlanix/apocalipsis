@@ -204,6 +204,11 @@ gris plateado
   text-align: center;
   text-transform: uppercase;
 }
+.img-container-libretas > img{
+    width: 100%;
+    height: 72%;
+    margin-top: 10px;
+}
 
 .variations-table .select-option img, .variations-table .select-option a {
   width: 100% !important;

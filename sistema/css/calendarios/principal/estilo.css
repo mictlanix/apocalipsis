@@ -204,6 +204,10 @@ gris plateado
   text-align: center;
   text-transform: uppercase;
 }
+.calendario-container-img > img{
+  width: 83%;
+  height: 24%;
+}
 
 
 /* Ventana Modal */

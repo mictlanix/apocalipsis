@@ -90,7 +90,9 @@ $arreglo_subcategoria=array();
                               <div class="thumb">
                                 <div class="ojo"><img src="<?php echo get_template_directory_uri(); ?>/images/ico-elige-sis.png"></div>
                                 <!-- <img src="<?php echo $valor2->featured_src; ?>" class="img-responsive"> -->
-                                <?php the_post_thumbnail(); ?>
+                                <div class="img-container-libretas">
+                                    <?php the_post_thumbnail(); ?>
+                                </div>
                                 
                               </div>                            
                       </button>

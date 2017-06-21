@@ -204,6 +204,11 @@ gris plateado
   text-align: center;
   text-transform: uppercase;
 }
+.container-image > img{
+  width: 100%;
+  height: 100%;
+  margin-top: 14px;
+}
 
 
 /* Ventana Modal */
