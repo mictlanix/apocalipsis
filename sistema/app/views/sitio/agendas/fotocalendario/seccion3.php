@@ -207,6 +207,22 @@ $this->load->view( 'sitio/agendas/fotocalendario/header' ); ?>
                 </div>                      
 
 
+    <!-- para el nuevo texto-->
+              <div class="row clearfix">
+                  <div class="col-md-12">
+                      <h3 class="form-control-static text-left mb-0">Texto en las Hojas (máximo 100 caracteres)</h3>
+                  </div>
+                  <div class="col-md-12">
+                     <div class="form-group" style="margin: 20px 0 10px">
+                          
+                          <input maxlength="100"  type="text" class="form-control" id="texto_pagina" placeholder="Mensaje de texto">
+                          
+
+                     </div>
+                     <p style="margin-bottom:20px">Escribe un pequeño mensaje para todas las hojas... ¿Qué te inspira?</p>
+                </div>
+              </div>
+
 			<hr style="display:<?php echo ($datos[0]->logos=='' ? 'none': 'block' ) ?>" />
             
 

@@ -765,6 +765,8 @@ $('#titulo').change(function(e){
 				datoFormulario.append('id_diseno',$('#id_diseno').val());
 				datoFormulario.append('consecutivo',$('#consecutivo').val());
 
+				datoFormulario.append('texto_pagina',$('#texto_pagina').val());
+
 				//estatus para guardar o no guardar lista
 				datoFormulario.append('guardar', guardar);
 				

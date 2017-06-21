@@ -222,6 +222,9 @@ public function disenos_completos(){
 	
 	function noguardar_lista() {
 
+		print_r($this->input->post('texto_pagina'));
+		die;
+
 	          $data['id_session']   = $this->input->post('id_session');
  			  $data['variation_id']   =   $this->input->post('variation_id');	
 	          $data['id_diseno']   =   $this->input->post('id_diseno');	
