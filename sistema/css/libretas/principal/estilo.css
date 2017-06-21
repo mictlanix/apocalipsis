@@ -204,6 +204,11 @@ gris plateado
   text-align: center;
   text-transform: uppercase;
 }
+.img-container-libretas > img{
+    width: 100%;
+    height: 72%;
+    margin-top: 10px;
+}
 
 .variations-table .select-option img, .variations-table .select-option a {
   width: 100% !important;
@@ -893,7 +898,10 @@ label[for="cb6"] {
   .fc {
     display: none;
   }
-
+  .img-container-libretas{
+    width: 60%;
+    margin: 0 auto;
+  }
   /* Ventana Modal Principal */
 }
 @media screen and (max-width: 360px){
