@@ -21,7 +21,7 @@ var opts = {
         document.location.href = $(this).val();
     });
 
-
+ 
 
 
     //var target = document.getElementById('foo');
