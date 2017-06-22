@@ -41,7 +41,6 @@ public function eliminar_logo_libretas() {
 	$data['datos'] = $this->modelo_fotocalendario->eliminar_logo_formulario($data);
 
    	echo json_encode($data);
-
 }	
 ///////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////
@@ -72,7 +71,7 @@ public function eliminar_logo_libretas() {
 			  	 	     	
 			  	 	     	  
 			  	 	     	  $data['id_diseno']   = $data['datos'][$id_registro]->id_diseno; 
-			  	 	     	  $data['variation_id']   = $data['datos'][$id_registro]->variation_id; 
+		  	 	     	   $data['variation_id']   = $data['datos'][$id_registro]->variation_id; 
 			  	 	        $data['consecutivo']   = $data['datos'][$id_registro]->consecutivo; 
 
 
@@ -97,8 +96,6 @@ public function eliminar_logo_libretas() {
 						  if (isset($_POST['reutilizando'])) {  
 						  		$data['reutilizando'] = $_POST['reutilizando'];
 						  }	
-						  
-
 
 			      
 			      $data['array_eliminar'] = '';

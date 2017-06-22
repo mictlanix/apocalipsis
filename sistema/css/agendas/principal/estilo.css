@@ -338,9 +338,9 @@ button.eliminar_imagen:hover {
 }
 
 .notif-cont {
-  position: absolute;
-  top: -40px;
-  left: 15px;
+  position: relative;
+  top: -19px;
+  /*left: 15px;*/
 }
 .notif-cont i {
   font-size: 22px;

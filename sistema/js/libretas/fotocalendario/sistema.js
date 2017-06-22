@@ -742,7 +742,7 @@ $('#titulo_interior').change(function(e){
 					
 				//este es el formulario de la session 3
 				var datoFormulario = new FormData(document.getElementById("form_validar_fotocalendario"));
-
+				
 				datoFormulario.append('id_session', $('#id_session').val());
 				datoFormulario.append('variation_id',$('#variation_id').val());
 				datoFormulario.append('id_diseno',$('#id_diseno').val());
@@ -759,6 +759,7 @@ $('#titulo_interior').change(function(e){
 				email_lista = $('#correo_activo').val();
 				
 				url=hash_url+'libretas/noguardar_lista';
+
 
 
 

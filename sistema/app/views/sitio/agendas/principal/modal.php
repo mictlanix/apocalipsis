@@ -11,17 +11,20 @@ $nombre_meses = array("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","
             <!--  boton de cerrar -->
             <a class="close" data-dismiss="modal">&times;</a>
             <!--  Encabezado -->
-            <div class="modal-header">
+            <div class="modal-header col-md-6">
                 <h3 class="text-left">Características del producto</h3>
             </div>
+            <div class="notif-cont col-md-6"> 
+                      <i class="fa fa-calendar"></i><span class="notificacion"></span><span class="cs">AGENDAS SELECCIONADAS</span>    
+            </div>
+
             <!--  Cuerpo -->
             <div class="modal-body">
                   <!--  row1 -->              
                   <div class="row">
 
-
                             <!-- Izquierda -->
-                            <div class="col-md-6 col-sm-6 col-xs-6 azul-izq">
+                            <div class="col-md-12 col-sm-12 col-xs-12 azul-izq">
                                    <!-- Imagen con su titulo --> 
                                    <div class="row"  >
                                         <div class="col-md-12 thumb">
@@ -32,8 +35,6 @@ $nombre_meses = array("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","
                                                 echo '<p class="nombre">';
                                                      the_title();
                                                 echo '</p>';
-
-                                                
 
                                               ?>
                                         </div>
@@ -54,11 +55,8 @@ $nombre_meses = array("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","
 
 
                             <!-- Derecha -->
-                             <div class="col-md-6 col-sm-6 col-xs-6 blanco-der">
-                                  <div class="notif-cont"> 
-                                            <i class="fa fa-calendar"></i><span class="notificacion"></span><span class="cs">AGENDAS SELECCIONADAS</span>    
-                                  </div>
-
+                             <div class="col-md-12 col-sm-12 col-xs-12 blanco-der">
+                                  
                                   <h4 class="text-left">ELIGE EL TIPO DE AGENDA</h4>
                                   <!-- <p>¡Selecciona varios tamaños al mismo tiempo!</p> -->
 

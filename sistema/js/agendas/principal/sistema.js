@@ -22,7 +22,7 @@ var opts = {
     });
 
  //con problema
- 
+
 
 
     //var target = document.getElementById('foo');
@@ -271,7 +271,7 @@ $(document).ready(function() {
                               var descripcion_variacion = arreglo_variacion[i].descripcion_tipo_agenda;
 
                               var producto_variable =''; 
-                                 producto_variable = '<div class="col-md-6 col-sm-6 col-xs-6 tam">';
+                                 producto_variable = '<div class="col-md-4 col-sm-4 col-xs-4 tam">';
                                  producto_variable += '<label class="sel">';
                                  producto_variable += '<img src="'+imag_prod+'" height="100" width="100" imagen_diseno="'+imag_diseno+'"  image_link="'+arreglo_variacion[i].image_link+'" >'; 
                                  //producto_variable += '<img src="'+arreglo_variacion[i].image_link+'" height="50" width="50" >'; 
