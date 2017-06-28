@@ -101,6 +101,8 @@
             $this->db->select("id, id_session, consecutivo, id_diseno, variation_id");         
             $this->db->select("titulo, nombre, apellidos,titulo_interior, nombre_interior, apellidos_interior,coleccion_id_igual");         
             $this->db->select("id_mes, id_dia, id_copia, id_festividad, id_ano, id_lista, logo, coleccion_id_logo, fecha");         
+
+            $this->db->select("texto_pagina");  
             
             $this->db->from($this->fotocalendario_temporal);
             $where = '(
@@ -541,6 +543,7 @@
           $this->db->set( 'titulo', $data['titulo'] );  
           $this->db->set( 'nombre', $data['nombre'] );  
           $this->db->set( 'apellidos', $data['apellidos'] );  
+          $this->db->set( 'texto_pagina', $data['texto_pagina'] );  
 
            if (($data['coleccion_id_igual']!="1")) { //sino marco
               

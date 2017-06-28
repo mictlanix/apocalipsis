@@ -228,8 +228,11 @@ $this->load->view( 'sitio/libretas/fotocalendario/header' ); ?>
               </label>
           </div>
 
-           <div id="bloque2" style="display:<?php echo ( ( ($calendario->coleccion_id_igual=="0") || (!isset($calendario->coleccion_id_igual) ) )? 'block' : 'none'); ?>;">
-            
+          <!-- <div id="bloque2" style="display:<?php echo ( ( ($calendario->coleccion_id_igual=="0") || (!isset($calendario->coleccion_id_igual) ) )? 'block' : 'none'); ?>;">
+          -->
+
+          <div id="bloque2" style="display:none;">
+
             <div class="row">  
                 <div class="col-xs-12 col-md-12">
                       <h3 class="form-control-static text-left">Interior</h3>
@@ -317,7 +320,7 @@ $this->load->view( 'sitio/libretas/fotocalendario/header' ); ?>
                   <div class="col-md-12">
                      <div class="form-group" style="margin: 20px 0 10px">
                           
-                          <input maxlength="100"  type="text" class="form-control" id="texto_pagina" placeholder="Mensaje de texto">
+                          <input maxlength="100"  type="text" class="form-control" id="texto_pagina" placeholder="Mensaje de texto" value="<?php echo $calendario->texto_pagina; ?>">
                      </div>
                      <p style="margin-bottom:20px">Escribe un pequeño mensaje para todas las hojas... ¿Qué te inspira?</p>
                 </div>

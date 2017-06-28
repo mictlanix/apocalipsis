@@ -100,7 +100,8 @@
     public function fotocalendario_edicion($data){
             $this->db->select("id, id_session, consecutivo, id_diseno, variation_id");         
             $this->db->select("titulo, nombre, apellidos");         
-            $this->db->select("id_mes, id_dia, id_copia, id_festividad, id_ano, id_lista, logo, coleccion_id_logo, fecha");         
+            $this->db->select("id_mes, id_dia, id_copia, id_festividad, id_ano, id_lista, logo, coleccion_id_logo, fecha");  
+            $this->db->select("texto_pagina");         
             
             $this->db->from($this->fotocalendario_temporal);
             $where = '(
@@ -612,6 +613,7 @@
           $this->db->set( 'id_dia', $data['id_dia'] );  
           $this->db->set( 'id_mes', $data['id_mes'] );  
           $this->db->set( 'id_festividad', $data['id_festividad'] );  
+          $this->db->set( 'texto_pagina', $data['texto_pagina'] );
 
 
           if (isset($data['id_lista'])) {

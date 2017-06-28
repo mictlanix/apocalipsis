@@ -105,7 +105,8 @@ class modelo_revise extends CI_Model{
           $this->db->select('id_copia cantidad, l.image_link');
 
           $this->db->select("t.titulo, t.nombre, t.apellidos");         
-          $this->db->select("t.id_mes, t.id_dia, t.id_festividad, t.id_ano, t.id_lista, t.logo, t.coleccion_id_logo, t.fecha");         
+          $this->db->select("t.id_mes, t.id_dia, t.id_festividad, t.id_ano, t.id_lista, t.logo, t.coleccion_id_logo, t.fecha");    
+          $this->db->select("t.texto_pagina");            
 
           $this->db->from($this->fotocalendario_temporal.' As t');
           $this->db->join($this->logueo_identificador.' As l', 't.id_session = l.id_session and t.id_diseno = l.id_diseno and t.variation_id = l.variation_id and t.consecutivo =l.consecutivo');

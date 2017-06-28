@@ -325,10 +325,6 @@ public function diseno_lista(){
 	//ok
 	function noguardar_lista() {
 
-		print_r($this->input->post('texto_pagina'));
-		die;
-		
-
 	          $data['id_session']   = $this->input->post('id_session');
  			  $data['variation_id']   =   $this->input->post('variation_id');	
 	          $data['id_diseno']   =   $this->input->post('id_diseno');	
@@ -372,6 +368,7 @@ public function diseno_lista(){
 		      $data['id_dia']   		 = $this->input->post('id_dia');
 		      $data['id_mes']  			 = $this->input->post('id_mes');
 		      $data['id_festividad']     = $this->input->post('id_festividad');
+		      $data['texto_pagina']   =   $this->input->post('texto_pagina');
 
 
 	          $data             =   $this->security->xss_clean($data);  
@@ -460,6 +457,8 @@ public function diseno_lista(){
 		      $data['id_dia']   = $this->input->post('id_dia');
 		      $data['id_mes']   = $this->input->post('id_mes');
 		      $data['id_festividad']   = $this->input->post('id_festividad');
+		      $data['texto_pagina']   =   $this->input->post('texto_pagina');
+		      
 	          $data             =   $this->security->xss_clean($data);  
 	          //lista
 

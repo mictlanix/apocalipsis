@@ -215,7 +215,7 @@ $this->load->view( 'sitio/agendas/fotocalendario/header' ); ?>
                   <div class="col-md-12">
                      <div class="form-group" style="margin: 20px 0 10px">
                           
-                          <input maxlength="100"  type="text" class="form-control" id="texto_pagina" placeholder="Mensaje de texto">
+                          <input maxlength="100"  type="text" class="form-control" id="texto_pagina" placeholder="Mensaje de texto" value="<?php echo $calendario->texto_pagina; ?>">
                           
 
                      </div>

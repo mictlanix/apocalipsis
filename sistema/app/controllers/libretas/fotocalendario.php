@@ -219,13 +219,13 @@ public function disenos_completos(){
 	
 	function noguardar_lista() {
 
-		print_r($this->input->post('texto_pagina'));
-		die;
+		
 
 	          $data['id_session']   = $this->input->post('id_session');
  			  $data['variation_id']   =   $this->input->post('variation_id');	
 	          $data['id_diseno']   =   $this->input->post('id_diseno');	
 	          $data['consecutivo']   =   $this->input->post('consecutivo');		          
+	          $data['texto_pagina']   =   $this->input->post('texto_pagina');
  		 	  
  		 	  if (!empty($_FILES)) {
 		          $config_adjunto['upload_path']    = './uploads/libretas/fotocalendario/';
