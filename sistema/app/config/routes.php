@@ -554,6 +554,65 @@ $route['libretas/(:any)/(:any)/(:any)']	 		= 'libretas/libretas/index/$1/$2';
 
 
 
+
+
+
+//http://tinbox.dev.com/sistema/libreta_corporativa/
+///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
+///////////////////////////////libreta_corporativa//////////////////////////////
+///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
+$route['libreta_corporativa/guardar_tamanos']							= 'libreta_corporativa/libreta_corporativa/guardar_tamanos';
+$route['libreta_corporativa/leer_marcados']								= 'libreta_corporativa/libreta_corporativa/leer_marcados';
+$route['libreta_corporativa/actualizar_disenos']						= 'libreta_corporativa/libreta_corporativa/actualizar_disenos';
+$route['libreta_corporativa/guardar_info']								= 'libreta_corporativa/libreta_corporativa/guardar_info';
+///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
+///////////////////////////////fotocalendario de libreta_corporativa//////////////////////////////
+///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
+
+$route['libreta_corporativa/diseno_lista']							= 'libreta_corporativa/fotocalendario/diseno_lista';
+$route['libreta_corporativa/validacion_comprimir']							= 'libreta_corporativa/fotocalendario/validacion_comprimir';
+$route['libreta_corporativa/fotocalendario/(:any)']							= 'libreta_corporativa/fotocalendario/index/$1';
+$route['libreta_corporativa/validar_nuevo_fotocalendario']				= 'libreta_corporativa/fotocalendario/validar_nuevo_fotocalendario';
+$route['libreta_corporativa/guardar_lista']							= 'libreta_corporativa/fotocalendario/guardar_lista';
+$route['libreta_corporativa/noguardar_lista']							= 'libreta_corporativa/fotocalendario/noguardar_lista';
+$route['libreta_corporativa/leer_lista']							= 'libreta_corporativa/fotocalendario/leer_lista';
+$route['libreta_corporativa/calenda_activos']							= 'libreta_corporativa/fotocalendario/calenda_activos';
+$route['libreta_corporativa/eliminar_diseno_completo']							= 'libreta_corporativa/fotocalendario/eliminar_diseno_completo';
+$route['libreta_corporativa/disenos_completos']									= 'libreta_corporativa/fotocalendario/disenos_completos';
+$route['libreta_corporativa/cargar_informacion']								= 'libreta_corporativa/fotocalendario/cargar_informacion';
+$route['libreta_corporativa/eliminar_logo_formulario']							= 'libreta_corporativa/fotocalendario/eliminar_logo_formulario';
+$route['libreta_corporativa/buscador_predictivo']								= 'libreta_corporativa/fotocalendario/buscador_predictivo';
+///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////Revise//////////////////////////////
+///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
+$route['libreta_corporativa/fotorevise/(:any)']						= 'libreta_corporativa/fotorevise/index/$1';
+$route['libreta_corporativa/eliminar_diseno_revise']					= 'libreta_corporativa/fotorevise/eliminar_diseno_revise';
+$route['libreta_corporativa/activar_carrito']							= 'libreta_corporativa/fotorevise/activar_carrito';
+$route['libreta_corporativa/anadir_carrito']							= 'libreta_corporativa/fotorevise/anadir_carrito';
+$route['libreta_corporativa/guardar_historico_informacion']			= 'libreta_corporativa/fotorevise/guardar_historico_informacion';
+$route['libreta_corporativa/guardar_info_revise']						= 'libreta_corporativa/fotorevise/guardar_info_revise';
+$route['libreta_corporativa']	 		= 'libreta_corporativa/libreta_corporativa/index/libreta_corporativa';
+$route['libreta_corporativa/(:any)']	 		= 'libreta_corporativa/libreta_corporativa/index/$1';
+$route['libreta_corporativa/(:any)/(:any)/(:any)']	 		= 'libreta_corporativa/libreta_corporativa/index/$1/$2';
+
+
+
+
+
+
+
+
+
+
+
+
+
 ///////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////
 ///////////////////////////////fotoagendas//////////////////////////////
