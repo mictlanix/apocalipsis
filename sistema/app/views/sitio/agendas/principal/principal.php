@@ -122,6 +122,6 @@ $arreglo_subcategoria=array();
 ?>
 <script type="text/javascript">
 	$(document).ready(function() {
-		$('.navbar-nav li:nth-child(5)').addClass('current-menu-item')
+		$('.navbar-nav li:nth-child(6)').addClass('current-menu-item')
 	});
 </script>
