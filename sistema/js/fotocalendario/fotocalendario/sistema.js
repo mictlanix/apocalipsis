@@ -259,6 +259,7 @@ window.location.assign loads a new document
 //activar la portada cuando se cambie de imagen
 $("input[type=file]").on('change',function(e){	
   $("input[name='coleccion_id_logo[]'][value=1]").attr('checked', 'checked');
+  $("input[name='coleccion_id_logo[]'][value=2]").attr('checked', 'checked');
 });
 
 $('body').on('click','.eliminar_imagen', function (e) { 
