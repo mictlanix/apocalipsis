@@ -159,11 +159,6 @@
                                     <p><b>Nombre:</b> <?php echo $dato->nombre; ?></p>                                    
                                     <p><b>Apellido:</b> <?php echo $dato->apellidos; ?></p>
 
-                                    <h4 class="text-left">Interior</h4>
-
-                                    <p><b>Título:</b> <?php echo $dato->titulo_interior; ?></p>                                    
-                                    <p><b>Nombre:</b> <?php echo $dato->nombre_interior; ?></p>                                    
-                                    <p><b>Apellido:</b> <?php echo $dato->apellidos_interior; ?></p>
 
                                     <h4 class="text-left">TEXTO EN LAS HOJAS</h4>
 
