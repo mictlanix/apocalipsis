@@ -330,29 +330,32 @@ $actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 					<!-- Imagen--> 
 
 			  
-			  	<div class="col-md-6">
-                    <?php              
-                      if  (isset($calendario->coleccion_id_logo)) {
-                         $col_id_logo = explode(",",  substr($calendario->coleccion_id_logo,1,strlen($calendario->coleccion_id_logo)-2 ) );
-                      } else {
-                        $col_id_logo =array();
-                      }   
-                     ?>                
+    			  <div class="col-md-6">
+                <fieldset id="marca_logo" disabled>
+                        <?php              
+                          if  (isset($calendario->coleccion_id_logo)) {
+                             $col_id_logo = explode(",",  substr($calendario->coleccion_id_logo,1,strlen($calendario->coleccion_id_logo)-2 ) );
+                          } else {
+                            $col_id_logo =array();
+                          }   
+                         ?>                
 
-                      <?php foreach ($logos as $logo) { ?>
-                            <div class="checkbox portada-interior" style="display:<?php echo (strpos($datos[0]->logos, (string)$logo->id) === false) ? 'none': 'block'  ?>"  >
-                                <label for="coleccion_id_logo" class="ttip" title="<?php echo $logo->tooltip; ?>">
+                          <?php foreach ($logos as $logo) { ?>
+                                <div class="checkbox portada-interior" style="display:<?php echo (strpos($datos[0]->logos, (string)$logo->id) === false) ? 'none': 'block'  ?>"  >
+                                    <label for="coleccion_id_logo" class="ttip" title="<?php echo $logo->tooltip; ?>">
 
-                                    <?php   
-                                          if (in_array($logo->id, $col_id_logo)) {$marca='checked';} else {$marca='';}
-                                    ?>
+                                        <?php   
+                                              if (in_array($logo->id, $col_id_logo)) {$marca='checked';} else {$marca='';}
+                                        ?>
 
-                                  <input <?php echo $marca; ?> type="checkbox" value="<?php echo $logo->id; ?>" name="coleccion_id_logo[]" id="coleccion_id_logo[]"><?php echo $logo->nombre; ?> 
+                                      <input <?php echo $marca; ?> type="checkbox" value="<?php echo $logo->id; ?>" name="coleccion_id_logo[]" id="coleccion_id_logo[]"><?php echo $logo->nombre; ?> 
 
-                                </label>
-                            </div>
-                      <?php } ?>
-				</div>
+                                    </label>
+                                </div>
+                          <?php } ?>
+                </fieldset>                           
+    				</div>
+           
               </div> <!-- row -->
 
               

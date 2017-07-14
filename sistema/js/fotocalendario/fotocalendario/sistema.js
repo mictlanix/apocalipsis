@@ -260,6 +260,7 @@ window.location.assign loads a new document
 $("input[type=file]").on('change',function(e){	
   $("input[name='coleccion_id_logo[]'][value=1]").attr('checked', 'checked');
   $("input[name='coleccion_id_logo[]'][value=2]").attr('checked', 'checked');
+  $("#marca_logo").removeAttr("disabled");
 });
 
 $('body').on('click','.eliminar_imagen', function (e) { 
@@ -291,6 +292,9 @@ $('body').on('click','.eliminar_imagen', function (e) {
 					    success: function(data){
 					    		spinner.stop();
   								$('#foopropio').css('display','none');
+  								$("input[name='coleccion_id_logo[]'][value=1]").removeAttr('checked');
+								$("input[name='coleccion_id_logo[]'][value=2]").removeAttr('checked');
+  								$("#marca_logo").attr("disabled","disabled");	
 					    							            
 					    }
 				});	 

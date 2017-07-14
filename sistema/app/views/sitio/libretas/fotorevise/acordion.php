@@ -140,6 +140,7 @@
 
             <!--contenido -->
 
+            <?php //if() ?>
 
             <?php if  ( (($id_diseno=="undefined")) && ($i==1) ) {  ?>  
                   <div id="colapsa<?php echo $dato->id_diseno.$dato->variation_id.$dato->consecutivo; ?>" class="panel-collapse collapse-in" role="tabpanel" aria-labelledby="<?php echo $dato->id_diseno.$dato->variation_id.$dato->consecutivo; ?>">

@@ -451,7 +451,7 @@ $route['agendas/eliminar_diseno_completo']							= 'agendas/fotocalendario/elimi
 $route['agendas/disenos_completos']									= 'agendas/fotocalendario/disenos_completos';
 
 $route['agendas/cargar_informacion']								= 'agendas/fotocalendario/cargar_informacion';
-$route['agendas/eliminar_logo_formulario']							= 'agendas/fotocalendario/eliminar_logo_formulario';
+$route['agendas/eliminar_logo_formulario']							= 'agendas/fotocalendario/eliminar_logo_agendas';
 $route['agendas/buscador_predictivo']								= 'agendas/fotocalendario/buscador_predictivo';
 
 
@@ -527,7 +527,7 @@ $route['libretas/eliminar_diseno_completo']							= 'libretas/fotocalendario/eli
 $route['libretas/disenos_completos']									= 'libretas/fotocalendario/disenos_completos';
 
 $route['libretas/cargar_informacion']								= 'libretas/fotocalendario/cargar_informacion';
-$route['libretas/eliminar_logo_formulario']							= 'libretas/fotocalendario/eliminar_logo_formulario';
+$route['libretas/eliminar_logo_formulario']							= 'libretas/fotocalendario/eliminar_logo_libretas';
 $route['libretas/buscador_predictivo']								= 'libretas/fotocalendario/buscador_predictivo';
 
 
@@ -584,7 +584,7 @@ $route['libreta_corporativa/calenda_activos']							= 'libreta_corporativa/fotoc
 $route['libreta_corporativa/eliminar_diseno_completo']							= 'libreta_corporativa/fotocalendario/eliminar_diseno_completo';
 $route['libreta_corporativa/disenos_completos']									= 'libreta_corporativa/fotocalendario/disenos_completos';
 $route['libreta_corporativa/cargar_informacion']								= 'libreta_corporativa/fotocalendario/cargar_informacion';
-$route['libreta_corporativa/eliminar_logo_formulario']							= 'libreta_corporativa/fotocalendario/eliminar_logo_formulario';
+$route['libreta_corporativa/eliminar_logo_formulario']							= 'libreta_corporativa/fotocalendario/eliminar_logo_libretas';
 $route['libreta_corporativa/buscador_predictivo']								= 'libreta_corporativa/fotocalendario/buscador_predictivo';
 ///////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////
@@ -600,178 +600,6 @@ $route['libreta_corporativa/guardar_info_revise']						= 'libreta_corporativa/fo
 $route['libreta_corporativa']	 		= 'libreta_corporativa/libreta_corporativa/index/libreta_corporativa';
 $route['libreta_corporativa/(:any)']	 		= 'libreta_corporativa/libreta_corporativa/index/$1';
 $route['libreta_corporativa/(:any)/(:any)/(:any)']	 		= 'libreta_corporativa/libreta_corporativa/index/$1/$2';
-
-
-
-
-
-
-
-
-
-
-
-
-
-///////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////
-///////////////////////////////fotoagendas//////////////////////////////
-///////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////
-
-
-$route['fotoagendas']	 		= 'fotoagendas/fotoagendas/index';
-
-
-$route['fotoagendas/guardar_tamanos']							= 'fotoagendas/fotoagendas/guardar_tamanos';
-$route['fotoagendas/leer_marcados']								= 'fotoagendas/fotoagendas/leer_marcados';
-$route['fotoagendas/actualizar_disenos']						= 'fotoagendas/fotoagendas/actualizar_disenos';
-$route['fotoagendas/guardar_info']								= 'fotoagendas/fotoagendas/guardar_info';
-
-
-///////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////
-///////////////////////////////Imagen//////////////////////////////
-///////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////
-
-
-$route['fotoagendas/fotoimagen/(:any)']							= 'fotoagendas/fotoimagen/index/$1';
-$route['fotoagendas/imagen_encontrada']							= 'fotoagendas/fotoimagen/imagen_encontrada';
-$route['fotoagendas/guardar_imagen']							= 'fotoagendas/fotoimagen/guardar_imagen';
-$route['fotoagendas/upload']									= 'fotoagendas/fotoimagen/upload';
-$route['fotoagendas/buscarimagen']								= 'fotoagendas/fotoimagen/buscarimagen';
-$route['fotoagendas/revisar_imagenes']								= 'fotoagendas/fotoimagen/revisar_imagenes';
-
-
-
-
-
-///////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////
-///////////////////////////////fotocalendario de fotoagendas//////////////////////////////
-///////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////
-
-$route['fotoagendas/diseno_lista']							= 'fotoagendas/fotocalendario/diseno_lista';
-
-
-$route['fotoagendas/validacion_comprimir']							= 'fotoagendas/fotocalendario/validacion_comprimir';
-
-$route['fotoagendas/fotocalendario/(:any)']							= 'fotoagendas/fotocalendario/index/$1';
-$route['fotoagendas/validar_nuevo_fotocalendario']				= 'fotoagendas/fotocalendario/validar_nuevo_fotocalendario';
-
-$route['fotoagendas/guardar_lista']							= 'fotoagendas/fotocalendario/guardar_lista';
-$route['fotoagendas/noguardar_lista']							= 'fotoagendas/fotocalendario/noguardar_lista';
-
-
-$route['fotoagendas/leer_lista']							= 'fotoagendas/fotocalendario/leer_lista';
-
-$route['fotoagendas/calenda_activos']							= 'fotoagendas/fotocalendario/calenda_activos';
-
-$route['fotoagendas/eliminar_diseno_completo']							= 'fotoagendas/fotocalendario/eliminar_diseno_completo';
-$route['fotoagendas/disenos_completos']									= 'fotoagendas/fotocalendario/disenos_completos';
-
-$route['fotoagendas/cargar_informacion']								= 'fotoagendas/fotocalendario/cargar_informacion';
-$route['fotoagendas/eliminar_logo_formulario']							= 'fotoagendas/fotocalendario/eliminar_logo_formulario';
-$route['fotoagendas/buscador_predictivo']								= 'fotoagendas/fotocalendario/buscador_predictivo';
-
-
-///////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////Revise//////////////////////////////
-///////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////
-
-
-$route['fotoagendas/fotorevise/(:any)']						= 'fotoagendas/fotorevise/index/$1';
-$route['fotoagendas/eliminar_diseno_revise']					= 'fotoagendas/fotorevise/eliminar_diseno_revise';
-$route['fotoagendas/activar_carrito']							= 'fotoagendas/fotorevise/activar_carrito';
-$route['fotoagendas/anadir_carrito']							= 'fotoagendas/fotorevise/anadir_carrito';
-$route['fotoagendas/guardar_historico_informacion']			= 'fotoagendas/fotorevise/guardar_historico_informacion';
-
-
-$route['fotoagendas/guardar_info_revise']						= 'fotoagendas/fotorevise/guardar_info_revise';
-
-
-///////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////
-///////////////////////////////fotolibretas//////////////////////////////
-///////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////
-
-
-$route['fotolibretas']	 		= 'fotolibretas/fotolibretas/index';
-
-
-$route['fotolibretas/guardar_tamanos']							= 'fotolibretas/fotolibretas/guardar_tamanos';
-$route['fotolibretas/leer_marcados']								= 'fotolibretas/fotolibretas/leer_marcados';
-$route['fotolibretas/actualizar_disenos']						= 'fotolibretas/fotolibretas/actualizar_disenos';
-
-$route['fotolibretas/guardar_info']								= 'fotolibretas/fotolibretas/guardar_info';
-
-///////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////
-///////////////////////////////Imagen//////////////////////////////
-///////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////
-
-
-$route['fotolibretas/fotoimagen/(:any)']							= 'fotolibretas/fotoimagen/index/$1';
-$route['fotolibretas/imagen_encontrada']							= 'fotolibretas/fotoimagen/imagen_encontrada';
-$route['fotolibretas/guardar_imagen']							= 'fotolibretas/fotoimagen/guardar_imagen';
-$route['fotolibretas/upload']									= 'fotolibretas/fotoimagen/upload';
-$route['fotolibretas/buscarimagen']								= 'fotolibretas/fotoimagen/buscarimagen';
-$route['fotolibretas/revisar_imagenes']								= 'fotolibretas/fotoimagen/revisar_imagenes';
-
-
-///////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////
-///////////////////////////////fotocalendario de fotolibretas//////////////////////////////
-///////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////
-
-$route['fotolibretas/diseno_lista']							= 'fotolibretas/fotocalendario/diseno_lista';
-
-
-$route['fotolibretas/validacion_comprimir']							= 'fotolibretas/fotocalendario/validacion_comprimir';
-
-$route['fotolibretas/fotocalendario/(:any)']							= 'fotolibretas/fotocalendario/index/$1';
-$route['fotolibretas/validar_nuevo_fotocalendario']				= 'fotolibretas/fotocalendario/validar_nuevo_fotocalendario';
-
-$route['fotolibretas/guardar_lista']							= 'fotolibretas/fotocalendario/guardar_lista';
-$route['fotolibretas/noguardar_lista']							= 'fotolibretas/fotocalendario/noguardar_lista';
-
-
-$route['fotolibretas/leer_lista']							= 'fotolibretas/fotocalendario/leer_lista';
-
-$route['fotolibretas/calenda_activos']							= 'fotolibretas/fotocalendario/calenda_activos';
-
-$route['fotolibretas/eliminar_diseno_completo']							= 'fotolibretas/fotocalendario/eliminar_diseno_completo';
-$route['fotolibretas/disenos_completos']									= 'fotolibretas/fotocalendario/disenos_completos';
-
-$route['fotolibretas/cargar_informacion']								= 'fotolibretas/fotocalendario/cargar_informacion';
-$route['fotolibretas/eliminar_logo_formulario']							= 'fotolibretas/fotocalendario/eliminar_logo_formulario';
-$route['fotolibretas/buscador_predictivo']								= 'fotolibretas/fotocalendario/buscador_predictivo';
-
-
-
-///////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////Revise//////////////////////////////
-///////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////
-
-
-$route['fotolibretas/fotorevise/(:any)']						= 'fotolibretas/fotorevise/index/$1';
-$route['fotolibretas/eliminar_diseno_revise']					= 'fotolibretas/fotorevise/eliminar_diseno_revise';
-$route['fotolibretas/activar_carrito']							= 'fotolibretas/fotorevise/activar_carrito';
-$route['fotolibretas/anadir_carrito']							= 'fotolibretas/fotorevise/anadir_carrito';
-$route['fotolibretas/guardar_historico_informacion']			= 'fotolibretas/fotorevise/guardar_historico_informacion';
-
-
-$route['fotolibretas/guardar_info_revise']						= 'fotolibretas/fotorevise/guardar_info_revise';
-
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

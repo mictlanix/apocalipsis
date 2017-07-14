@@ -201,35 +201,9 @@ var hash_url =  window.location.protocol+'//'+window.location.hostname+'/sistema
 $("input[type=file]").on('change',function(e){	
   $("input[name='coleccion_id_logo[]'][value=1]").attr('checked', 'checked');
   $("input[name='coleccion_id_logo[]'][value=2]").attr('checked', 'checked');
+  $("#marca_logo").removeAttr("disabled");
 });
 
-/*
-$('body').on('click','.eliminar_imagen', function (e) {   
-	$(this).parent().parent().css('display','none');
-	$('#ca_logo').val('');
-	//ajax para eliminar la imagen
-			var id_session 	 = $('#id_session').val();
-		    var id_diseno  	 = $('#id_diseno').val();
-		    var id_tamano  	 = $('#id_tamano').val();
-		    var consecutivo  = $('#consecutivo').val();
-			     url =hash_url+"calendarios/eliminar_logo_formulario";
-					$.ajax({
-					    url: url,
-					    type: 'POST',
-					    dataType: "json",
-					    data:  {
-							id_session:id_session,	
-							id_diseno:id_diseno,
-							id_tamano:id_tamano,
-							consecutivo:consecutivo,
-					    },
-					    success: function(data){
-					    		//	
-					    							            
-					    }
-				});	 
-});	
-*/
 
 
 $('body').on('click','.eliminar_imagen', function (e) { 
@@ -257,6 +231,9 @@ $('body').on('click','.eliminar_imagen', function (e) {
 					    },
 					    success: function(data){
 					    		//	
+								$("input[name='coleccion_id_logo[]'][value=1]").removeAttr('checked');
+								$("input[name='coleccion_id_logo[]'][value=2]").removeAttr('checked');
+  								$("#marca_logo").attr("disabled","disabled");					    		
 					    							            
 					    }
 				});	 
