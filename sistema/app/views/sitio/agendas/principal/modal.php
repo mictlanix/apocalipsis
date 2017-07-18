@@ -24,11 +24,11 @@ $nombre_meses = array("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","
                   <div class="row">
 
                             <!-- Izquierda -->
-                            <div class="col-md-12 col-sm-12 col-xs-12 azul-izq">
+                            <div class="col-md-12 col-sm-12 col-xs-12 ">
                                    <!-- Imagen con su titulo --> 
                                    <div class="row"  >
-                                        <div class="col-md-12 thumb">
-                                              <img src="<?php  the_post_thumbnail_url() ?>" class="img-responsive img-diseno">
+                                        <div class="col-md-12"> <!-- thumb -->
+                                              <img src="<?php  the_post_thumbnail_url() ?>" class="img-responsive img-diseno" style="max-height: 450px;margin: 0px auto;float: none;">
                                               <?php 
                                                 //get_post_thumbnail( get_the_ID() );
 

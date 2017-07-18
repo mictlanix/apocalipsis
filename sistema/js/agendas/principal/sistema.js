@@ -299,18 +299,10 @@ $(document).ready(function() {
       });
 
 
-
-//$('body').on('over','.agregar_cancelar', function (e) {        
-
-//$('body').on('hover','input[name="coleccion_variation_id[]"]', function (e) {     
-
-//var  imagen_deldiseno= $('img.img-diseno').attr('src');
+/*
+ mostrar otra imagen cdo pasa por encima de los tipos de agendas
 
 $('body').on( "mouseenter",'.variacion_producto > div > label > img',  function (e) {       
-   //console.log($(this).attr('image_link') );   
-   //console.log($(this)); 
-
-   //$('img.img-diseno').attr('src',$(this).attr('image_link') );  
    $('img.img-interior').attr('src',$(this).attr('image_link') );  
    $('img.img-interior').parent().parent().css('display','');
    $('img.img-diseno').parent().parent().css('display','none');
@@ -318,22 +310,10 @@ $('body').on( "mouseenter",'.variacion_producto > div > label > img',  function 
 
 
 $('body').on( "mouseleave",'.variacion_producto > div > label > img',  function (e) {       
-   //console.log($('#imagen_deldiseno').val()); 
-   //$('img.img-diseno').attr('src',$('#imagen_deldiseno').val() );
-   //$('img.img-interior').attr('src',$(this).attr('image_link') );    
    $('img.img-interior').parent().parent().css('display','none');
    $('img.img-diseno').parent().parent().css('display','');
-
 });  
 
-
-/*
-    $('.diseno button').hover(
-      function() {
-      $(this).find('.ojo').css({'opacity':'1'});
-    }, function() {
-      $(this).find('.ojo').css({'opacity':'0'});
-    });
 */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////

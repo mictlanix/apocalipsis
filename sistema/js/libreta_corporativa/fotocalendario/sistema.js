@@ -198,6 +198,7 @@ $(document).ready(function() {
 	});	
 
 
+
 //activar la portada cuando se cambie de imagen
 $("input[type=file]").on('change',function(e){	
   $("input[name='coleccion_id_logo[]'][value=1]").attr('checked', 'checked');
@@ -208,6 +209,7 @@ $("input[type=file]").on('change',function(e){
 $('body').on('click','.eliminar_imagen', function (e) { 
 	var target2 = document.getElementById('foopropio');
     var spinner = new Spinner(opts).spin(target2);
+
 
     
 	$(this).parent().parent().css('display','none');
@@ -241,11 +243,7 @@ $('body').on('click','.eliminar_imagen', function (e) {
 					    }
 				});	 
 
-		
-
 });	
-
-
 
 
 $('body').on('change','#logo', function (event) { 

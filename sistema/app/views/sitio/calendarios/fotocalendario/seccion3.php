@@ -384,10 +384,6 @@ $this->load->view( 'sitio/calendarios/fotocalendario/header' ); ?>
                       } 
                     echo '</select>';
 
-
-
-
-
                   ?>
                     <span class="help-block">Mes</span>
                   </div>
