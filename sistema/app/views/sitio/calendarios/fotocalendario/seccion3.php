@@ -349,7 +349,8 @@ $this->load->view( 'sitio/calendarios/fotocalendario/header' ); ?>
   		                                          if (in_array($logo->id, $col_id_logo)) {$marca='checked';} else {$marca='';}
   		                                    ?>
 
-  		                                  <input <?php echo $marca; ?> type="checkbox" value="<?php echo $logo->id; ?>" name="coleccion_id_logo[]" id="coleccion_id_logo[]"><?php echo $logo->nombre; ?> 
+  		                                  
+                                         <input <?php echo $marca; ?> type="checkbox" value="<?php echo (strpos($informacion[0]->logos, (string)$logo->id) === false) ? 0 : $logo->id  ?>" name="coleccion_id_logo[]" id="coleccion_id_logo[]"><?php echo $logo->nombre; ?> 
 
   		                                </label>
   		                            </div>
