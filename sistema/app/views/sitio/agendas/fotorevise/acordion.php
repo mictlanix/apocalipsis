@@ -129,7 +129,7 @@
                                                     <p><b>Número de Copias:</b> <?php echo $dato->cantidad; ?></p>
                                                     <p><b>Título:</b> <?php echo $dato->titulo; ?></p>
                                                     <p><b>Nombre:</b> <?php echo $dato->nombre; ?></p>
-                                                    <p><b>Apellido:</b> <?php echo $dato->apellidos; ?></p>
+                                                    
                                                     <p><b>Cumpleaños:</b> <?php echo str_pad($dato->id_dia, 2, "0", STR_PAD_LEFT).'/'.str_pad($dato->id_mes, 2, "0", STR_PAD_LEFT).'/'.date("Y"); ?></p>
 
                                                     <h4 class="text-left">TEXTO EN LAS HOJAS</h4>

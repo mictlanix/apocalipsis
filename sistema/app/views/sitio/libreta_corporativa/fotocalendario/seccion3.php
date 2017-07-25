@@ -129,7 +129,7 @@ $this->load->view( 'sitio/libreta_corporativa/fotocalendario/header' ); ?>
 
 
 
-<!-- campo predictivo de titulo -->
+<!-- campo predictivo de titulo 
 			<div class="row">  
                 <div class="col-xs-12 col-md-12">
                       <h3 class="form-control-static text-left">Portada</h3>
@@ -208,6 +208,25 @@ $this->load->view( 'sitio/libreta_corporativa/fotocalendario/header' ); ?>
 
 
 			<hr>
+
+      -->
+
+<!-- para el nuevo nombre-->
+
+              <div class="row clearfix">
+                  <div class="col-md-12">
+                      <h3 class="form-control-static text-left mb-0">Nombre y apellidos (máximo <?php echo $informacion[0]->longitud_nombre; ?>  caracteres)</h3>
+                  </div>
+                  <div class="col-md-12">
+                     <div class="form-group" style="margin: 20px 0 10px">
+                          
+                          <input maxlength="<?php echo $informacion[0]->longitud_nombre; ?>"  type="text" class="form-control" name="nombre" placeholder="Mensaje de texto" value="<?php echo $calendario->nombre; ?>">
+                          
+
+                     </div>
+                     <p style="margin-bottom:20px">Escribe un pequeño mensaje para todas las hojas... ¿Qué te inspira?</p>
+                </div>
+              </div>        
             
 <!-- 2da parte campo predictivo de titulo -->           
 
@@ -315,12 +334,12 @@ $this->load->view( 'sitio/libreta_corporativa/fotocalendario/header' ); ?>
               <!-- para el nuevo texto-->
               <div class="row clearfix">
                   <div class="col-md-12">
-                      <h3 class="form-control-static text-left mb-0">Texto en las Hojas (máximo 100 caracteres)</h3>
+                      <h3 class="form-control-static text-left mb-0">Texto en las Hojas (máximo <?php echo $informacion[0]->longitud_texto; ?> caracteres)</h3>
                   </div>
                   <div class="col-md-12">
                      <div class="form-group" style="margin: 20px 0 10px">
                           
-                          <input maxlength="100"  type="text" class="form-control" id="texto_pagina" placeholder="Mensaje de texto" value="<?php echo $calendario->texto_pagina; ?>">
+                          <input maxlength="<?php echo $informacion[0]->longitud_texto; ?>"  type="text" class="form-control" id="texto_pagina" placeholder="Mensaje de texto" value="<?php echo $calendario->texto_pagina; ?>">
                      </div>
                      <p style="margin-bottom:20px">Escribe un pequeño mensaje para todas las hojas... ¿Qué te inspira?</p>
                 </div>
@@ -328,11 +347,11 @@ $this->load->view( 'sitio/libreta_corporativa/fotocalendario/header' ); ?>
 
 
 
-      <hr style="display:<?php echo ($datos[0]->logos=='' ? 'none': 'block' ) ?>" />
+      <hr style="display:<?php echo ($informacion[0]->logos=='' ? 'none': 'block' ) ?>" />
 <!--fin de la 2da parte campo predictivo de titulo -->            
 
 
-              <div id="interior" class="row" style="display:<?php echo ($datos[0]->logos=='' ? 'none': 'block' ) ?>">  
+              <div id="interior" class="row" style="display:<?php echo ($informacion[0]->logos=='' ? 'none': 'block' ) ?>">  
                   
                     <div class="col-xs-12 col-md-12">
                         <h3 class="form-control-static text-left">Agrega un logo (Opcional)</h3>
@@ -460,7 +479,7 @@ $this->load->view( 'sitio/libreta_corporativa/fotocalendario/header' ); ?>
                          ?>                
 
                           <?php foreach ($logos as $logo) { ?>
-                                <div class="checkbox" style="display:<?php echo (strpos($datos[0]->logos, (string)$logo->id) === false) ? 'none': 'block'  ?>"  >
+                                <div class="checkbox" style="display:<?php echo (strpos($informacion[0]->logos, (string)$logo->id) === false) ? 'none': 'block'  ?>"  >
                                     <label for="coleccion_id_logo" class="ttip" title="<?php echo $logo->tooltip; ?>">
 
                                         <?php   

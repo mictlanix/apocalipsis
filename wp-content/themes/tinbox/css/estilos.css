@@ -1133,3 +1133,8 @@ div.tm_divider {
 }
 .avatar { width: 25px;
     height: 25px;-webkit-border-radius: 50%; -moz-border-radius: 50%; -ms-border-radius: 50%; -o-border-radius: 50%; border-radius: 50%; }
+
+#parentHorizontalTab .celda {
+      background: #e0e0e0;
+    padding: 20px;
+}

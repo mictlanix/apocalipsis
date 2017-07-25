@@ -108,6 +108,9 @@ $(document).ready(function() {
            //numero de la variacion
            arreglo_producto['variation_id'] = $(".modal-content[valor='"+id+"'] input[name='variation_id']").val();
            arreglo_producto['logos'] = $(".modal-content[valor='"+id+"'] span.logos").text();
+           arreglo_producto['longitud_nombre'] = $(".modal-content[valor='"+id+"'] span.longitud_nombre").text();
+           arreglo_producto['longitud_texto'] = $(".modal-content[valor='"+id+"'] span.longitud_texto").text();
+
            //arreglo_producto['image_link'] = $(this).siblings(".act" ).attr('image_link');
        
             //para tomar la image_link
@@ -276,6 +279,9 @@ $(document).ready(function() {
            arreglo_producto['variation_id'] = $(".modal-content[valor='"+id+"'] input[name='variation_id']").val();
 
            arreglo_producto['logos'] = $(".modal-content[valor='"+id+"'] span.logos").text();
+           arreglo_producto['longitud_nombre'] = $(".modal-content[valor='"+id+"'] span.longitud_nombre").text();
+           arreglo_producto['longitud_texto'] = $(".modal-content[valor='"+id+"'] span.longitud_texto").text();
+
            //arreglo_producto['image_link'] = $(this).siblings(".act" ).attr('image_link');
        
             //para tomar la image_link

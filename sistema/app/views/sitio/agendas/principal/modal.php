@@ -38,7 +38,7 @@ $nombre_meses = array("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","
 
                                               ?>
                                         </div>
-                                        <div class="col-md-12 colores">
+                                        <div class="col-md-12 colores" style="display:none;">
                                         	<h4 class="text-left">ELIGE EL COLOR</h4>
                                      	  	<?php do_action("woocommerce_tm_epo_fields"); ?>
   								  	                  </div>
@@ -46,8 +46,16 @@ $nombre_meses = array("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","
 
                                   <div class="row" style="display:none;"; >
                                           <div class="col-md-12 thumb">
-                                              <img src="<?php  the_post_thumbnail_url() ?>" class="img-responsive img-interior">
-                                          </div>    
+                                              <img src="<?php  the_post_thumbnail_url() ?>" class="img-responsive img-interior" style="max-height: 450px;margin: 0px auto;float: none;">
+
+                                          <?php 
+                                                echo '<p class="nombre">';
+                                                     the_title();
+                                                echo '</p>';
+
+                                          ?>                                               
+                                          </div>   
+
                                   </div>
 
                              </div>  <!--  fin de Izquierda -->       
@@ -69,6 +77,19 @@ $nombre_meses = array("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","
                                                   echo '<span style="display:none;" class="logos"  >'.$cadena.'</span>';
                                                                        
                                             }  
+
+                                             if (!empty( get_post_meta( get_the_ID(),'longitud_nombre' ,true) )) {
+                                                  $longitud_nombre= get_post_meta(get_the_ID(), 'longitud_nombre', true );
+                                                  echo '<span style="display:none;" class="longitud_nombre"  >'.$longitud_nombre.'</span>';
+                                                                       
+                                            }  
+
+                                             if (!empty( get_post_meta( get_the_ID(),'longitud_texto' ,true) )) {
+                                                  $longitud_texto= get_post_meta(get_the_ID(), 'longitud_texto', true );
+                                                  echo '<span style="display:none;" class="longitud_texto"  >'.$longitud_texto.'</span>';
+                                                                       
+                                            }  
+
 
                                    ?>
 

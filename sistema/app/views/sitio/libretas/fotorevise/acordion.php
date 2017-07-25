@@ -156,10 +156,8 @@
                                		<h4 class="text-left">Generales</h4>
                                		<p><b>Número de Copias:</b> <?php echo $dato->cantidad; ?></p>                                    
                                     <h4 class="text-left">Portada</h4>
-                                    <p><b>Título:</b> <?php echo $dato->titulo; ?></p>                                    
-                                    <p><b>Nombre:</b> <?php echo $dato->nombre; ?></p>                                    
-                                    <p><b>Apellido:</b> <?php echo $dato->apellidos; ?></p>
-
+                                    <p><b>Título:</b> <?php echo $dato->titulo; ?></p>
+                                    <p><b>Nombre:</b> <?php echo $dato->nombre; ?></p>
 
                                     <h4 class="text-left">TEXTO EN LAS HOJAS</h4>
 

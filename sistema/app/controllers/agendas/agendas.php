@@ -67,6 +67,8 @@ class agendas extends CI_Controller {
 		$data['descripcion_color'] = $producto['descripcion_color'];
 
 		$data['logos'] = $producto['logos'];
+		$data['longitud_nombre'] = $producto['longitud_nombre'];
+		$data['longitud_texto'] = $producto['longitud_texto'];
         
 	    foreach ($producto['variaciones_producto'] as $key => $value) {
 	      	$data['variation_id'] = $value['variation_id'];

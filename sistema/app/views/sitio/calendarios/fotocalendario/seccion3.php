@@ -206,10 +206,10 @@ $this->load->view( 'sitio/calendarios/fotocalendario/header' ); ?>
                 </div>                      
 
 
-				      <hr style="display:<?php echo ($datos[0]->logos=='' ? 'none': 'block' ) ?>" />
+				      <hr style="display:<?php echo ($informacion[0]->logos=='' ? 'none': 'block' ) ?>" />
             
 
-              <div id="interior" class="row" style="display:<?php echo ($datos[0]->logos=='' ? 'none': 'block' ) ?>">  
+              <div id="interior" class="row" style="display:<?php echo ($informacion[0]->logos=='' ? 'none': 'block' ) ?>">  
                   
                     <div class="col-xs-12 col-md-12">
                         <h3 class="form-control-static text-left">AGREGA UN LOGO (OPCIONAL)</h3>
@@ -342,7 +342,7 @@ $this->load->view( 'sitio/calendarios/fotocalendario/header' ); ?>
   		                     ?>                
 
   		                      <?php foreach ($logos as $logo) { ?>
-  		                            <div class="checkbox portada-interior" style="display:<?php echo (strpos($datos[0]->logos, (string)$logo->id) === false) ? 'none': 'block'  ?>"  >
+  		                            <div class="checkbox portada-interior" style="display:<?php echo (strpos($informacion[0]->logos, (string)$logo->id) === false) ? 'none': 'block'  ?>"  >
   		                                <label for="coleccion_id_logo" class="ttip" title="<?php echo $logo->tooltip; ?>">
 
   		                                    <?php   

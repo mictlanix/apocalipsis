@@ -271,7 +271,7 @@ $(document).ready(function() {
                               var descripcion_variacion = arreglo_variacion[i].descripcion_tipo_agenda;
 
                               var producto_variable =''; 
-                                 producto_variable = '<div class="col-md-4 col-sm-4 col-xs-4 tam">';
+                                 producto_variable = '<div class="col-md-3 col-sm-3 col-xs-3 tam">';
                                  producto_variable += '<label class="sel">';
                                  producto_variable += '<img src="'+imag_prod+'" height="100" width="100" imagen_diseno="'+imag_diseno+'"  image_link="'+arreglo_variacion[i].image_link+'" >'; 
                                  //producto_variable += '<img src="'+arreglo_variacion[i].image_link+'" height="50" width="50" >'; 
@@ -301,7 +301,7 @@ $(document).ready(function() {
 
 /*
  mostrar otra imagen cdo pasa por encima de los tipos de agendas
-
+*/
 $('body').on( "mouseenter",'.variacion_producto > div > label > img',  function (e) {       
    $('img.img-interior').attr('src',$(this).attr('image_link') );  
    $('img.img-interior').parent().parent().css('display','');
@@ -314,7 +314,7 @@ $('body').on( "mouseleave",'.variacion_producto > div > label > img',  function 
    $('img.img-diseno').parent().parent().css('display','');
 });  
 
-*/
+
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -330,6 +330,8 @@ $('body').on( "mouseleave",'.variacion_producto > div > label > img',  function 
            arreglo_producto['product_id'] = $(".modal-content[valor='"+id+"'] input[name='tc-add-to-cart']").val();
            arreglo_producto['id_session'] = session_id;
            arreglo_producto['logos'] = $(".modal-content[valor='"+id+"'] span.logos").text();
+           arreglo_producto['longitud_nombre'] = $(".modal-content[valor='"+id+"'] span.longitud_nombre").text();
+           arreglo_producto['longitud_texto'] = $(".modal-content[valor='"+id+"'] span.longitud_texto").text();
 
             //todos los tamaños seleccionados
             var listCheck = []; 
@@ -471,6 +473,9 @@ $('body').on( "mouseleave",'.variacion_producto > div > label > img',  function 
            arreglo_producto['product_id'] = $(".modal-content[valor='"+id+"'] input[name='tc-add-to-cart']").val();
            arreglo_producto['id_session'] = session_id;
            arreglo_producto['logos'] = $(".modal-content[valor='"+id+"'] span.logos").text();
+           
+           arreglo_producto['longitud_nombre'] = $(".modal-content[valor='"+id+"'] span.longitud_nombre").text();
+           arreglo_producto['longitud_texto'] = $(".modal-content[valor='"+id+"'] span.longitud_texto").text();
 
             //todos los tamaños seleccionados
             var listCheck = []; 
@@ -563,20 +568,6 @@ $('body').on( "mouseleave",'.variacion_producto > div > label > img',  function 
          arreglo_adicional = [];
          arreglo_producto = {};
     });  
-
-
-
-
-                
-            
-
-
-
-
-
-
-
-
 
 
 

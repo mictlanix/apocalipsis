@@ -633,6 +633,31 @@
             $info->free_result();
     }
 
+    public function info_activo($data){
+        $this->db->select("logos,longitud_nombre,longitud_texto");
+
+        $this->db->from($this->logueo_identificador);
+         $where = '(
+                        (
+                          ( id_session =  "'.$data['id_session'].'" ) AND
+                          ( id_tamano =  '.$data['id_tamano'].' ) AND
+                          ( id_diseno =  '.$data['id_diseno'].' ) AND
+                          ( modulo =  "'.$this->modulo.'" ) AND
+                          ( consecutivo =  '.$data['consecutivo'].' ) 
+                         )
+        )';
+
+        $this->db->where($where);
+      
+        $info = $this->db->get();
+        if ($info->num_rows() > 0) {
+            return $info->result();
+        }    
+        else
+            return false;
+        $info->free_result();
+    } 
+
 
     /////////////////**********OJO*********/////////////////////////////////////////////////////    
     /////////////OJO VER SI SE VA A RELACIONAR CON CORREO O CON SESSION///////    

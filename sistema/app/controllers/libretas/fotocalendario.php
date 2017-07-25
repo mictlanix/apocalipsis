@@ -107,6 +107,7 @@ public function eliminar_logo_libretas() {
 
 				//Leer los datos sobre el calendario activo
 				$data['calendario']      = $this->modelo_fotocalendario->fotocalendario_edicion( $data );
+				$data['informacion']      = $this->modelo_fotocalendario->info_activo($data);
 
 				//para mostrar las listas asociada a este usuario
 				$data['listas'] = $this->modelo_fotocalendario->listado_listas($data);
@@ -193,20 +194,14 @@ public function disenos_completos(){
     
     //*ok
 	public function validar_nuevo_fotocalendario(){
-	
-	      $data['nombre']   =   $this->input->post('nombre');		          
-	      $data['apellidos']   =   $this->input->post('apellidos');		          
+		  
+		  $this->form_validation->set_rules( 'nombre', 'Nombre', 'trim|required|min_lenght[3]|xss_clean');
 
-	      $novalida = FALSE;
-	      if  ( (empty($data['nombre']))  && (empty($data['apellidos'])) ) {
-				$this->form_validation->set_rules('nombre', 'Nombre', 'trim|callback_nombre_valido|max_lenght[180]|xss_clean');	      	
-	      } else {
-	      	$novalida = TRUE;
-	      }
-
-		
-	      if ( ($this->form_validation->run() === TRUE) || ($novalida === TRUE) ) {
-	            echo true;
+		  if ($this->form_validation->run() === TRUE)  {
+	 		  	  $data['nombre']   =   $this->input->post('nombre');		          
+			      $data['apellidos']   =   $this->input->post('apellidos');		          
+			       echo true;
+			
 	      } else {      
 	        echo validation_errors('<span class="error">','</span>');
 	      }

@@ -69,7 +69,7 @@
    //1- correo logueo
    //ok-
    public function correo_logueo($data){
-              $this->db->select("id,variation_id, descripcion_interior,descripcion_adicionales, descripcion_color, descripcion_num_hojas, id_session, modulo, consecutivo, correo, image_link,logos");         
+              $this->db->select("id,variation_id, descripcion_interior,descripcion_adicionales, descripcion_color, descripcion_num_hojas, id_session, modulo, consecutivo, correo, image_link,logos,longitud_nombre,longitud_texto");
               $this->db->select("id_diseno, variation_id, nombre_diseno, nombre_tamano, descripcion_tamano, imagen_diseno");         
               $this->db->select("imagen_tamano, fecha_mac, objeto_diseno, objeto_adicionales, imagen_interior, imagen_num_hojas");         
 
@@ -111,7 +111,6 @@
                           ( variation_id =  '.$data['variation_id'].' ) AND
                           ( id_diseno =  '.$data['id_diseno'].' ) AND
                           ( modulo =  "'.$this->modulo.'" ) AND
-
                           ( consecutivo =  '.$data['consecutivo'].' ) 
                          )
               )';   
@@ -126,6 +125,31 @@
                 return false;
             $info->free_result();
     }
+
+
+
+    public function info_activo($data){
+        $this->db->select("logos,longitud_nombre,longitud_texto");
+        $this->db->from($this->logueo_identificador);
+        $where = '(
+                    (
+                      ( id_session =  "'.$data['id_session'].'" ) AND
+                      ( variation_id =  '.$data['variation_id'].' ) AND
+                      ( id_diseno =  '.$data['id_diseno'].' ) AND
+                      ( modulo =  "'.$this->modulo.'" ) AND
+                      ( consecutivo =  '.$data['consecutivo'].' ) 
+                     )
+          )';   
+
+        $this->db->where($where);
+        $info = $this->db->get();
+        if ($info->num_rows() > 0) {
+            return $info->result();
+        }    
+        else
+            return false;
+        $info->free_result();
+    }     
 
    ///////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////

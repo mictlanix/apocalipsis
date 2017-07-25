@@ -65,12 +65,24 @@ $nombre_meses = array("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","
 
                                   <?php 
 
-                                        if (!empty( get_post_meta( get_the_ID(),'logo_formulario' ,true) )) {
+                                            if (!empty( get_post_meta( get_the_ID(),'logo_formulario' ,true) )) {
                                                   $logos= get_post_meta(get_the_ID(), 'logo_formulario', true );
                                                   $cadena = implode("-", $logos);
                                                   echo '<span style="display:none;" class="logos"  >'.$cadena.'</span>';
                                                                        
                                             }  
+
+                                            if (!empty( get_post_meta( get_the_ID(),'longitud_nombre' ,true) )) {
+                                                  $longitud_nombre= get_post_meta(get_the_ID(), 'longitud_nombre', true );
+                                                  echo '<span style="display:none;" class="longitud_nombre"  >'.$longitud_nombre.'</span>';
+                                                                       
+                                            }  
+
+                                             if (!empty( get_post_meta( get_the_ID(),'longitud_texto' ,true) )) {
+                                                  $longitud_texto= get_post_meta(get_the_ID(), 'longitud_texto', true );
+                                                  echo '<span style="display:none;" class="longitud_texto"  >'.$longitud_texto.'</span>';
+                                                                       
+                                            }                                              
 
                                   ?>
 

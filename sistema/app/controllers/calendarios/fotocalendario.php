@@ -106,7 +106,8 @@ public function eliminar_logo_formulario() {
 			   $data['logos'] = $this->modelo_fotocalendario->listado_logos();		 	   
 
 			//Leer los datos sobre el calendario activo
-			$data['calendario']      = $this->modelo_fotocalendario->fotocalendario_edicion( $data );
+			$data['calendario']       = $this->modelo_fotocalendario->fotocalendario_edicion( $data );
+			$data['informacion']      = $this->modelo_fotocalendario->info_activo($data);
 
 			//para mostrar las listas asociada a este usuario
 			     $data['listas'] = $this->modelo_fotocalendario->listado_listas($data);

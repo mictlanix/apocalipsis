@@ -111,6 +111,10 @@ public function eliminar_logo_agendas() {
 				//Leer los datos sobre el calendario activo
 				$data['calendario']      = $this->modelo_fotocalendario->fotocalendario_edicion( $data );
 
+				$data['informacion']      = $this->modelo_fotocalendario->info_activo($data);
+
+				
+
 				//para mostrar las listas asociada a este usuario
 				$data['listas'] = $this->modelo_fotocalendario->listado_listas($data);
 
@@ -290,26 +294,14 @@ public function diseno_lista(){
 
 	public function validar_nuevo_fotocalendario(){
 	
-		  //$this->form_validation->set_rules( 'id_mes', 'Mes de cumpleaños', 'trim|required|callback_valid_cero|xss_clean');
+		  
 		  $this->form_validation->set_rules( 'id_dia', 'Día de cumpleaños', 'trim|required|callback_valid_cero|xss_clean');
+		  $this->form_validation->set_rules( 'nombre', 'Nombre', 'trim|required|min_lenght[3]|xss_clean');
 
-	      if ( ($this->form_validation->run() === TRUE) || ($novalida === TRUE) ) {
-			      $data['nombre']   =   $this->input->post('nombre');		          
+		  if ($this->form_validation->run() === TRUE)  {
+	 		  	  $data['nombre']   =   $this->input->post('nombre');		          
 			      $data['apellidos']   =   $this->input->post('apellidos');		          
-
-			      $novalida = FALSE;
-			      if  ( (empty($data['nombre']))  && (empty($data['apellidos'])) ) {
-						$this->form_validation->set_rules('nombre', 'Nombre', 'trim|callback_nombre_valido|max_lenght[180]|xss_clean');	      	
-			      } else {
-			      	$novalida = TRUE;
-			      }
-
-				
-			      if ( ($this->form_validation->run() === TRUE) || ($novalida === TRUE) ) {
-			            echo true;
-			      } else {      
-			        echo validation_errors('<span class="error">','</span>');
-			      }
+			       echo true;
 			
 	      } else {      
 	        echo validation_errors('<span class="error">','</span>');
