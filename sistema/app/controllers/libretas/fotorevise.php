@@ -32,6 +32,7 @@ class Fotorevise extends CI_Controller {
     	    }
 
 		    $data['datos']       = $this->modelo_revise->revisa_activos( $data );
+		    //$data['informacion']      = $this->modelo_revise->info_activo($data);	    
 		   
     	   $this->load->view( 'sitio/libretas/fotorevise/revise', $data );	
 

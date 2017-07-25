@@ -155,11 +155,22 @@ class modelo_revise extends CI_Model{
           $this->db->from($this->fotocalendario_temporal.' As t');
           $this->db->join($this->logueo_identificador.' As l', 't.id_session = l.id_session and t.id_diseno = l.id_diseno and t.id_tamano = l.id_tamano and t.consecutivo =l.consecutivo');
 
+          /*
           $where = '(
                       (
                         ( t.id_session =  "'.$data['id_session'].'" ) AND ( t.modulo =  "'.$this->modulo.'" ) 
                        )
-          )';   
+          )';   */
+
+          $where = '(
+                    (
+                      ( t.id_session =  "'.$data['id_session'].'" ) AND
+                      ( t.id_tamano =  '.$data['id_tamano'].' ) AND
+                      ( t.id_diseno =  '.$data['id_diseno'].' ) AND
+                      ( t.modulo =  "'.$this->modulo.'" ) AND
+                      ( t.consecutivo =  '.$data['consecutivo'].' ) 
+                     )
+          )';  
 
           $this->db->where($where);
           
@@ -266,6 +277,31 @@ class modelo_revise extends CI_Model{
                 return false;
             $info->free_result();
     } 
+
+
+
+    public function info_activo($data){
+        $this->db->select("logos,longitud_nombre,longitud_texto");
+        $this->db->from($this->logueo_identificador);
+        $where = '(
+                    (
+                      ( id_session =  "'.$data['id_session'].'" ) AND
+                      ( id_tamano =  '.$data['id_tamano'].' ) AND
+                      ( id_diseno =  '.$data['id_diseno'].' ) AND
+                      ( modulo =  "'.$this->modulo.'" ) AND
+                      ( consecutivo =  '.$data['consecutivo'].' ) 
+                     )
+          )';   
+
+        $this->db->where($where);
+        $info = $this->db->get();
+        if ($info->num_rows() > 0) {
+            return $info->result();
+        }    
+        else
+            return false;
+        $info->free_result();
+    }     
 
 
     

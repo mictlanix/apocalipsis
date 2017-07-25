@@ -34,6 +34,7 @@ class Fotorevise extends CI_Controller {
 		   $data['datos']       	= $this->modelo_revise->revisa_activos( $data );			      	   		   
 		   $data['nombre_meses']    = $this->modelo_revise->mensaje_mes( $data );
 		   $data['fechas_especiales']    = $this->modelo_revise->fechas_especiales( $data );
+		   //$data['informacion']      = $this->modelo_revise->info_activo($data);	    
 		   
     	   $this->load->view( 'sitio/fotocalendario/fotorevise/revise', $data );	
 
