@@ -176,14 +176,14 @@
                                                  ?>       
             								</div>
 
-                            <div class="col-md-3"  style="display:<?php echo ($dato->logo == "")  ? 'none': 'block'  ?>" >
+                            <div class="col-md-3"  style="display:<?php echo ($informacion[0]->logo == "")  ? 'none': 'block'  ?>" >
                                   <h4 class="text-left">Logo</h4>
-                                  <?php if ($dato->logo != "") { ?>
-                                      <img src="<?php echo base_url().'uploads/fotocalendario/fotocalendario/'.$dato->logo; ?>" style="border:1px solid #c1c1c1; width:30%">
+                                  <?php if ($informacion[0]->logo != "") { ?>
+                                      <img src="<?php echo base_url().'uploads/fotocalendario/fotocalendario/'.$informacion[0]->logo; ?>" style="border:1px solid #c1c1c1; width:30%">
                                   <?php } ?>
                                   
-                                  <p style="display:<?php echo (strpos($dato->coleccion_id_logo, "1") === false) ? 'none': 'block'  ?>"> Portada</p>
-                                  <p style="display:<?php echo (strpos($dato->coleccion_id_logo, "2") === false) ? 'none': 'block'  ?>"> Interior</p>
+                                  <p style="display:<?php echo (strpos($informacion[0]->coleccion_id_logo, "1") === false) ? 'none': 'block'  ?>"> Portada</p>
+                                  <p style="display:<?php echo (strpos($informacion[0]->coleccion_id_logo, "2") === false) ? 'none': 'block'  ?>"> Interior</p>
                             </div>                  
 
                
