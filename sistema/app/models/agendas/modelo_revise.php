@@ -98,7 +98,7 @@ class modelo_revise extends CI_Model{
     //ok **
     public function revisa_activos($data){
                   
-          $this->db->distinct("t.id_session");         
+          //$this->db->distinct("t.id_session");         
           $this->db->select("t.id_session,t.id_diseno,t.variation_id,l.nombre_tamano, l.campo_variacion, l.descripcion_tamano,l.imagen_diseno,l.imagen_tamano,t.consecutivo");         
           $this->db->select("l.nombre_diseno,l.descripcion_color,l.descripcion_num_hojas");         
 
