@@ -864,7 +864,7 @@ $('#titulo').change(function(e){
 											        hrefPost('POST', catalogo, {
 											         
 															variation_id   : variation_id,
-															id_diseno   : id_session,
+															id_diseno   : id_diseno, //id_session,
 															consecutivo : consecutivo,
 												                   ano  : ano,
 
